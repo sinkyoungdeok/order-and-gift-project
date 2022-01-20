@@ -15,7 +15,7 @@
 - 라이브러리: jpa, retrofit, mapstruct
 - 빌드툴: gradle
 - 메시지 브로커: aws sqs
-- 컨테이너툴: 도커
+- 컨테이너툴: docker
 - 데이터베이스: mysql
 
 ## 새로운 프로젝트의 기술 스택
@@ -25,7 +25,7 @@
 - 라이브러리: spring kafka, retrofit, mapstruct
 - 빌드툴: gradle
 - 메시지 브로커: kafka
-- 컨테이너툴: 도커
+- 컨테이너툴: docker
 - 데이터베이스: mongodb
 
 # 3. 요구사항 
