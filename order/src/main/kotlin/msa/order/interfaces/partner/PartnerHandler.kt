@@ -1,6 +1,7 @@
 package msa.order.interfaces.partner
 
 import msa.order.application.partner.PartnerFacade
+import msa.order.common.response.CommonResponse
 import msa.order.domain.PartnerCommand
 import msa.order.domain.PartnerInfo
 import org.springframework.stereotype.Component
@@ -18,6 +19,6 @@ class PartnerHandler(val partnerFacade: PartnerFacade) {
         var command: Mono<PartnerCommand.RegisterPartner> = serverRequest.bodyToMono()
         var partnerInfo = partnerFacade.registerPartner(command)
         var response = partnerInfo.map { PartnerDto.RegisterResponse(it) }
-        return ok().body(response)
+        return ok().body(response.map { CommonResponse(it) } )
     }
 }
