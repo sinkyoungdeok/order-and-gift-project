@@ -17,11 +17,7 @@ class PartnerHandler(val partnerFacade: PartnerFacade) {
     fun create(serverRequest: ServerRequest): Mono<ServerResponse> {
         var command: Mono<PartnerCommand.RegisterPartner> = serverRequest.bodyToMono()
         var partnerInfo = partnerFacade.registerPartner(command)
-        var response = partnerInfo.map {
-            partner -> PartnerDto.RegisterResponse(
-            partner)
-        }
-
+        var response = partnerInfo.map { PartnerDto.RegisterResponse(it) }
         return ok().body(response)
     }
 }
