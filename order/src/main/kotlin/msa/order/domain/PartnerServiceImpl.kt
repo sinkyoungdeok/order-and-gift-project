@@ -1,11 +1,13 @@
 package msa.order.domain
 
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 @Service
-class PartnerServiceImpl : PartnerService {
-    override fun registerPartner(): Flux<PartnerInfo> {
-        return Flux.just(PartnerInfo(1,"","","","",Partner.Status.ENABLE))
+class PartnerServiceImpl(val partnerStore: PartnerStore) : PartnerService {
+    override fun registerPartner(command: Mono<PartnerCommand.RegisterPartner>): Mono<PartnerInfo> {
+        var initPartner = command.map { it.toEntity() }
+        var partner = partnerStore.store(initPartner)
+        return partner.map { PartnerInfo(it) }
     }
 }

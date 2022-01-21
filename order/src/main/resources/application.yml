@@ -3,4 +3,6 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-#      database: tutorial
+      database: order
+      username: root
+      password: 1234

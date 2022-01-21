@@ -1,7 +1,7 @@
 package msa.order.domain
 
-import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 interface PartnerService {
-    fun registerPartner(): Flux<PartnerInfo>
+    fun registerPartner(command: Mono<PartnerCommand.RegisterPartner>): Mono<PartnerInfo>
 }

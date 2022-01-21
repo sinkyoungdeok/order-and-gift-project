@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 class Partner {
     @Id
     lateinit var id: String
-    lateinit var partnerToken: String
+    var partnerToken: String? = null
     lateinit var partnerName: String
     lateinit var businessNo: String
     lateinit var email: String

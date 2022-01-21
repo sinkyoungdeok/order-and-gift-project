@@ -6,6 +6,9 @@ services:
       - "${MONGO_PORT}:27017"
     volumes:
       - ./data/db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 1234
     container_name: "docker-mongodb"
     env_file:
       - .env
