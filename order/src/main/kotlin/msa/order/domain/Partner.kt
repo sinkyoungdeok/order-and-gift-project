@@ -12,9 +12,10 @@ class Partner {
     lateinit var businessNo: String
     lateinit var email: String
     lateinit var status: Status
+
+    enum class Status(description: String) {
+        ENABLE("활성화"),
+        DISABLE("비활성화")
+    }
 }
 
-enum class Status(description: String) {
-    ENABLE("활성화"),
-    DISABLE("비활성화")
-}
