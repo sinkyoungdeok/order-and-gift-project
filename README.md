@@ -74,3 +74,41 @@
 ![image](https://user-images.githubusercontent.com/28394879/150360895-45ceac43-b217-4b32-93e8-3ba6f7f70611.png)
 
 ## 3-2. 선물하기 프로젝트
+
+
+# 4. 발견한 오류 & 해결방법 
+<details><summary>1. reactiveMongoDB의 repository빈 주입 실패 </summary>
+
+### 코드
+```kotlin
+@Repository
+interface PartnerRepository : ReactiveMongoRepository<Partner, String>
+```
+```
+implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+```
+
+### 에러
+```
+Description:
+
+Parameter 0 of constructor in msa.order.infrastructure.partner.PartnerStoreImpl required a bean of type 'msa.order.infrastructure.partner.PartnerRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'msa.order.infrastructure.partner.PartnerRepository' in your configuration.
+
+
+Process finished with exit code 1
+```
+
+### 해결 방법
+- 내가 사용한 repository는 ReactiveMongoDB 였는데, gradle의 의존성은 일반(논리액티브) mongodb를 사용하고 있었다.
+- 의존성을 reactive mongodb로 변경하니 잘 되었다
+- 내가 빈을 잘못 설정했나 생각해서 다양한 컴포넌트로 바꾸어 보았지만, 안되서 많이 헤맸었다.
+```
+implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+```
+
+</details>
