@@ -152,3 +152,87 @@ spring:
 ```
 
 </details>
+
+<details><summary> 3. webflux에서 validation 처리 안되던 현상 </summary>
+
+### 코드
+```kotlin
+@PostMapping
+fun registerPartner(
+  @Valid @RequestBody request: PartnerDto.RegisterRequest
+): Mono<CommonResponse<PartnerDto.RegisterResponse>> {
+  var command: Mono<PartnerCommand.RegisterPartner> = Mono.just(request.toCommand())
+  var partnerInfo = partnerFacade.registerPartner(command)
+  var response = partnerInfo.map { PartnerDto.RegisterResponse(it) }
+  return response.map { CommonResponse(it) }
+}
+```
+
+```kotlin
+class PartnerDto {
+
+   class RegisterRequest(
+      @field:NotEmpty(message = "partnerName 은 필수값 입니다")
+      var partnerName: String? = null,
+
+      @field:NotEmpty(message = "businessNo 는 필수값 입니다")
+      var businessNo: String? = null,
+
+      @field:Email(message = "email 형식에 맞추어야 합니다")
+      @field:NotEmpty(message = "email 은 필수값 입니다")
+      var email: String? = null
+   )
+}
+```
+
+```kotlin
+@RestControllerAdvice
+class CommonControllerAdvice {
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = [MethodArgumentNotValidException::class])
+    fun methodArgumentNotValidException(e: MethodArgumentNotValidException): Mono<CommonResponse<String>> {
+        // ...
+        
+        return Mono.just(errorResponse)
+    }
+}
+```
+
+
+http 요청
+```
+POST http://localhost:8080/api/v1/partners
+Content-Type: application/json
+
+{
+  "partnerName": "",
+  "businessNo": "1234123456",
+  "email": "greg.shiny8"
+}
+```
+
+### 에러 
+- validation 에러에 대한 처리가 이루어지지 않았다. 
+- partnerName이 비어 있으므로, "partnerName 은 필수값입니다"에 대한 에러가 등장 해야하는데, controllerAdvice에서 이를 감지 못하는 현상이 발생
+
+### 해결 방법 
+- Webflux의 Advice예제가 많이 없어서 찾기가 힘들었다.
+- 사실상, 구글링으로 해결한 것이 아니라, Advice로 이것저것 해보다가 알게 되었다. (Exception 자체를 받아서 처리하게끔해서 어떤 에러를 던지는지 확인하였다)
+- 해결 방법은 ControllerAdvice쪽에서 `MethodArgumentNotValidException::class` 가 아닌 `WebExchangeBindException::class`를 감지할 수 있도록 변경하였다.
+- validation 에러에 대한 exception class가 왜 spring mvc랑은 다른지는 모르겠다. 
+
+```kotlin
+@RestControllerAdvice
+class CommonControllerAdvice {
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = [WebExchangeBindException::class])
+    fun methodArgumentNotValidException(e: WebExchangeBindException): Mono<CommonResponse<String>> {
+        // ...
+        return Mono.just(errorResponse)
+    }
+}
+```
+
+</details>
