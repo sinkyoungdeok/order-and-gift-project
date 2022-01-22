@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.router
 class PartnerApiRouter(private val partnerHandler: PartnerHandler) {
     @Bean
     fun partnerRoutes() = router {
-        "/api/v1/partners".nest {
+        "/api/v2/partners".nest {
             POST("", partnerHandler::create)
         }
     }

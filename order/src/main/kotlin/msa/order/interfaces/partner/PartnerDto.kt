@@ -8,19 +8,19 @@ import javax.validation.constraints.NotEmpty
 
 class PartnerDto {
 
-    data class RegisterRequest(
+    class RegisterRequest(
         @field:NotEmpty(message = "partnerName 은 필수값 입니다")
-        var partnerName: String,
+        var partnerName: String? = null,
 
         @field:NotEmpty(message = "businessNo 는 필수값 입니다")
-        var businessNo: String,
+        var businessNo: String? = null,
 
-        @Email(message = "email 형식에 맞추어야 합니다")
+        @field:Email(message = "email 형식에 맞추어야 합니다")
         @field:NotEmpty(message = "email 은 필수값 입니다")
-        var email: String
+        var email: String? = null
     ) {
         fun toCommand(): PartnerCommand.RegisterPartner {
-            return PartnerCommand.RegisterPartner(partnerName, businessNo, email)
+            return PartnerCommand.RegisterPartner(partnerName ?: "", businessNo ?: "", email ?: "")
         }
     }
 
