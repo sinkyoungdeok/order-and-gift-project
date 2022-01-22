@@ -14,7 +14,8 @@ import reactor.core.publisher.Mono
 @Component
 class PartnerHandler(val partnerFacade: PartnerFacade) {
     fun create(serverRequest: ServerRequest): Mono<ServerResponse> {
-        var command: Mono<PartnerCommand.RegisterPartner> = serverRequest.bodyToMono()
+        var command: Mono<PartnerCommand.RegisterPartner> =
+            serverRequest.bodyToMono<PartnerDto.RegisterRequest>().map { it.toCommand() }
         var partnerInfo = partnerFacade.registerPartner(command)
         var response = partnerInfo.map { PartnerDto.RegisterResponse(it) }
         return ok().body(response.map { CommonResponse(it) })

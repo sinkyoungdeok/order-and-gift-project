@@ -19,8 +19,8 @@ class PartnerDto {
         @field:NotEmpty(message = "email 은 필수값 입니다")
         var email: String
     ) {
-        fun toCommand(): PartnerCommand {
-            return PartnerCommand()
+        fun toCommand(): PartnerCommand.RegisterPartner {
+            return PartnerCommand.RegisterPartner(partnerName, businessNo, email)
         }
     }
 
