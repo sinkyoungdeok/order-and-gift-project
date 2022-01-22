@@ -8,7 +8,6 @@ import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
-private val logger = KotlinLogging.logger {}
 @Service
 class PartnerFacade(val partnerService: PartnerService) {
 

@@ -1,6 +1,6 @@
 package msa.order.domain
 
-class PartnerCommand{
+class PartnerCommand {
 
     data class RegisterPartner(
         var partnerName: String,
@@ -8,7 +8,7 @@ class PartnerCommand{
         var email: String
     ) {
         fun toEntity(): Partner {
-            return Partner(partnerName, businessNo, email)
+            return Partner(partnerName = partnerName, businessNo = businessNo, email = email)
         }
     }
 }
