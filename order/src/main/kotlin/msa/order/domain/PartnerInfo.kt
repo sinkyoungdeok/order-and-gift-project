@@ -9,11 +9,11 @@ data class PartnerInfo(
     var status: Partner.Status
 ) {
     constructor(partner: Partner) : this(
-        partner.id,
         "",
-        partner.partnerName,
-        partner.businessNo,
-        partner.email,
-        partner.status
+        "",
+        "",
+        "",
+        "",
+        Partner.Status.ENABLE
     )
 }

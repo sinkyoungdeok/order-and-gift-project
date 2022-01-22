@@ -4,18 +4,19 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
-class Partner {
+class Partner(partnerName: String, businessNo: String, email: String) {
     @Id
-    lateinit var id: String
+    var id: String?= null
     var partnerToken: String? = null
-    lateinit var partnerName: String
-    lateinit var businessNo: String
-    lateinit var email: String
-    lateinit var status: Status
+    var partnerName: String? = null
+    var businessNo: String? = null
+    var email: String? = null
+    var status: Status? = null
 
     enum class Status(description: String) {
         ENABLE("활성화"),
         DISABLE("비활성화")
     }
+
 }
 

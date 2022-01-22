@@ -8,11 +8,7 @@ class PartnerCommand{
         var email: String
     ) {
         fun toEntity(): Partner {
-            return Partner().apply {
-                this.partnerName = partnerName
-                this.businessNo = businessNo
-                this.email = email
-            }
+            return Partner(partnerName, businessNo, email)
         }
     }
 }
