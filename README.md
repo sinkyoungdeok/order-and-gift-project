@@ -112,3 +112,43 @@ implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reacti
 ```
 
 </details>
+
+<details><summary> 2. reactiveMongoDB의 연동 문제 </summary>
+
+### 코드
+```yaml
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      username: root
+      password: 1234
+      database: order
+```
+
+### 오류
+```
+org.springframework.data.mongodb.UncategorizedMongoDbException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-256, userName='root', source='admin', password=<hidden>, mechanismProperties=<hidden>}; nested exception is com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-256, userName='root', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+	at org.springframework.data.mongodb.core.MongoExceptionTranslator.translateExceptionIfPossible(MongoExceptionTranslator.java:140) ~[spring-data-mongodb-3.3.0.jar:3.3.0]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ Handler org.springframework.web.reactive.function.server.RouterFunctionDsl$POST$2@102b2dbd [DispatcherHandler]
+	*__checkpoint ⇢ HTTP POST "/api/v1/partners" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+...
+```
+
+### 해결 방법
+- 오류를 구글링해도 잘 나오지 않아서, 찾기가 어려웠다.
+- host,port 등을 작성하는 것 대신, uri로 한번에 작성하니 잘 되었다.
+- 왜 안되는진 아직 잘 모르겠다.
+```
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:1234@localhost/order?authSource=admin
+```
+
+</details>
