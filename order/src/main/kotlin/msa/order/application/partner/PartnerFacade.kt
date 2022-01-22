@@ -12,9 +12,7 @@ import reactor.core.publisher.Mono
 class PartnerFacade(val partnerService: PartnerService) {
 
     fun registerPartner(command: Mono<PartnerCommand.RegisterPartner>): Mono<PartnerInfo> {
-//        val partnerInfo = partnerService.registerPartner(command)
-//        val partnerInfo = Mono.just(PartnerInfo("1","","","","",Partner.Status.ENABLE))
-        val partnerInfo = partnerService.registerPartner(Mono.just(PartnerCommand.RegisterPartner("1","2","3")))
+        val partnerInfo = partnerService.registerPartner(command)
         return partnerInfo
     }
 }
