@@ -17,5 +17,13 @@ data class Partner(
         ENABLE("활성화"),
         DISABLE("비활성화")
     }
-    constructor(partnerName: String, businessNo: String, email: String): this(null, null, partnerName, businessNo, email, Partner.Status.ENABLE)
+
+    constructor(partnerName: String, businessNo: String, email: String) : this(
+        null,
+        null,
+        partnerName,
+        businessNo,
+        email,
+        Partner.Status.ENABLE
+    )
 }
