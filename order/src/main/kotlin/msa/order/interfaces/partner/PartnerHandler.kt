@@ -12,12 +12,12 @@ import org.springframework.web.reactive.function.server.bodyToMono
 import reactor.core.publisher.Mono
 
 @Component
-class PartnerHandler(val partnerFacade: PartnerFacade) {
+class PartnerHandler(val partnerFacade: PartnerFacade, val partnerDtoMapper: PartnerDtoMapper) {
     fun create(serverRequest: ServerRequest): Mono<ServerResponse> {
         var command: Mono<PartnerCommand.RegisterPartner> =
-            serverRequest.bodyToMono<PartnerDto.RegisterRequest>().map { it.toCommand() }
+            serverRequest.bodyToMono<PartnerDto.RegisterRequest>().map { partnerDtoMapper.of(it) }
         var partnerInfo = partnerFacade.registerPartner(command)
-        var response = partnerInfo.map { PartnerDto.RegisterResponse(it) }
+        var response = partnerInfo.map { partnerDtoMapper.of(it) }
         return ok().body(response.map { CommonResponse(it) })
     }
 }
