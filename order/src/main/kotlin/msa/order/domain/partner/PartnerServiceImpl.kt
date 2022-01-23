@@ -6,7 +6,7 @@ import reactor.core.publisher.Mono
 @Service
 class PartnerServiceImpl(val partnerStore: PartnerStore,val partnerInfoMapper: PartnerInfoMapper) : PartnerService {
     override fun registerPartner(command: Mono<PartnerCommand.RegisterPartner>): Mono<PartnerInfo.Main> {
-        var initPartner = command.map { it.toEntity() }
+        var initPartner = command.map { partnerInfoMapper.of(it) }
         var partner = partnerStore.store(initPartner)
         return partner.map { partnerInfoMapper.of(it) }
     }

@@ -8,7 +8,7 @@ class PartnerInfo {
         var partnerName: String,
         var businessNo: String,
         var email: String,
-        var status: Partner.Status
+        var status: Partner.Status? = null
     ) {
         constructor() : this("", "", "", "", "", Partner.Status.ENABLE)
     }
