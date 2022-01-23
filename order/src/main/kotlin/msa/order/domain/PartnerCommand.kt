@@ -10,5 +10,6 @@ class PartnerCommand {
         fun toEntity(): Partner {
             return Partner(partnerName = partnerName, businessNo = businessNo, email = email)
         }
+        constructor() : this("","","") {}
     }
 }
