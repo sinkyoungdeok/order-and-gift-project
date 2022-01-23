@@ -10,15 +10,6 @@ class PartnerInfo {
         var email: String,
         var status: Partner.Status
     ) {
-        constructor(partner: Partner) : this(
-            partner.id ?: "",
-            partner.partnerToken ?: "",
-            partner.partnerName ?: "",
-            partner.businessNo ?: "",
-            partner.email ?: "",
-            partner.status ?: Partner.Status.ENABLE
-        )
-
         constructor() : this("", "", "", "", "", Partner.Status.ENABLE)
     }
 
