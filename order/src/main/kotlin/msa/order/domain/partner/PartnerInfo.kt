@@ -4,7 +4,7 @@ class PartnerInfo {
 
     data class Main(
         var id: String,
-        var partnerToken: String,
+        var partnerToken: String? = null,
         var partnerName: String,
         var businessNo: String,
         var email: String,
@@ -19,6 +19,7 @@ class PartnerInfo {
             partner.status ?: Partner.Status.ENABLE
         )
 
+        constructor() : this("", "", "", "", "", Partner.Status.ENABLE)
     }
 
 }

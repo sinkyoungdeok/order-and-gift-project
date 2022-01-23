@@ -19,12 +19,12 @@ class PartnerDto {
     )
 
     data class RegisterResponse(
-        var partnerToken: String,
+        var partnerToken: String? = null,
         var partnerName: String,
         var businessNo: String,
         var email: String,
         var status: Partner.Status
     ) {
-        constructor(): this("","","","", Partner.Status.ENABLE)
+        constructor() : this("", "", "", "", Partner.Status.ENABLE)
     }
 }
