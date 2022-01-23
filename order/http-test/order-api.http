@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "userId": "12345",
   "payMethod": "NAVER_PAY",
-  "receiverName": "이희창",
+  "receiverName": "ㅅㄱㄷ",
   "receiverPhone": "01000001234",
   "receiverZipcode": "12345",
   "receiverAddress1": "서울시 강동구",
