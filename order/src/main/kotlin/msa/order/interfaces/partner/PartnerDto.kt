@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty
 
 class PartnerDto {
 
-    class RegisterRequest(
+    data class RegisterRequest(
         @field:NotEmpty(message = "partnerName 은 필수값 입니다")
         var partnerName: String? = null,
 
