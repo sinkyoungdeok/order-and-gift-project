@@ -14,9 +14,11 @@ import javax.validation.Valid
 class OrderApiController(val orderDtoMapper: OrderDtoMapper) {
 
     @PostMapping("/init")
-    fun registerOrder(@RequestBody @Valid request: Mono<OrderDto.RegisterOrderRequest>): Mono<CommonResponse<OrderCommand.RegisterOrder>> {
-        val command = request.map{ orderDtoMapper.of(it) }
+    fun registerOrder(
+        @RequestBody @Valid request: Mono<OrderDto.RegisterOrderRequest>
+    ): Mono<CommonResponse<OrderCommand.RegisterOrder>> {
+        val command = request.map { orderDtoMapper.of(it) }
 
-        return command.map{ CommonResponse(it) }
+        return command.map { CommonResponse(it) }
     }
 }

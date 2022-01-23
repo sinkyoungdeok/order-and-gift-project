@@ -11,15 +11,19 @@ import org.mapstruct.*
 )
 interface OrderDtoMapper {
 
-    fun of(request: OrderDto.RegisterOrderRequest):
-            OrderCommand.RegisterOrder
+    fun of(
+        request: OrderDto.RegisterOrderRequest
+    ): OrderCommand.RegisterOrder
 
-    fun of(request: OrderDto.RegisterOrderItemRequest):
-            OrderCommand.RegisterOrderItem
+    fun of(
+        request: OrderDto.RegisterOrderItemRequest
+    ): OrderCommand.RegisterOrderItem
 
-    fun of(request: OrderDto.RegisterOrderItemOptionGroupRequest):
-            OrderCommand.RegisterOrderItemOptionGroup
+    fun of(
+        request: OrderDto.RegisterOrderItemOptionGroupRequest
+    ): OrderCommand.RegisterOrderItemOptionGroup
 
-    fun of(request: OrderDto.RegisterOrderItemOptionRequest):
-            OrderCommand.RegisterOrderItemOption
+    fun of(
+        request: OrderDto.RegisterOrderItemOptionRequest
+    ): OrderCommand.RegisterOrderItemOption
 }
