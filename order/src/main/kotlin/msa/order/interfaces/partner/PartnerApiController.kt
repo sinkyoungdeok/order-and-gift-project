@@ -12,7 +12,10 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/v1/partners")
-class PartnerApiController(val partnerFacade: PartnerFacade, val partnerDtoMapper: PartnerDtoMapper) {
+class PartnerApiController(
+    val partnerFacade: PartnerFacade,
+    val partnerDtoMapper: PartnerDtoMapper
+) {
 
     @PostMapping
     fun registerPartner(

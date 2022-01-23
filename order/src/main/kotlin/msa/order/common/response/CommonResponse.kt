@@ -15,7 +15,7 @@ data class CommonResponse<T>(
 }
 
 data class Error(
-    var field:String?=null,
-    var message:String?=null,
-    var value:Any?=null
+    var field: String? = null,
+    var message: String? = null,
+    var value: Any? = null
 )

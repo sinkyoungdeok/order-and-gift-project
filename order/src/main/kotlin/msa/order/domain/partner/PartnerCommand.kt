@@ -7,6 +7,6 @@ class PartnerCommand {
         var businessNo: String,
         var email: String
     ) {
-        constructor() : this("","","")
+        constructor() : this("", "", "")
     }
 }
