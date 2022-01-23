@@ -1,8 +1,6 @@
 package msa.order.interfaces.partner
 
-import msa.order.domain.Partner
-import msa.order.domain.PartnerCommand
-import msa.order.domain.PartnerInfo
+import msa.order.domain.partner.Partner
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotEmpty
 
@@ -27,6 +25,6 @@ class PartnerDto {
         var email: String,
         var status: Partner.Status
     ) {
-        constructor(): this("","","","",Partner.Status.ENABLE)
+        constructor(): this("","","","", Partner.Status.ENABLE)
     }
 }

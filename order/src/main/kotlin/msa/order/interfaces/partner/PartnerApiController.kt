@@ -2,7 +2,7 @@ package msa.order.interfaces.partner
 
 import msa.order.application.partner.PartnerFacade
 import msa.order.common.response.CommonResponse
-import msa.order.domain.PartnerCommand
+import msa.order.domain.partner.PartnerCommand
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping

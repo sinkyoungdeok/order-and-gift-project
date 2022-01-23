@@ -1,4 +1,4 @@
-package msa.order.domain
+package msa.order.domain.partner
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
@@ -24,6 +24,6 @@ data class Partner(
         partnerName,
         businessNo,
         email,
-        Partner.Status.ENABLE
+        Status.ENABLE
     )
 }

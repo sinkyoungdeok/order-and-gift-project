@@ -1,4 +1,4 @@
-package msa.order.domain
+package msa.order.domain.partner
 
 class PartnerInfo {
 

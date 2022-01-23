@@ -1,8 +1,8 @@
 package msa.order.application.partner
 
-import msa.order.domain.PartnerCommand
-import msa.order.domain.PartnerInfo
-import msa.order.domain.PartnerService
+import msa.order.domain.partner.PartnerCommand
+import msa.order.domain.partner.PartnerInfo
+import msa.order.domain.partner.PartnerService
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 

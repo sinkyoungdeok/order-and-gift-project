@@ -2,7 +2,7 @@ package msa.order.interfaces.partner
 
 import msa.order.application.partner.PartnerFacade
 import msa.order.common.response.CommonResponse
-import msa.order.domain.PartnerCommand
+import msa.order.domain.partner.PartnerCommand
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
