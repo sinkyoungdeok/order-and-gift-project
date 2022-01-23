@@ -20,7 +20,7 @@ class PartnerApiController(val partnerFacade: PartnerFacade, val partnerDtoMappe
     ): Mono<CommonResponse<PartnerDto.RegisterResponse>> {
         var command: Mono<PartnerCommand.RegisterPartner> = request.map { partnerDtoMapper.of(it) }
         var partnerInfo = partnerFacade.registerPartner(command)
-        var response = partnerInfo.map { PartnerDto.RegisterResponse(it) }
+        var response = partnerInfo.map { partnerDtoMapper.of(it) }
         return response.map { CommonResponse(it) }
     }
 }

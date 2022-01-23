@@ -38,5 +38,6 @@ class PartnerDto {
             partnerInfo.email,
             partnerInfo.status
         )
+        constructor(): this("","","","",Partner.Status.ENABLE)
     }
 }
