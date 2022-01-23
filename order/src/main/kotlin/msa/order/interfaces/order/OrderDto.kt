@@ -70,4 +70,9 @@ class OrderDto {
         var itemOptionPrice: Long? = null
     )
 
+    class RegisterOrderResponse(
+        var orderToken: String? = null
+    ) {
+        constructor(): this(null)
+    }
 }

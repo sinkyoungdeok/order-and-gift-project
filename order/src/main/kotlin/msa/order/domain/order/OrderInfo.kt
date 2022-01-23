@@ -3,6 +3,8 @@ package msa.order.domain.order
 class OrderInfo {
 
     data class Token(
-        val token: String? = null
-    )
+        var orderToken: String? = null
+    ) {
+        constructor(): this(null)
+    }
 }

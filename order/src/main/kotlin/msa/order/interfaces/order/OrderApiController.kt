@@ -2,7 +2,6 @@ package msa.order.interfaces.order
 
 import msa.order.application.order.OrderFacade
 import msa.order.common.response.CommonResponse
-import msa.order.domain.order.OrderInfo
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,10 +19,10 @@ class OrderApiController(
     @PostMapping("/init")
     fun registerOrder(
         @RequestBody @Valid request: Mono<OrderDto.RegisterOrderRequest>
-    ): Mono<CommonResponse<OrderInfo.Token>> {
+    ): Mono<CommonResponse<OrderDto.RegisterOrderResponse>> {
         val orderCommand = request.map { orderDtoMapper.of(it) }
         val orderInfo = orderFacade.registerOrder(orderCommand)
-
-        return orderInfo.map { CommonResponse(it) }
+        val response = orderInfo.map { orderDtoMapper.of(it) }
+        return response.map { CommonResponse(it) }
     }
 }

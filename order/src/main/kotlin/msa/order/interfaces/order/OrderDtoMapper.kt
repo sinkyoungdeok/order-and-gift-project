@@ -1,6 +1,7 @@
 package msa.order.interfaces.order
 
 import msa.order.domain.order.OrderCommand
+import msa.order.domain.order.OrderInfo
 import org.mapstruct.*
 
 
@@ -26,4 +27,8 @@ interface OrderDtoMapper {
     fun of(
         request: OrderDto.RegisterOrderItemOptionRequest
     ): OrderCommand.RegisterOrderItemOption
+
+    fun of(
+        orderInfo: OrderInfo.Token
+    ): OrderDto.RegisterOrderResponse
 }
