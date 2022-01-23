@@ -2,13 +2,16 @@ package msa.order.application.order
 
 import msa.order.domain.order.OrderCommand
 import msa.order.domain.order.OrderInfo
+import msa.order.domain.order.OrderService
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
 @Service
-class OrderFacade {
+class OrderFacade(val orderService: OrderService) {
 
     fun registerOrder(registerOrder: Mono<OrderCommand.RegisterOrder>): Mono<OrderInfo.Token> {
-        return Mono.just(OrderInfo.Token("test"))
+        val orderInfo = orderService.registerOrder(registerOrder)
+
+        return orderInfo
     }
 }
