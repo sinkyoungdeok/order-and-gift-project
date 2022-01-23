@@ -31,7 +31,7 @@ class PartnerDto {
         var email: String,
         var status: Partner.Status
     ) {
-        constructor(partnerInfo: PartnerInfo) : this(
+        constructor(partnerInfo: PartnerInfo.Main) : this(
             partnerInfo.partnerToken,
             partnerInfo.partnerName,
             partnerInfo.businessNo,
