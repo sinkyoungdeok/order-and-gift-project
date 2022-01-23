@@ -32,6 +32,7 @@ dependencies {
 	// MapStruct
 	implementation("org.mapstruct:mapstruct:1.4.2.Final")
 	kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
+	implementation("org.projectlombok:lombok-mapstruct-binding:0.1.0")
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
 	annotationProcessor(
 		"org.projectlombok:lombok",

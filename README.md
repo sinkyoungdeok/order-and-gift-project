@@ -236,3 +236,84 @@ class CommonControllerAdvice {
 ```
 
 </details>
+
+<details><summary> 4. mapstruct 의존성 추가 </summary>
+
+### 코드
+```
+implementation("org.mapstruct:mapstruct:1.4.2.Final")
+annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+annotationProcessor(
+  "org.projectlombok:lombok",
+  "org.projectlombok:lombok-mapstruct-binding:0.1.0"
+)
+```
+
+```kotlin
+@Mapper(
+    componentModel = "spring",
+    unmappedTargetPolicy = ReportingPolicy.ERROR
+)
+interface PartnerDtoMapper {
+
+    fun of(request: PartnerDto.RegisterRequest): PartnerCommand.RegisterPartner
+}
+```
+
+```kotlin
+@RestController
+@RequestMapping("/api/v1/partners")
+class PartnerApiController(val partnerFacade: PartnerFacade, val partnerDtoMapper: PartnerDtoMapper) {
+
+    //...
+}
+```
+
+### 에러 
+- `val partnerDtoMapper: PartnerDtoMapper`에서 빈을 인식 못하는 상황 발생
+- `PartnerDtoMapper`의 구현체를 mapstruct에서 만들어주어야 하는데, 이것 또한 안되었었다.
+```
+Description:
+
+Parameter 1 of constructor in msa.order.interfaces.partner.PartnerApiController required a bean of type 'msa.order.interfaces.partner.PartnerDtoMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'msa.order.interfaces.partner.PartnerDtoMapper' in your configuration.
+
+
+Process finished with exit code 1
+```
+
+### 해결 방법
+- 원래 작성한 코드는, java-spring에서 쓰던 라이브러리 의존성을 가져다가 쓴 것인데, kotlin에서 그대로 사용은 안되는것을 알게됨.
+- 구글링을 통해 이것 저것 따라 해보다가, 되는것을 찾음
+
+```
+plugins {
+	...
+	kotlin("kapt") version "1.3.72" // 추가
+}
+...
+dependencies {
+    ...
+    
+	// MapStruct
+	implementation("org.mapstruct:mapstruct:1.4.2.Final")
+	kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
+	implementation("org.projectlombok:lombok-mapstruct-binding:0.1.0")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+	annotationProcessor(
+		"org.projectlombok:lombok",
+		"org.projectlombok:lombok-mapstruct-binding:0.1.0"
+	)
+	
+	...
+}
+```
+
+
+
+
+</details>
