@@ -30,8 +30,8 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
 	// MapStruct
-	implementation("org.mapstruct:mapstruct-jdk8:1.3.1.Final")
-	kapt("org.mapstruct:mapstruct-processor:1.3.1.Final")
+	implementation("org.mapstruct:mapstruct:1.4.2.Final")
+	kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
 	annotationProcessor(
 		"org.projectlombok:lombok",
