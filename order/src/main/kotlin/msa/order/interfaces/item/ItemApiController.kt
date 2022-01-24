@@ -2,7 +2,6 @@ package msa.order.interfaces.item
 
 import msa.order.application.item.ItemFacade
 import msa.order.common.response.CommonResponse
-import msa.order.domain.item.ItemCommand
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,7 +20,7 @@ class ItemApiController(
     fun registerItem(
         @RequestBody @Valid request: Mono<ItemDto.RegisterItemRequest>
     ): Mono<CommonResponse<ItemDto.RegisterResponse>> {
-        var partnerToken = request.map { it.partnerToken?: "" }
+        var partnerToken = request.map { it.partnerToken ?: "" }
         var itemCommand = request.map { itemDtoMapper.of(it) }
         var itemInfo = itemFacade.registerItem(itemCommand, partnerToken)
         var response = itemInfo.map { itemDtoMapper.of(it) }
