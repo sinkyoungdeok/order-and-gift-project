@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono
 class PartnerReaderImpl(
     val partnerRepository: PartnerRepository
 ) : PartnerReader {
-    override fun getPartner(partnerToken: String): Mono<Partner> {
+    override fun getPartner(partnerToken: Mono<String>): Mono<Partner> {
         return partnerRepository.findByPartnerName(partnerToken)
     }
 }

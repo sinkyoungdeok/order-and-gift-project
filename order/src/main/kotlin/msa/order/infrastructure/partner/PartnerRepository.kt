@@ -7,5 +7,5 @@ import reactor.core.publisher.Mono
 
 @Repository
 interface PartnerRepository : ReactiveMongoRepository<Partner, String> {
-    fun findByPartnerName(partnerToken: String): Mono<Partner>
+    fun findByPartnerName(partnerToken: Mono<String>): Mono<Partner>
 }
