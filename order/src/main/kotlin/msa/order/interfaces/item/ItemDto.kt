@@ -20,4 +20,8 @@ class ItemDto {
         var itemOptionName: String? = null,
         var itemOptionPrice: Long? = null
     )
+
+    class RegisterResponse(
+        var itemToken: String
+    )
 }

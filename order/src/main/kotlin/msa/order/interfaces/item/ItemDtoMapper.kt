@@ -1,6 +1,7 @@
 package msa.order.interfaces.item
 
 import msa.order.domain.item.ItemCommand
+import msa.order.domain.item.ItemInfo
 import org.mapstruct.*
 
 @Mapper(
@@ -34,4 +35,7 @@ interface ItemDtoMapper {
         request: ItemDto.RegisterItemOptionRequest
     ): ItemCommand.RegisterItemOptionRequest
 
+    fun of(
+        itemInfo: ItemInfo.Token
+    ): ItemDto.RegisterResponse
 }
