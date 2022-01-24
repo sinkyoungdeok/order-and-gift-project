@@ -1,0 +1,49 @@
+### 아이템 등록
+POST http://localhost:8080/api/v1/items
+Content-Type: application/json
+
+{
+  "partnerToken": "ptn_ifqed5LiPmolNKfc",
+  "itemName": "티셔츠",
+  "itemPrice": 30000,
+  "itemOptionGroupList": [
+    {
+      "ordering": "1",
+      "itemOptionGroupName": "사이즈",
+      "itemOptionList": [
+        {
+          "ordering": 1,
+          "itemOptionName": "SMALL",
+          "itemOptionPrice": 0
+        },
+        {
+          "ordering": 2,
+          "itemOptionName": "MEDIUM",
+          "itemOptionPrice": 0
+        },
+        {
+          "ordering": 3,
+          "itemOptionName": "LARGE",
+          "itemOptionPrice": 0
+        }
+      ]
+
+    },
+    {
+      "ordering": "2",
+      "itemOptionGroupName": "컬러",
+      "itemOptionList": [
+        {
+          "ordering": 1,
+          "itemOptionName": "RED",
+          "itemOptionPrice": 0
+        },
+        {
+          "ordering": 2,
+          "itemOptionName": "GOLD",
+          "itemOptionPrice": 1000
+        }
+      ]
+    }
+  ]
+}
