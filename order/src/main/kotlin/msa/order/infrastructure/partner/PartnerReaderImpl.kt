@@ -11,6 +11,6 @@ class PartnerReaderImpl(
     val partnerRepository: PartnerRepository
 ) : PartnerReader {
     override fun getPartner(partnerToken: Mono<String>): Mono<Partner> {
-        return partnerRepository.findByPartnerName(partnerToken)
+        return partnerRepository.findByPartnerToken(partnerToken)
     }
 }
