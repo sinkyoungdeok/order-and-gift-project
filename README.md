@@ -372,3 +372,55 @@ class PartnerReaderImpl(
 
 
 </details>
+
+
+
+<details> <summary> 6. request를 mono타입으로 전달 받음으로써 생긴 에러</summary>
+
+### 코드 
+
+```kotlin
+@PostMapping
+fun registerItem(
+   @RequestBody @Valid request: Mono<ItemDto.RegisterItemRequest>
+): Mono<CommonResponse<ItemDto.RegisterResponse>> {
+   var partnerToken = request.map { it.partnerToken ?: "" }
+   var itemCommand = request.map { itemDtoMapper.of(it) }
+   var itemInfo = itemFacade.registerItem(itemCommand, partnerToken)
+   var response = itemInfo.map { itemDtoMapper.of(it) }
+   return response.map { CommonResponse(it) }
+}
+```
+
+```kotlin
+ override fun registerItem(
+     command: Mono<ItemCommand.RegisterItemRequest>,
+     partnerToken: Mono<String>
+ ): Mono<ItemInfo.Token> {
+     return partnerReader.getPartner(partnerToken)
+         .flatMap { p ->
+             val map: Mono<Item> = command.map { c ->
+                 p.id?.let { c.toEntity(it) }
+             }
+
+             map
+         }.map {
+             ItemInfo.Token(it.itemName)
+         }
+```
+
+
+### 에러
+- request를 mono타입으로 전달 받음으로써, reactive DB에 전달 및 전달받을 때 객체를 꺼내서 전달해줘야 하는 상황이 생김
+- request에서 전달받은 객체와, db에서 받은 객체와의 연결하는부분에서 잘 처리되지 않는다는 것을 발견
+- 코드에서 두번째 registerItem 함수에서
+  - partnerReader에서 전달받은 partner와
+  - request로 전달받은 command
+  - 위의 두개 객체가 독립적으로는 전달이 잘 되지만, 두개를 연결시키는 순간 알 수 없는 오류가 생김
+
+
+### 해결 방법
+- request에 일반 객체, mono객체 두개중에 선택하는 과정에서 mono로 택했지만, 일반 객체를 사용하는 것이 좋다는 블로그글을 찾게됨 
+- https://homoefficio.github.io/2020/08/06/Spring-WebFlux-RequestBody/
+
+</details>
