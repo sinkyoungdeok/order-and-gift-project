@@ -318,7 +318,64 @@ dependencies {
 
 </details>
 
-<details> <summary> 5. request를 mono타입으로 전달 받음으로써 생긴 에러</summary>
+<details><summary> 5. spring data reactiveMongoDB의 parameter에 mono타입을 넣어서 생긴 오류 </summary>
+
+- 오류 발견 날짜: 1월 24일 
+- 해결 날짜: 1월 25일
+
+### 코드
+```kotlin
+@Repository
+interface PartnerRepository : ReactiveMongoRepository<Partner, String> {
+    fun findByPartnerToken(partnerToken: Mono<String>): Mono<Partner>
+}
+```
+
+```kotlin
+@Component
+class PartnerReaderImpl(
+   val partnerRepository: PartnerRepository
+) : PartnerReader {
+   override fun getPartner(partnerToken: Mono<String>): Mono<Partner> {
+      return partnerRepository.findByPartnerToken(partnerToken)
+   }
+}
+```
+
+### 에러 
+- API 요청을 하면 무한 대기에 빠지게 됨
+
+### 해결 방법
+- Mono타입에서 객체를 추출하여 repository를 호출.
+- 해결한 방법은 다른 분들 작성한 것을 보니까 repository로 호출하기 전에 객체로 꺼내서 호출하기 전에 따라해보니 됐음
+- 예상으로는 request로 전달 받은 partnerToken이 너무 빨리 repository를 호출하거나, 제 때 호출을 못해서 생기는 이슈라고 생각이 듬.
+- 제대로는 어떻게 해서 안된 것인지 상황에 대해서 이해를 하지 못하였음.
+
+```kotlin
+@Repository
+interface PartnerRepository : ReactiveMongoRepository<Partner, String> {
+    fun findByPartnerToken(partnerToken: String): Mono<Partner>
+}
+```
+
+```kotlin
+@Component
+class PartnerReaderImpl(
+    val partnerRepository: PartnerRepository
+) : PartnerReader {
+    override fun getPartner(partnerToken: Mono<String>): Mono<Partner> {
+        return partnerToken.flatMap { partnerRepository.findByPartnerToken(it) }
+    }
+}
+```
+
+
+
+</details>
+
+
+
+<details> <summary> 6. request를 mono타입으로 전달 받음으로써 생긴 에러</summary>
 
 ### 코드 
 
