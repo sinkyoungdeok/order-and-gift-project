@@ -18,10 +18,10 @@ class ItemApiController(
 
     @PostMapping
     fun registerItem(
-        @RequestBody @Valid request: Mono<ItemDto.RegisterItemRequest>
+        @RequestBody @Valid request: ItemDto.RegisterItemRequest
     ): Mono<CommonResponse<ItemDto.RegisterResponse>> {
-        var partnerToken = request.map { it.partnerToken ?: "" }
-        var itemCommand = request.map { itemDtoMapper.of(it) }
+        var partnerToken = request.partnerToken
+        var itemCommand = itemDtoMapper.of(request)
         var itemInfo = itemFacade.registerItem(itemCommand, partnerToken)
         var response = itemInfo.map { itemDtoMapper.of(it) }
         return response.map { CommonResponse(it) }

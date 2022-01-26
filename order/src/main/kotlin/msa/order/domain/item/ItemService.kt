@@ -4,7 +4,7 @@ import reactor.core.publisher.Mono
 
 interface ItemService {
     fun registerItem(
-        command: Mono<ItemCommand.RegisterItemRequest>,
-        partnerToken: Mono<String>
+        command: ItemCommand.RegisterItemRequest,
+        partnerToken: String
     ): Mono<ItemInfo.Token>
 }

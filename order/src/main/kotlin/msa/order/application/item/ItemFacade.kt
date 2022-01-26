@@ -10,8 +10,8 @@ import reactor.core.publisher.Mono
 class ItemFacade(val itemService: ItemService) {
 
     fun registerItem(
-        request: Mono<ItemCommand.RegisterItemRequest>,
-        partnerToken: Mono<String>
+        request: ItemCommand.RegisterItemRequest,
+        partnerToken: String
     ): Mono<ItemInfo.Token> {
         var itemInfo = itemService.registerItem(request, partnerToken)
         return itemInfo
