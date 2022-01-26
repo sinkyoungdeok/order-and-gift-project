@@ -6,7 +6,15 @@ class ItemCommand {
         var itemName: String? = null,
         var itemPrice: Long? = null,
         var itemOptionGroupRequestList: List<RegisterItemOptionGroupRequest>? = null
-    )
+    ) {
+        fun toEntity(partnerId: String): Item {
+            return Item(
+                partnerId = partnerId,
+                itemName = itemName,
+                itemPrice = itemPrice
+            )
+        }
+    }
 
     data class RegisterItemOptionGroupRequest(
         var ordering: Int? = null,

@@ -22,6 +22,6 @@ class ItemDto {
     )
 
     class RegisterResponse(
-        var itemToken: String
+        var itemToken: String? = null
     )
 }

@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Item(
     @Id val id: String? = null,
     val itemToken: String? = null,
-    val partnerId: Long? = null,
+    val partnerId: String? = null,
     val itemName: String? = null,
     val itemPrice: Long? = null,
     val itemOptionGroup: List<ItemOptionGroup>? = null,

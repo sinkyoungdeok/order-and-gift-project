@@ -3,7 +3,7 @@ POST http://localhost:8080/api/v1/items
 Content-Type: application/json
 
 {
-  "partnerToken": "ptn_ifqed5LiPmolNKfc",
+  "partnerToken": "12",
   "itemName": "티셔츠",
   "itemPrice": 30000,
   "itemOptionGroupList": [
