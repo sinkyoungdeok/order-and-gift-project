@@ -6,8 +6,11 @@ import org.springframework.stereotype.Component
 import reactor.core.publisher.Mono
 
 @Component
-class ItemStoreImpl: ItemStore {
+class ItemStoreImpl(
+    val itemRepository: ItemRepository
+) : ItemStore {
+
     override fun store(initItem: Item): Mono<Item> {
-        return Mono.just(Item(null,null,null,null,null,null,null))
+        return itemRepository.save(initItem)
     }
 }

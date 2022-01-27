@@ -14,7 +14,7 @@ data class Item(
     val itemPrice: Long? = null,
     val itemOptionGroup: List<ItemOptionGroup>? = null,
     val status: Status? = null
-): AbstractEntity() {
+) : AbstractEntity() {
     enum class Status(description: String) {
         PREPARE("판매준비중"),
         ON_SALE("판매중"),
