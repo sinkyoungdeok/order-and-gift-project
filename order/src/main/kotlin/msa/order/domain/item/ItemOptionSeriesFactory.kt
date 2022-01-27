@@ -1,4 +1,4 @@
-package msa.order.domain
+package msa.order.domain.item
 
 import msa.order.domain.item.Item
 import msa.order.domain.item.ItemCommand

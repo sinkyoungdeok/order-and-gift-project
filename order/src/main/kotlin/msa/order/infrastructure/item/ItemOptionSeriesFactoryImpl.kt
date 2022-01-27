@@ -1,6 +1,6 @@
 package msa.order.infrastructure.item
 
-import msa.order.domain.ItemOptionSeriesFactory
+import msa.order.domain.item.ItemOptionSeriesFactory
 import msa.order.domain.item.Item
 import msa.order.domain.item.ItemCommand
 import msa.order.domain.item.optiongroup.ItemOptionGroup
