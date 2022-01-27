@@ -12,7 +12,7 @@ data class Item(
     val partnerId: String? = null,
     val itemName: String? = null,
     val itemPrice: Long? = null,
-    val itemOptionGroup: List<ItemOptionGroup>? = null,
+    val itemOptionGroupList: List<ItemOptionGroup>? = null,
     val status: Status? = null
 ) : AbstractEntity() {
     enum class Status(description: String) {
