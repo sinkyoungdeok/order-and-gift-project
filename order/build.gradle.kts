@@ -18,12 +18,13 @@ repositories {
 
 dependencies {
 	implementation("org.hibernate.validator:hibernate-validator:6.1.2.Final")
+	implementation("org.apache.commons:commons-lang3:3.9")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
-	implementation ("io.github.microutils:kotlin-logging-jvm:2.0.6")
-	implementation ("org.projectlombok:lombok")
+	implementation("io.github.microutils:kotlin-logging-jvm:2.0.6")
+	implementation("org.projectlombok:lombok")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

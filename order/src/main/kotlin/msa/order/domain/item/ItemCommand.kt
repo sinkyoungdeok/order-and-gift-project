@@ -1,17 +1,22 @@
 package msa.order.domain.item
 
+import msa.order.common.util.TokenGenerator
+
 class ItemCommand {
 
-    data class RegisterItemRequest(
+    class RegisterItemRequest(
         var itemName: String? = null,
         var itemPrice: Long? = null,
         var itemOptionGroupRequestList: List<RegisterItemOptionGroupRequest>? = null
     ) {
+        private val ITEM_PREFIX = "itm_"
+
         fun toEntity(partnerId: String): Item {
             return Item(
                 partnerId = partnerId,
                 itemName = itemName,
-                itemPrice = itemPrice
+                itemPrice = itemPrice,
+                itemToken = TokenGenerator.randomCharacterWithPrefix(ITEM_PREFIX)
             )
         }
     }

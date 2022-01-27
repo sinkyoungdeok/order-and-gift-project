@@ -17,6 +17,6 @@ class ItemServiceImpl(
         var partner = partnerReader.getPartner(partnerToken)
         var initItem = partner.map { it.id?.let { it1 -> command.toEntity(it1) } }
 
-        return initItem.map { ItemInfo.Token(it.partnerId) }
+        return initItem.map { ItemInfo.Token(it.itemToken) }
     }
 }
