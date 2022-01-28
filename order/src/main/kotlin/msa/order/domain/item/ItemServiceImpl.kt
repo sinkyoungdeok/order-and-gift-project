@@ -44,4 +44,11 @@ class ItemServiceImpl(
             ItemInfo.Token(it.itemToken)
         }
     }
+
+    @Transactional(readOnly = true)
+    override fun retrieveItemInfo(itemToken: String): Mono<ItemInfo.Main> {
+        var item = itemReader.getItemBy(itemToken)
+
+        return Mono.just(ItemInfo.Main())
+    }
 }

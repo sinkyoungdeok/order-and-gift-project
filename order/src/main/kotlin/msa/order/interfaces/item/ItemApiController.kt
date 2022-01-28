@@ -2,10 +2,7 @@ package msa.order.interfaces.item
 
 import msa.order.application.item.ItemFacade
 import msa.order.common.response.CommonResponse
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 import javax.validation.Valid
 
@@ -45,5 +42,12 @@ class ItemApiController(
         var itemInfo = itemFacade.changeEndOfSaleItem(itemToken)
         var response = itemInfo.map { itemDtoMapper.of(it) }
         return response.map { CommonResponse(it) }
+    }
+
+    @GetMapping("/{itemToken}")
+    fun retrieve(@PathVariable("itemToken") itemToken: String) {
+        var itemInfo = itemFacade.retrieveItemInfo(itemToken)
+//        var response = itemInfo.map { itemDtoMapper.of(it) }
+//        return response.map { CommonResponse(it) }
     }
 }

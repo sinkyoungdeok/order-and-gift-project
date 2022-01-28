@@ -7,4 +7,10 @@ class ItemInfo {
     ) {
         constructor() : this("")
     }
+
+    class Main(
+
+    ) {
+
+    }
 }
