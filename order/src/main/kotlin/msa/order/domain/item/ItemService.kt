@@ -15,4 +15,8 @@ interface ItemService {
     fun changeEndOfSale(
         itemToken: String
     ): Mono<ItemInfo.Token>
+
+    fun retrieveItemInfo(
+        itemToken: String
+    ): Mono<ItemInfo.Main>
 }

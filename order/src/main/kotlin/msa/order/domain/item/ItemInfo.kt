@@ -7,4 +7,31 @@ class ItemInfo {
     ) {
         constructor() : this("")
     }
+
+    class Main(
+        var itemToken: String,
+        var partnerId: String,
+        var itemName: String,
+        var itemPrice: Long,
+        var status: Item.Status,
+        var itemOptionGroupList: List<ItemOptionGroupInfo>
+    ) {
+
+    }
+
+    class ItemOptionGroupInfo(
+        var ordering: Int,
+        var itemOptionGroupName: String,
+        var itemOptionList: List<ItemOptionInfo>
+    ) {
+
+    }
+
+    class ItemOptionInfo(
+        var ordering: Int,
+        var itemOptionName: String,
+        var itemOptionPrice: Long
+    ) {
+
+    }
 }
