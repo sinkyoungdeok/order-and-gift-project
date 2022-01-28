@@ -10,7 +10,7 @@ class PartnerServiceImpl(
 ) :
     PartnerService {
     override fun registerPartner(command: PartnerCommand.RegisterPartner): Mono<PartnerInfo.Main> {
-        var initPartner = partnerInfoMapper.of(command)
+        var initPartner = command.toEntity()
         var partner = partnerStore.store(initPartner)
         return partner.map { partnerInfoMapper.of(it) }
     }
