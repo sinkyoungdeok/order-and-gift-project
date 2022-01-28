@@ -7,9 +7,9 @@ import msa.order.domain.item.optiongroup.ItemOptionGroup
 class ItemCommand {
 
     class RegisterItemRequest(
-        var itemName: String? = null,
-        var itemPrice: Long? = null,
-        var itemOptionGroupRequestList: List<RegisterItemOptionGroupRequest>? = null
+        var itemName: String,
+        var itemPrice: Long,
+        var itemOptionGroupRequestList: List<RegisterItemOptionGroupRequest>
     ) {
         private val ITEM_PREFIX = "itm_"
 
@@ -18,30 +18,30 @@ class ItemCommand {
                 partnerId = partnerId,
                 itemName = itemName,
                 itemPrice = itemPrice,
-                itemToken = TokenGenerator.randomCharacterWithPrefix(ITEM_PREFIX),
-                itemOptionGroupList = itemOptionGroupRequestList?.map { it.toEntity() }
+                itemToken = TokenGenerator.randomCharacterWithPrefix(ITEM_PREFIX)?: "",
+                itemOptionGroupList = itemOptionGroupRequestList.map { it.toEntity() }
             )
         }
     }
 
-    data class RegisterItemOptionGroupRequest(
-        var ordering: Int? = null,
-        var itemOptionGroupName: String? = null,
-        var itemOptionRequestList: List<RegisterItemOptionRequest>? = null,
+    class RegisterItemOptionGroupRequest(
+        var ordering: Int,
+        var itemOptionGroupName: String,
+        var itemOptionRequestList: List<RegisterItemOptionRequest>
     ) {
         fun toEntity(): ItemOptionGroup {
             return ItemOptionGroup(
                 ordering = ordering,
                 itemOptionGroupName = itemOptionGroupName,
-                itemOptionList = itemOptionRequestList?.map { it.toEntity() }
+                itemOptionList = itemOptionRequestList.map { it.toEntity() }
             )
         }
     }
 
-    data class RegisterItemOptionRequest(
-        var ordering: Int? = null,
-        var itemOptionName: String? = null,
-        var itemOptionPrice: Long? = null
+    class RegisterItemOptionRequest(
+        var ordering: Int,
+        var itemOptionName: String,
+        var itemOptionPrice: Long
     ) {
         fun toEntity(): ItemOption {
             return ItemOption(

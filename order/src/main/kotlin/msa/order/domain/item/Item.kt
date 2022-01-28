@@ -6,14 +6,14 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
-data class Item(
-    @Id val id: String? = null,
-    val itemToken: String? = null,
-    val partnerId: String? = null,
-    val itemName: String? = null,
-    val itemPrice: Long? = null,
-    val itemOptionGroupList: List<ItemOptionGroup>? = null,
-    val status: Status? = null
+class Item(
+    @Id var id: String? = null,
+    var itemToken: String,
+    var partnerId: String,
+    var itemName: String,
+    var itemPrice: Long,
+    var itemOptionGroupList: List<ItemOptionGroup>,
+    var status: Status? = null
 ) : AbstractEntity() {
     enum class Status(description: String) {
         PREPARE("판매준비중"),
