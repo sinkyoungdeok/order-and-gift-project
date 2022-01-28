@@ -16,4 +16,8 @@ class ItemFacade(val itemService: ItemService) {
         var itemInfo = itemService.registerItem(request, partnerToken)
         return itemInfo
     }
+
+    fun changeOnSaleItem(itemToken: String): Mono<ItemInfo.Token> {
+        return itemService.changeOnSale(itemToken)
+    }
 }

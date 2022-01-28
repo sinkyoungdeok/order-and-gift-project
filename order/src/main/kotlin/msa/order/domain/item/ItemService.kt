@@ -7,4 +7,8 @@ interface ItemService {
         command: ItemCommand.RegisterItemRequest,
         partnerToken: String
     ): Mono<ItemInfo.Token>
+
+    fun changeOnSale(
+        itemToken: String
+    ): Mono<ItemInfo.Token>
 }
