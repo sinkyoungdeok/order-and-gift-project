@@ -2,7 +2,9 @@ package msa.order.domain.item
 
 class ItemInfo {
 
-    data class Token(
+    class Token(
         var itemToken: String
-    )
+    ) {
+        constructor() : this("")
+    }
 }

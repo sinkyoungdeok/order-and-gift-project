@@ -2,26 +2,26 @@ package msa.order.interfaces.item
 
 class ItemDto {
 
-    data class RegisterItemRequest(
-        var partnerToken: String,
-        var itemName: String,
-        var itemPrice: Long,
-        var itemOptionGroupList: List<RegisterItemOptionGroupRequest>
+    class RegisterItemRequest(
+        val partnerToken: String,
+        val itemName: String,
+        val itemPrice: Long,
+        val itemOptionGroupList: List<RegisterItemOptionGroupRequest>
     )
 
-    data class RegisterItemOptionGroupRequest(
-        var ordering: Int,
-        var itemOptionGroupName: String,
-        var itemOptionList: List<RegisterItemOptionRequest>
+    class RegisterItemOptionGroupRequest(
+        val ordering: Int,
+        val itemOptionGroupName: String,
+        val itemOptionList: List<RegisterItemOptionRequest>
     )
 
-    data class RegisterItemOptionRequest(
-        var ordering: Int,
-        var itemOptionName: String,
-        var itemOptionPrice: Long
+    class RegisterItemOptionRequest(
+        val ordering: Int,
+        val itemOptionName: String,
+        val itemOptionPrice: Long
     )
 
     class RegisterResponse(
-        var itemToken: String? = null
+        val itemToken: String
     )
 }
