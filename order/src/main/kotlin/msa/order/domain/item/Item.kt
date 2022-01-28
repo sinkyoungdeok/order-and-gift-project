@@ -24,4 +24,8 @@ class Item(
     fun changeOnSale() {
         this.status = Status.ON_SALE
     }
+
+    fun changeEndOfSale() {
+        this.status = Status.END_OF_SALE
+    }
 }

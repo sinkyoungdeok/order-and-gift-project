@@ -20,4 +20,8 @@ class ItemFacade(val itemService: ItemService) {
     fun changeOnSaleItem(itemToken: String): Mono<ItemInfo.Token> {
         return itemService.changeOnSale(itemToken)
     }
+
+    fun changeEndOfSaleItem(itemToken: String): Mono<ItemInfo.Token> {
+        return itemService.changeEndOfSale(itemToken)
+    }
 }
