@@ -47,3 +47,11 @@ Content-Type: application/json
     }
   ]
 }
+
+### 아이템 1 활성화
+POST http://localhost:8080/api/v1/items/change-on-sales
+Content-Type: application/json
+
+{
+  "itemToken": "itm_W8s8iT5Bme83sIbm"
+}

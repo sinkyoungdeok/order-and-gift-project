@@ -26,4 +26,14 @@ class ItemApiController(
         var response = itemInfo.map { itemDtoMapper.of(it) }
         return response.map { CommonResponse(it) }
     }
+
+    @PostMapping("/change-on-sales")
+    fun changeOnSaleItem(
+        @RequestBody @Valid request: ItemDto.ChangeStatusItemRequest
+    ): Mono<CommonResponse<ItemDto.RegisterResponse>> {
+        var itemToken = request.itemToken
+        var itemInfo = itemFacade.changeOnSaleItem(itemToken)
+        var response = itemInfo.map { itemDtoMapper.of(it) }
+        return response.map { CommonResponse(it) }
+    }
 }

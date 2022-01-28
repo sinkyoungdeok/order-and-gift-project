@@ -13,11 +13,15 @@ class Item(
     var itemName: String,
     var itemPrice: Long,
     var itemOptionGroupList: List<ItemOptionGroup>,
-    var status: Status? = null
+    var status: Status = Status.PREPARE
 ) : AbstractEntity() {
     enum class Status(description: String) {
         PREPARE("판매준비중"),
         ON_SALE("판매중"),
         END_OF_SALE("판매종료")
+    }
+
+    fun changeOnSale() {
+        this.status = Status.ON_SALE
     }
 }

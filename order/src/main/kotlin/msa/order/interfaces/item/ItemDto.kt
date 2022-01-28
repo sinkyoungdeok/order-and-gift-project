@@ -24,4 +24,8 @@ class ItemDto {
     class RegisterResponse(
         var itemToken: String
     )
+
+    class ChangeStatusItemRequest(
+        var itemToken: String
+    )
 }
