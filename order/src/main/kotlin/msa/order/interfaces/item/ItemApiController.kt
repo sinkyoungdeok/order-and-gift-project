@@ -45,9 +45,9 @@ class ItemApiController(
     }
 
     @GetMapping("/{itemToken}")
-    fun retrieve(@PathVariable("itemToken") itemToken: String) {
+    fun retrieve(@PathVariable("itemToken") itemToken: String): Mono<CommonResponse<ItemDto.Main>> {
         var itemInfo = itemFacade.retrieveItemInfo(itemToken)
-//        var response = itemInfo.map { itemDtoMapper.of(it) }
-//        return response.map { CommonResponse(it) }
+        var response = itemInfo.map { itemDtoMapper.of(it) }
+        return response.map { CommonResponse(it) }
     }
 }

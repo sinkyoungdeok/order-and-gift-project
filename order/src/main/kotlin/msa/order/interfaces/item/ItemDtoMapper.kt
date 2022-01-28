@@ -11,6 +11,7 @@ import org.mapstruct.*
 )
 interface ItemDtoMapper {
 
+    // register
     @Mappings(
         Mapping(
             source = "request.itemOptionGroupList",
@@ -35,7 +36,21 @@ interface ItemDtoMapper {
         request: ItemDto.RegisterItemOptionRequest
     ): ItemCommand.RegisterItemOptionRequest
 
+    // change
     fun of(
         itemInfo: ItemInfo.Token
     ): ItemDto.RegisterResponse
+
+    // retrieve
+    fun of(
+        main: ItemInfo.Main
+    ): ItemDto.Main
+
+    fun of(
+        itemOptionGroupInfo: ItemInfo.ItemOptionGroupInfo
+    ): ItemDto.ItemOptionGroupInfo
+
+    fun of(
+        itemOptionInfo: ItemInfo.ItemOptionInfo
+    ): ItemDto.ItemOptionInfo
 }

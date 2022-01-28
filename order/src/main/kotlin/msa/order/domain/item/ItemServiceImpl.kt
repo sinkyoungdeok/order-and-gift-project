@@ -1,6 +1,7 @@
 package msa.order.domain.item
 
 import msa.order.domain.partner.PartnerReader
+import msa.order.interfaces.item.ItemDtoMapper
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import reactor.core.publisher.Mono
@@ -9,7 +10,8 @@ import reactor.core.publisher.Mono
 class ItemServiceImpl(
     val partnerReader: PartnerReader,
     val itemStore: ItemStore,
-    val itemReader: ItemReader
+    val itemReader: ItemReader,
+    val itemInfoDtoMapper: ItemInfoMapper
 ) : ItemService {
 
     @Transactional
@@ -48,7 +50,7 @@ class ItemServiceImpl(
     @Transactional(readOnly = true)
     override fun retrieveItemInfo(itemToken: String): Mono<ItemInfo.Main> {
         var item = itemReader.getItemBy(itemToken)
-
-        return Mono.just(ItemInfo.Main())
+        var itemInfo = item.map { itemInfoDtoMapper.of(it) }
+        return itemInfo
     }
 }
