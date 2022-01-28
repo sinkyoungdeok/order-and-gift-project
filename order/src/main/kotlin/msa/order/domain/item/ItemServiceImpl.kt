@@ -33,4 +33,15 @@ class ItemServiceImpl(
             ItemInfo.Token(it.itemToken)
         }
     }
+
+    @Transactional
+    override fun changeEndOfSale(itemToken: String): Mono<ItemInfo.Token> {
+        var item = itemReader.getItemBy(itemToken)
+        return item.flatMap {
+            it.changeEndOfSale()
+            itemStore.store(it)
+        }.map {
+            ItemInfo.Token(it.itemToken)
+        }
+    }
 }

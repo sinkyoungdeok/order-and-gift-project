@@ -11,4 +11,8 @@ interface ItemService {
     fun changeOnSale(
         itemToken: String
     ): Mono<ItemInfo.Token>
+
+    fun changeEndOfSale(
+        itemToken: String
+    ): Mono<ItemInfo.Token>
 }
