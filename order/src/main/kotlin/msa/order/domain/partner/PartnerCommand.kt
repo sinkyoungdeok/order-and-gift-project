@@ -15,7 +15,7 @@ class PartnerCommand {
 
         fun toEntity(): Partner {
             return Partner(
-                partnerToken = TokenGenerator.randomCharacterWithPrefix(PARTNER_PREFIX),
+                partnerToken = TokenGenerator.randomCharacterWithPrefix(PARTNER_PREFIX)?:"",
                 partnerName = partnerName,
                 businessNo = businessNo,
                 email = email,

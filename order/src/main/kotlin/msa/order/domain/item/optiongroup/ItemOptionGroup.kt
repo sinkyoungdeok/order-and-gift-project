@@ -8,9 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 data class ItemOptionGroup(
     @Id val id: String? = null,
-    val ordering: Int? = null,
-    val itemOptionGroupName: String? = null,
-    val itemOptionList: List<ItemOption>? = null,
+    val ordering: Int,
+    val itemOptionGroupName: String,
+    val itemOptionList: List<ItemOption>,
 ) : AbstractEntity() {
 
 }

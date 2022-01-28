@@ -4,21 +4,21 @@ class ItemDto {
 
     data class RegisterItemRequest(
         var partnerToken: String,
-        var itemName: String? = null,
-        var itemPrice: Long? = null,
-        var itemOptionGroupList: List<RegisterItemOptionGroupRequest>? = null
+        var itemName: String,
+        var itemPrice: Long,
+        var itemOptionGroupList: List<RegisterItemOptionGroupRequest>
     )
 
     data class RegisterItemOptionGroupRequest(
-        var ordering: Int? = null,
-        var itemOptionGroupName: String? = null,
-        var itemOptionList: List<RegisterItemOptionRequest>? = null
+        var ordering: Int,
+        var itemOptionGroupName: String,
+        var itemOptionList: List<RegisterItemOptionRequest>
     )
 
     data class RegisterItemOptionRequest(
-        var ordering: Int? = null,
-        var itemOptionName: String? = null,
-        var itemOptionPrice: Long? = null
+        var ordering: Int,
+        var itemOptionName: String,
+        var itemOptionPrice: Long
     )
 
     class RegisterResponse(

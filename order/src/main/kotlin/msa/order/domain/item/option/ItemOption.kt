@@ -7,9 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 data class ItemOption(
     @Id val id: String? = null,
-    val ordering: Int? = null,
-    val itemOptionName: String? = null,
-    val itemOptionPrice: Long? = null
+    val ordering: Int,
+    val itemOptionName: String,
+    val itemOptionPrice: Long
 ) : AbstractEntity() {
 
 }

@@ -8,11 +8,11 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 data class Item(
     @Id val id: String? = null,
-    val itemToken: String? = null,
-    val partnerId: String? = null,
-    val itemName: String? = null,
-    val itemPrice: Long? = null,
-    val itemOptionGroupList: List<ItemOptionGroup>? = null,
+    val itemToken: String,
+    val partnerId: String,
+    val itemName: String,
+    val itemPrice: Long,
+    val itemOptionGroupList: List<ItemOptionGroup>,
     val status: Status? = null
 ) : AbstractEntity() {
     enum class Status(description: String) {
