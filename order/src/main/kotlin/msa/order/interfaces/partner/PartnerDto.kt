@@ -8,18 +8,18 @@ class PartnerDto {
 
     data class RegisterRequest(
         @field:NotEmpty(message = "partnerName 은 필수값 입니다")
-        var partnerName: String? = null,
+        var partnerName: String,
 
         @field:NotEmpty(message = "businessNo 는 필수값 입니다")
-        var businessNo: String? = null,
+        var businessNo: String,
 
         @field:Email(message = "email 형식에 맞추어야 합니다")
         @field:NotEmpty(message = "email 은 필수값 입니다")
-        var email: String? = null
+        var email: String
     )
 
     data class RegisterResponse(
-        var partnerToken: String? = null,
+        var partnerToken: String,
         var partnerName: String,
         var businessNo: String,
         var email: String,

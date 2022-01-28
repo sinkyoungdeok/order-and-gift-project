@@ -4,7 +4,7 @@ class PartnerInfo {
 
     data class Main(
         var id: String,
-        var partnerToken: String? = null,
+        var partnerToken: String,
         var partnerName: String,
         var businessNo: String,
         var email: String,
