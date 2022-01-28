@@ -4,7 +4,7 @@ import msa.order.common.util.TokenGenerator
 
 class PartnerCommand {
 
-    data class RegisterPartner(
+    class RegisterPartner(
         var partnerName: String,
         var businessNo: String,
         var email: String

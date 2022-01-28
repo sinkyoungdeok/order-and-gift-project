@@ -2,7 +2,7 @@ package msa.order.domain.partner
 
 class PartnerInfo {
 
-    data class Main(
+    class Main(
         var id: String,
         var partnerToken: String,
         var partnerName: String,

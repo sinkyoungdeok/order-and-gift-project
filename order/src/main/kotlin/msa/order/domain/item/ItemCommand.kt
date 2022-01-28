@@ -7,9 +7,9 @@ import msa.order.domain.item.optiongroup.ItemOptionGroup
 class ItemCommand {
 
     class RegisterItemRequest(
-        val itemName: String,
-        val itemPrice: Long,
-        val itemOptionGroupRequestList: List<RegisterItemOptionGroupRequest>
+        var itemName: String,
+        var itemPrice: Long,
+        var itemOptionGroupRequestList: List<RegisterItemOptionGroupRequest>
     ) {
         private val ITEM_PREFIX = "itm_"
 
@@ -25,9 +25,9 @@ class ItemCommand {
     }
 
     class RegisterItemOptionGroupRequest(
-        val ordering: Int,
-        val itemOptionGroupName: String,
-        val itemOptionRequestList: List<RegisterItemOptionRequest>
+        var ordering: Int,
+        var itemOptionGroupName: String,
+        var itemOptionRequestList: List<RegisterItemOptionRequest>
     ) {
         fun toEntity(): ItemOptionGroup {
             return ItemOptionGroup(
@@ -39,9 +39,9 @@ class ItemCommand {
     }
 
     class RegisterItemOptionRequest(
-        val ordering: Int,
-        val itemOptionName: String,
-        val itemOptionPrice: Long
+        var ordering: Int,
+        var itemOptionName: String,
+        var itemOptionPrice: Long
     ) {
         fun toEntity(): ItemOption {
             return ItemOption(

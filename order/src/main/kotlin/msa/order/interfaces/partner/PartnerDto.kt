@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty
 
 class PartnerDto {
 
-    data class RegisterRequest(
+    class RegisterRequest(
         @field:NotEmpty(message = "partnerName 은 필수값 입니다")
         var partnerName: String,
 
@@ -18,7 +18,7 @@ class PartnerDto {
         var email: String
     )
 
-    data class RegisterResponse(
+    class RegisterResponse(
         var partnerToken: String,
         var partnerName: String,
         var businessNo: String,

@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
-data class Partner(
+class Partner(
     @Id
     var id: String? = null,
     var partnerToken: String,

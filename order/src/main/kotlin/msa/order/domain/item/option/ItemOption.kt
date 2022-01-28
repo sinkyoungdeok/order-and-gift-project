@@ -5,11 +5,11 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
-data class ItemOption(
-    @Id val id: String? = null,
-    val ordering: Int,
-    val itemOptionName: String,
-    val itemOptionPrice: Long
+class ItemOption(
+    @Id var id: String? = null,
+    var ordering: Int,
+    var itemOptionName: String,
+    var itemOptionPrice: Long
 ) : AbstractEntity() {
 
 }
