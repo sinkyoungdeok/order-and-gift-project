@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
 @Service
-class PartnerFacade(val partnerService: PartnerService) {
+class PartnerFacade(
+    val partnerService: PartnerService
+) {
 
-    fun registerPartner(command: Mono<PartnerCommand.RegisterPartner>): Mono<PartnerInfo.Main> {
+    fun registerPartner(command: PartnerCommand.RegisterPartner): Mono<PartnerInfo.Main> {
         val partnerInfo = partnerService.registerPartner(command)
         return partnerInfo
     }
