@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono
 @Service
 class OrderFacade(val orderService: OrderService) {
 
-    fun registerOrder(registerOrder: Mono<OrderCommand.RegisterOrder>): Mono<OrderInfo.Token> {
+    fun registerOrder(registerOrder: OrderCommand.RegisterOrder): Mono<OrderInfo.Token> {
         val orderInfo = orderService.registerOrder(registerOrder)
 
         return orderInfo

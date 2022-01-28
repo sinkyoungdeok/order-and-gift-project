@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono
 class OrderServiceImpl : OrderService {
 
     @Transactional
-    override fun registerOrder(registerOrder: Mono<OrderCommand.RegisterOrder>): Mono<OrderInfo.Token> {
+    override fun registerOrder(registerOrder: OrderCommand.RegisterOrder): Mono<OrderInfo.Token> {
         return Mono.just(OrderInfo.Token("test"))
     }
 }

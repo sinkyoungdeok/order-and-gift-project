@@ -18,9 +18,9 @@ class OrderApiController(
 
     @PostMapping("/init")
     fun registerOrder(
-        @RequestBody @Valid request: Mono<OrderDto.RegisterOrderRequest>
+        @RequestBody @Valid request: OrderDto.RegisterOrderRequest
     ): Mono<CommonResponse<OrderDto.RegisterOrderResponse>> {
-        val orderCommand = request.map { orderDtoMapper.of(it) }
+        val orderCommand = orderDtoMapper.of(request)
         val orderInfo = orderFacade.registerOrder(orderCommand)
         val response = orderInfo.map { orderDtoMapper.of(it) }
         return response.map { CommonResponse(it) }
