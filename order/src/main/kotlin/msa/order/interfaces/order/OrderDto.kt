@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 
 class OrderDto {
 
-    data class RegisterOrderRequest(
+    class RegisterOrderRequest(
         @field:NotNull(message = "userId 는 필수값입니다")
         var userId: String? = null,
 
@@ -33,7 +33,7 @@ class OrderDto {
         var orderItemList: List<RegisterOrderItemRequest>? = null
     )
 
-    data class RegisterOrderItemRequest(
+    class RegisterOrderItemRequest(
         @field:NotNull(message = "orderCount 는 필수값입니다")
         var orderCount: Int? = null,
 
@@ -49,7 +49,7 @@ class OrderDto {
         var orderItemOptionGroupList: List<RegisterOrderItemOptionGroupRequest>? = null
     )
 
-    data class RegisterOrderItemOptionGroupRequest(
+    class RegisterOrderItemOptionGroupRequest(
         @field:NotNull(message = "ordering 는 필수값입니다")
         var ordering: Int? = null,
 
@@ -59,7 +59,7 @@ class OrderDto {
         var orderItemOptionList: List<RegisterOrderItemOptionRequest>? = null
     )
 
-    data class RegisterOrderItemOptionRequest(
+    class RegisterOrderItemOptionRequest(
         @field:NotNull(message = "ordering 는 필수값입니다")
         var ordering: Int? = null,
 
