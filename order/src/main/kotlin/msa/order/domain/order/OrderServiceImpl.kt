@@ -20,34 +20,24 @@ class OrderServiceImpl(
         val initOrder = orderCommand.toEntity()
 
 
-        val orderItemList = orderCommand.orderItemList
+        initOrder.orderItemList = orderCommand.orderItemList
             .map { commandOrderItem ->
                 val item: Item = itemReader.getItemBy(commandOrderItem.itemToken).awaitSingle()
                 val initOrderItem: OrderItem = commandOrderItem.toEntity(item)
-
-                val orderItemOptionGroupList: List<OrderItemOptionGroup> =
+                initOrderItem.orderItemOptionGroupList =
                     commandOrderItem.orderItemOptionGroupList.map { commandOrderItemOptionGroup ->
                         val initOrderItemOptionGroup: OrderItemOptionGroup =
                             commandOrderItemOptionGroup.toEntity()
-
-                        val orderItemOptionList: List<OrderItemOption> =
+                        initOrderItemOptionGroup.orderItemOptionList =
                             commandOrderItemOptionGroup.orderItemOptionList.map { commandOrderItemOption ->
-                                val initOrderItemOption = commandOrderItemOption.toEntity()
-                                initOrderItemOption
+                                commandOrderItemOption.toEntity()
                             }
-                        initOrderItemOptionGroup.orderItemOptionList = orderItemOptionList
-
                         initOrderItemOptionGroup
                     }
-                initOrderItem.orderItemOptionGroupList = orderItemOptionGroupList
-
                 initOrderItem
             }
 
-        initOrder.orderItemList = orderItemList
-
         val order: Order = orderStore.store(initOrder).awaitSingle()
-
         return OrderInfo.Token(order.orderToken)
     }
 }
