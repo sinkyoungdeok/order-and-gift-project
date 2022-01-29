@@ -13,11 +13,23 @@ class Order(
     var orderToken: String,
     var userId: String,
     var payMethod: String,
-    var orderItemList: List<OrderItem>,
+    var orderItemList: MutableList<OrderItem> = mutableListOf(),
     var deliveryFragment: DeliveryFragment,
     var orderedAt: LocalDateTime,
     var status: Status
 ) : AbstractEntity() {
+    constructor(userId: String, payMethod: String, deliveryFragment: DeliveryFragment) :
+            this(
+                null,
+                "",
+                userId,
+                payMethod,
+                arrayListOf(),
+                deliveryFragment,
+                LocalDateTime.now(),
+                Status.INIT
+            )
+
     enum class Status(description: String) {
         INIT("주문시작"),
         ORDER_COMPLETE("주문완료"),

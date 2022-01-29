@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
 class OrderItem(
-    @Id var id: String,
+    @Id var id: String? = null,
     var orderCount: Int,
     var partnerId: String,
     var itemId: String,
@@ -16,6 +16,25 @@ class OrderItem(
     var orderItemOptionGroupList: List<OrderItemOptionGroup>,
     var deliveryStatus: DeliveryStatus
 ) : AbstractEntity() {
+    constructor(
+        orderCount: Int,
+        partnerId: String,
+        itemId: String,
+        itemToken: String,
+        itemName: String,
+        itemPrice: Long
+    ) : this(
+        null,
+        orderCount,
+        partnerId,
+        itemId,
+        itemName,
+        itemToken,
+        itemPrice,
+        arrayListOf(),
+        DeliveryStatus.BEFORE_DELIVERY
+    )
+
     enum class DeliveryStatus(description: String) {
         BEFORE_DELIVERY("배송전"),
         DELIVERY_PREPARE("배송준비중"),
