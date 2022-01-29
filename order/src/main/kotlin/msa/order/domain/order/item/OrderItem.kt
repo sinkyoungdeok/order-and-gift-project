@@ -13,7 +13,7 @@ class OrderItem(
     var itemName: String,
     var itemToken: String,
     var itemPrice: Long,
-    var orderItemOptionGroupList: List<OrderItemOptionGroup>,
+    var orderItemOptionGroupList: List<OrderItemOptionGroup> = arrayListOf(),
     var deliveryStatus: DeliveryStatus
 ) : AbstractEntity() {
     constructor(

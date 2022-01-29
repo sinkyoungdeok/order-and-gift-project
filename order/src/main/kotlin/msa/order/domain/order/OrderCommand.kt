@@ -1,8 +1,11 @@
 package msa.order.domain.order
 
+import msa.order.common.util.TokenGenerator
 import msa.order.domain.item.Item
 import msa.order.domain.order.fragment.DeliveryFragment
 import msa.order.domain.order.item.OrderItem
+import msa.order.domain.order.item.OrderItemOption
+import msa.order.domain.order.item.OrderItemOptionGroup
 
 
 class OrderCommand {
@@ -18,6 +21,8 @@ class OrderCommand {
         var etcMessage: String,
         var orderItemList: List<RegisterOrderItem>
     ) {
+        private val ORDER_PREFIX = "ord_"
+
         constructor() : this(
             "",
             "",
@@ -41,9 +46,11 @@ class OrderCommand {
             )
 
             return Order(
+                orderToken = TokenGenerator.randomCharacterWithPrefix(ORDER_PREFIX) ?: "",
                 userId = userId,
                 payMethod = payMethod,
-                deliveryFragment = deliveryFragment)
+                deliveryFragment = deliveryFragment
+            )
         }
 
 
@@ -68,7 +75,7 @@ class OrderCommand {
             return OrderItem(
                 orderCount = orderCount,
                 partnerId = item.partnerId,
-                itemId = item.id?: "",
+                itemId = item.id ?: "",
                 itemToken = itemToken,
                 itemName = itemName,
                 itemPrice = itemPrice
@@ -86,6 +93,13 @@ class OrderCommand {
             "",
             arrayListOf()
         )
+
+        fun toEntity(): OrderItemOptionGroup {
+            return OrderItemOptionGroup(
+                ordering = ordering,
+                itemOptionGroupName = itemOptionGroupName
+            )
+        }
     }
 
     data class RegisterOrderItemOption(
@@ -98,6 +112,14 @@ class OrderCommand {
             "",
             0
         )
+
+        fun toEntity(): OrderItemOption {
+            return OrderItemOption(
+                ordering = ordering,
+                itemOptionName = itemOptionName,
+                itemOptionPrice = itemOptionPrice
+            )
+        }
     }
 
 }

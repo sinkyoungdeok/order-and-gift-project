@@ -6,9 +6,15 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
 class OrderItemOptionGroup(
-    @Id var id: String,
+    @Id var id: String? = null,
     var ordering: Int,
     var itemOptionGroupName: String,
-    var orderItemOptionList: List<OrderItemOption>
+    var orderItemOptionList: List<OrderItemOption> = arrayListOf()
 ) : AbstractEntity() {
+    constructor(ordering: Int, itemOptionGroupName: String) : this(
+        null,
+        ordering,
+        itemOptionGroupName,
+        mutableListOf()
+    )
 }

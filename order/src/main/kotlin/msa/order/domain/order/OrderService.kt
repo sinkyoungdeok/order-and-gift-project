@@ -1,9 +1,7 @@
 package msa.order.domain.order
 
-import reactor.core.publisher.Mono
-
 interface OrderService {
-    fun registerOrder(
+    suspend fun registerOrder(
         registerOrder: OrderCommand.RegisterOrder
-    ): Mono<OrderInfo.Token>
+    ): OrderInfo.Token
 }

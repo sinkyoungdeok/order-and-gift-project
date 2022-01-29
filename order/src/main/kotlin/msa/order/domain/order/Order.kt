@@ -13,15 +13,20 @@ class Order(
     var orderToken: String,
     var userId: String,
     var payMethod: String,
-    var orderItemList: MutableList<OrderItem> = mutableListOf(),
+    var orderItemList: List<OrderItem> = arrayListOf(),
     var deliveryFragment: DeliveryFragment,
     var orderedAt: LocalDateTime,
     var status: Status
 ) : AbstractEntity() {
-    constructor(userId: String, payMethod: String, deliveryFragment: DeliveryFragment) :
+    constructor(
+        orderToken: String,
+        userId: String,
+        payMethod: String,
+        deliveryFragment: DeliveryFragment
+    ) :
             this(
                 null,
-                "",
+                orderToken,
                 userId,
                 payMethod,
                 arrayListOf(),
