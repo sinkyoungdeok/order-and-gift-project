@@ -10,7 +10,7 @@ import msa.order.domain.order.item.OrderItemOptionGroup
 
 class OrderCommand {
 
-    data class RegisterOrder(
+    class RegisterOrder(
         var userId: String,
         var payMethod: String,
         var receiverName: String,
@@ -56,7 +56,7 @@ class OrderCommand {
 
     }
 
-    data class RegisterOrderItem(
+    class RegisterOrderItem(
         var orderCount: Int,
         var itemToken: String,
         var itemName: String,
@@ -83,7 +83,7 @@ class OrderCommand {
         }
     }
 
-    data class RegisterOrderItemOptionGroup(
+    class RegisterOrderItemOptionGroup(
         var ordering: Int,
         var itemOptionGroupName: String,
         var orderItemOptionList: List<RegisterOrderItemOption>
@@ -102,7 +102,7 @@ class OrderCommand {
         }
     }
 
-    data class RegisterOrderItemOption(
+    class RegisterOrderItemOption(
         var ordering: Int,
         var itemOptionName: String,
         var itemOptionPrice: Long
