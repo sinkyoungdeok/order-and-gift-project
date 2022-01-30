@@ -14,40 +14,42 @@ class ItemApiController(
 ) {
 
     @PostMapping
-    fun registerItem(
+    suspend fun registerItem(
         @RequestBody @Valid request: ItemDto.RegisterItemRequest
-    ): Mono<CommonResponse<ItemDto.RegisterResponse>> {
+    ): CommonResponse<ItemDto.RegisterResponse> {
         var partnerToken = request.partnerToken
         var itemCommand = itemDtoMapper.of(request)
         var itemInfo = itemFacade.registerItem(itemCommand, partnerToken)
-        var response = itemInfo.map { itemDtoMapper.of(it) }
-        return response.map { CommonResponse(it) }
+        var response = itemDtoMapper.of(itemInfo)
+        return CommonResponse(response)
     }
 
     @PostMapping("/change-on-sales")
-    fun changeOnSaleItem(
+    suspend fun changeOnSaleItem(
         @RequestBody @Valid request: ItemDto.ChangeStatusItemRequest
-    ): Mono<CommonResponse<ItemDto.RegisterResponse>> {
+    ): CommonResponse<ItemDto.RegisterResponse> {
         var itemToken = request.itemToken
         var itemInfo = itemFacade.changeOnSaleItem(itemToken)
-        var response = itemInfo.map { itemDtoMapper.of(it) }
-        return response.map { CommonResponse(it) }
+        var response = itemDtoMapper.of(itemInfo)
+        return CommonResponse(response)
     }
 
     @PostMapping("/change-end-of-sales")
-    fun changeEndOfSaleItem(
+    suspend fun changeEndOfSaleItem(
         @RequestBody @Valid request: ItemDto.ChangeStatusItemRequest
-    ): Mono<CommonResponse<ItemDto.RegisterResponse>> {
+    ): CommonResponse<ItemDto.RegisterResponse> {
         var itemToken = request.itemToken
         var itemInfo = itemFacade.changeEndOfSaleItem(itemToken)
-        var response = itemInfo.map { itemDtoMapper.of(it) }
-        return response.map { CommonResponse(it) }
+        var response = itemDtoMapper.of(itemInfo)
+        return CommonResponse(response)
     }
 
     @GetMapping("/{itemToken}")
-    fun retrieve(@PathVariable("itemToken") itemToken: String): Mono<CommonResponse<ItemDto.Main>> {
+    suspend fun retrieve(
+        @PathVariable("itemToken") itemToken: String
+    ): CommonResponse<ItemDto.Main> {
         var itemInfo = itemFacade.retrieveItemInfo(itemToken)
-        var response = itemInfo.map { itemDtoMapper.of(it) }
-        return response.map { CommonResponse(it) }
+        var response = itemDtoMapper.of(itemInfo)
+        return CommonResponse(response)
     }
 }

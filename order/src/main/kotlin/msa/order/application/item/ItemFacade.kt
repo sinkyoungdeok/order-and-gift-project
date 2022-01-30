@@ -4,28 +4,27 @@ import msa.order.domain.item.ItemCommand
 import msa.order.domain.item.ItemInfo
 import msa.order.domain.item.ItemService
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Mono
 
 @Service
 class ItemFacade(val itemService: ItemService) {
 
-    fun registerItem(
+    suspend fun registerItem(
         request: ItemCommand.RegisterItemRequest,
         partnerToken: String
-    ): Mono<ItemInfo.Token> {
+    ): ItemInfo.Token {
         var itemInfo = itemService.registerItem(request, partnerToken)
         return itemInfo
     }
 
-    fun changeOnSaleItem(itemToken: String): Mono<ItemInfo.Token> {
+    suspend fun changeOnSaleItem(itemToken: String): ItemInfo.Token {
         return itemService.changeOnSale(itemToken)
     }
 
-    fun changeEndOfSaleItem(itemToken: String): Mono<ItemInfo.Token> {
+    suspend fun changeEndOfSaleItem(itemToken: String): ItemInfo.Token {
         return itemService.changeEndOfSale(itemToken)
     }
 
-    fun retrieveItemInfo(itemToken: String): Mono<ItemInfo.Main> {
+    suspend fun retrieveItemInfo(itemToken: String): ItemInfo.Main {
         return itemService.retrieveItemInfo(itemToken)
     }
 }
