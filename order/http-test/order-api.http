@@ -80,7 +80,7 @@ POST http://localhost:8080/api/v1/orders/payment-order
 Content-Type: application/json
 
 {
-  "orderToken": "ord_SZq5VK8vdBe2ISsS",
+  "orderToken": "ord_Hwgx5JeWuEaAHucP",
   "payMethod": "NAVER_PAY",
   "amount": "72000",
   "orderDescription": "주문테스트"
