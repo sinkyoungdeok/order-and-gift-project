@@ -45,7 +45,24 @@ class Order(
     }
 
     fun orderComplete() {
-        if(this.status != Status.INIT) throw IllegalStatusException()
+        if (this.status != Status.INIT) throw IllegalStatusException()
         this.status = Status.ORDER_COMPLETE
+    }
+
+    fun calculateTotalAmount(): Long {
+        return orderItemList.stream()
+            .mapToLong(OrderItem::calculateTotalAmount)
+            .sum()
+    }
+
+    fun isAlreadyPaymentComplete(): Boolean {
+        when (status) {
+            Status.ORDER_COMPLETE,
+            Status.DELIVERY_PREPARE,
+            Status.IN_DELIVERY,
+            Status.DELIVERY_COMPLETE
+            -> return true
+        }
+        return false
     }
 }

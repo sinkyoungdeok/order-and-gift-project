@@ -41,4 +41,11 @@ class OrderItem(
         DELIVERING("배송중"),
         COMPLETE_DELIVERY("배송완료")
     }
+
+    fun calculateTotalAmount(): Long {
+        var itemOptionTotalAmount = orderItemOptionGroupList.stream()
+            .mapToLong(OrderItemOptionGroup::calculateTotalAmount)
+            .sum()
+        return (itemPrice + itemOptionTotalAmount) * orderCount
+    }
 }
