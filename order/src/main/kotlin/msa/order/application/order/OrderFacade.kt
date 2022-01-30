@@ -15,7 +15,7 @@ class OrderFacade(val orderService: OrderService) {
         return orderInfo
     }
 
-    fun paymentOrder(command: OrderCommand.PaymentRequest): Mono<OrderInfo.Token> {
+    suspend fun paymentOrder(command: OrderCommand.PaymentRequest): OrderInfo.Token {
         return orderService.paymentOrder(command)
     }
 }

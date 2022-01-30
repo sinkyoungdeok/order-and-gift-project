@@ -6,7 +6,8 @@ import reactor.core.publisher.Mono
 
 @Service
 class OrderServiceImpl(
-    val orderItemSeriesFactory: OrderItemSeriesFactory
+    val orderItemSeriesFactory: OrderItemSeriesFactory,
+    val orderReader: OrderReader
 ) : OrderService {
 
     @Transactional
@@ -18,8 +19,11 @@ class OrderServiceImpl(
     }
 
     @Transactional
-    override fun paymentOrder(command: OrderCommand.PaymentRequest): Mono<OrderInfo.Token> {
-        TODO("Not yet implemented")
+    override suspend fun paymentOrder(command: OrderCommand.PaymentRequest): OrderInfo.Token {
+        var orderToken = command.orderToken
+        var order = orderReader.getOrder(orderToken)
+
+        return OrderInfo.Token("a")
     }
 
 }

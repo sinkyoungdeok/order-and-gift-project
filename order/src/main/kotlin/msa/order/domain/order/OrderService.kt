@@ -7,7 +7,7 @@ interface OrderService {
         command: OrderCommand.RegisterOrder
     ): OrderInfo.Token
 
-    fun paymentOrder(
+    suspend fun paymentOrder(
         command: OrderCommand.PaymentRequest
-    ): Mono<OrderInfo.Token>
+    ): OrderInfo.Token
 }
