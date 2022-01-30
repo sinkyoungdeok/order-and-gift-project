@@ -1,15 +1,15 @@
 package msa.order.infrastructure.partner
 
+import kotlinx.coroutines.reactor.awaitSingle
 import msa.order.domain.partner.Partner
 import msa.order.domain.partner.PartnerStore
 import org.springframework.stereotype.Component
-import reactor.core.publisher.Mono
 
 @Component
 class PartnerStoreImpl(
     val partnerRepository: PartnerRepository
 ) : PartnerStore {
-    override fun store(initPartner: Partner): Mono<Partner> {
-        return partnerRepository.save(initPartner)
+    override suspend fun store(initPartner: Partner): Partner {
+        return partnerRepository.save(initPartner).awaitSingle()
     }
 }
