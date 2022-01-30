@@ -1,13 +1,14 @@
 package msa.order.domain.order
 
+import msa.order.domain.order.payment.PaymentProcessor
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import reactor.core.publisher.Mono
 
 @Service
 class OrderServiceImpl(
     val orderItemSeriesFactory: OrderItemSeriesFactory,
-    val orderReader: OrderReader
+    val orderReader: OrderReader,
+    val paymentProcessor: PaymentProcessor
 ) : OrderService {
 
     @Transactional
@@ -20,10 +21,10 @@ class OrderServiceImpl(
 
     @Transactional
     override suspend fun paymentOrder(command: OrderCommand.PaymentRequest): OrderInfo.Token {
-        var orderToken = command.orderToken
-        var order = orderReader.getOrder(orderToken)
-
-        return OrderInfo.Token("a")
+        var orderToken: String = command.orderToken
+        var order: Order = orderReader.getOrder(orderToken)
+        paymentProcessor.pay(order, command)
+        return OrderInfo.Token(orderToken)
     }
 
 }

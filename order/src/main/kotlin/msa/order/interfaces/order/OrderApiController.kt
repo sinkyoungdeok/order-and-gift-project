@@ -26,7 +26,9 @@ class OrderApiController(
     }
 
     @PostMapping("/payment-order")
-    suspend fun paymentOrder(@RequestBody @Valid paymentRequest: OrderDto.PaymentRequest) {
+    suspend fun paymentOrder(@RequestBody @Valid paymentRequest: OrderDto.PaymentRequest): CommonResponse<String> {
         var paymentCommand = orderDtoMapper.of(paymentRequest)
+        orderFacade.paymentOrder(paymentCommand)
+        return CommonResponse("OK")
     }
 }
