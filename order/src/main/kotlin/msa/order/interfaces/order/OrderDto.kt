@@ -1,6 +1,8 @@
 package msa.order.interfaces.order
 
+import msa.order.domain.order.OrderInfo
 import msa.order.domain.order.payment.PayMethod
+import java.time.LocalDateTime
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
@@ -97,6 +99,97 @@ class OrderDto {
             PayMethod.CARD,
             0,
             ""
+        )
+    }
+
+    // retrieve
+    class Main(
+        var orderToken: String,
+        var userId: String,
+        var payMethod: String,
+        var totalAmount: Long,
+        var deliveryInfo: DeliveryInfo,
+        var orderedAt: String,
+        var status: String,
+        var statusDescription: String,
+        var orderItemList: List<OrderItemInfo>
+    ) {
+        constructor() : this(
+            "",
+            "",
+            "",
+            0,
+            DeliveryInfo(),
+            "",
+            "",
+            "",
+            arrayListOf()
+        )
+    }
+
+    class DeliveryInfo(
+        var receiverName: String,
+        var receiverPhone: String,
+        var receiverZipcode: String,
+        var receiverAddress1: String,
+        var receiverAddress2: String,
+        var etcMessage: String,
+    ) {
+        constructor() : this(
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        )
+    }
+
+    class OrderItemInfo(
+        var orderCount: Int,
+        var partnerId: String,
+        var itemId: String,
+        var itemName: String,
+        var totalAmount: Long,
+        var itemPrice: Long,
+        var deliveryStatus: String,
+        var deliveryStatusDescription: String,
+        var orderItemOptionGroupList: List<OrderItemOptionGroupInfo>
+    ) {
+        constructor() : this(
+            0,
+            "",
+            "",
+            "",
+            0,
+            0,
+            "",
+            "",
+            arrayListOf()
+        )
+    }
+
+    class OrderItemOptionGroupInfo(
+        var ordering: Int,
+        var itemOptionGroupName: String,
+        var orderItemOptionList: List<OrderItemOptionInfo>
+    ) {
+        constructor() : this(
+            0,
+            "",
+            arrayListOf()
+        )
+    }
+
+    class OrderItemOptionInfo(
+        var ordering: Int,
+        var itemOptionName: String,
+        var itemOptionPrice: Long
+    ) {
+        constructor() : this(
+            0,
+            "",
+            0
         )
     }
 }

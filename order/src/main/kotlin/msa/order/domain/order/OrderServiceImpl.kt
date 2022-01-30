@@ -30,4 +30,8 @@ class OrderServiceImpl(
         return OrderInfo.Token(orderToken)
     }
 
+    override suspend fun retrieveOrder(orderToken: String): OrderInfo.Main {
+        TODO("Not yet implemented")
+    }
+
 }
