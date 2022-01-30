@@ -36,7 +36,7 @@ class Order(
                 Status.INIT
             )
 
-    enum class Status(description: String) {
+    enum class Status(val description: String) {
         INIT("주문시작"),
         ORDER_COMPLETE("주문완료"),
         DELIVERY_PREPARE("배송준비"),

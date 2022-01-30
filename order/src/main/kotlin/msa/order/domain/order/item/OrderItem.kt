@@ -35,7 +35,7 @@ class OrderItem(
         DeliveryStatus.BEFORE_DELIVERY
     )
 
-    enum class DeliveryStatus(description: String) {
+    enum class DeliveryStatus(val description: String) {
         BEFORE_DELIVERY("배송전"),
         DELIVERY_PREPARE("배송준비중"),
         DELIVERING("배송중"),
