@@ -15,6 +15,16 @@ class Item(
     var itemOptionGroupList: List<ItemOptionGroup>,
     var status: Status = Status.PREPARE
 ) : AbstractEntity() {
+    constructor() : this(
+        null,
+        "",
+        "",
+        "",
+        0,
+        arrayListOf(),
+        Status.PREPARE
+    )
+
     enum class Status(description: String) {
         PREPARE("판매준비중"),
         ON_SALE("판매중"),

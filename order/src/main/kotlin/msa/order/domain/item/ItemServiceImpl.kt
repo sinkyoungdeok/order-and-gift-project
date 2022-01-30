@@ -15,42 +15,35 @@ class ItemServiceImpl(
 ) : ItemService {
 
     @Transactional
-    override fun registerItem(
+    override suspend fun registerItem(
         command: ItemCommand.RegisterItemRequest,
         partnerToken: String
-    ): Mono<ItemInfo.Token> {
+    ): ItemInfo.Token {
         var partner = partnerReader.getPartner(partnerToken)
-        var initItem = partner.map { it.id?.let { it1 -> command.toEntity(it1) } }
-        var item = initItem.flatMap { itemStore.store(it) }
-        return item.map { ItemInfo.Token(it.itemToken) }
+        var initItem = partner.id?.let { command.toEntity(it) } ?: Item()
+        var item = itemStore.store(initItem)
+        return ItemInfo.Token(item.itemToken)
     }
 
     @Transactional
-    override fun changeOnSale(itemToken: String): Mono<ItemInfo.Token> {
+    override suspend fun changeOnSale(itemToken: String): ItemInfo.Token {
         var item = itemReader.getItemBy(itemToken)
-        return item.flatMap {
-            it.changeOnSale()
-            itemStore.store(it)
-        }.map {
-            ItemInfo.Token(it.itemToken)
-        }
+        item.changeOnSale()
+        itemStore.store(item)
+        return ItemInfo.Token(item.itemToken)
     }
 
     @Transactional
-    override fun changeEndOfSale(itemToken: String): Mono<ItemInfo.Token> {
+    override suspend fun changeEndOfSale(itemToken: String): ItemInfo.Token {
         var item = itemReader.getItemBy(itemToken)
-        return item.flatMap {
-            it.changeEndOfSale()
-            itemStore.store(it)
-        }.map {
-            ItemInfo.Token(it.itemToken)
-        }
+        item.changeEndOfSale()
+        itemStore.store(item)
+        return ItemInfo.Token(item.itemToken)
     }
 
     @Transactional(readOnly = true)
-    override fun retrieveItemInfo(itemToken: String): Mono<ItemInfo.Main> {
+    override suspend fun retrieveItemInfo(itemToken: String): ItemInfo.Main {
         var item = itemReader.getItemBy(itemToken)
-        var itemInfo = item.map { itemInfoDtoMapper.of(it) }
-        return itemInfo
+        return itemInfoDtoMapper.of(item)
     }
 }
