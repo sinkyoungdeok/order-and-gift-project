@@ -4,13 +4,18 @@ import msa.order.domain.order.OrderCommand
 import msa.order.domain.order.OrderInfo
 import msa.order.domain.order.OrderService
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Mono
 
 @Service
 class OrderFacade(val orderService: OrderService) {
 
-    suspend fun registerOrder(registerOrder: OrderCommand.RegisterOrder): OrderInfo.Token {
-        val orderInfo = orderService.registerOrder(registerOrder)
+    suspend fun registerOrder(command: OrderCommand.RegisterOrder): OrderInfo.Token {
+        val orderInfo = orderService.registerOrder(command)
 
         return orderInfo
+    }
+
+    fun paymentOrder(command: OrderCommand.PaymentRequest): Mono<OrderInfo.Token> {
+        return orderService.paymentOrder(command)
     }
 }

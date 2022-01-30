@@ -2,6 +2,7 @@ package msa.order.domain.order
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import reactor.core.publisher.Mono
 
 @Service
 class OrderServiceImpl(
@@ -15,4 +16,10 @@ class OrderServiceImpl(
 
         return OrderInfo.Token(order.orderToken)
     }
+
+    @Transactional
+    override fun paymentOrder(command: OrderCommand.PaymentRequest): Mono<OrderInfo.Token> {
+        TODO("Not yet implemented")
+    }
+
 }
