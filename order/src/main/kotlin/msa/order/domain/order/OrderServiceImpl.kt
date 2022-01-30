@@ -24,6 +24,7 @@ class OrderServiceImpl(
         var orderToken: String = command.orderToken
         var order: Order = orderReader.getOrder(orderToken)
         paymentProcessor.pay(order, command)
+        order.orderComplete()
         return OrderInfo.Token(orderToken)
     }
 

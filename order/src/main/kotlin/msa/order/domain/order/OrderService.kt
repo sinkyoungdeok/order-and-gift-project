@@ -1,6 +1,5 @@
 package msa.order.domain.order
 
-import reactor.core.publisher.Mono
 
 interface OrderService {
     suspend fun registerOrder(
