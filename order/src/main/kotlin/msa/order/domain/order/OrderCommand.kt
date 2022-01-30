@@ -6,6 +6,7 @@ import msa.order.domain.order.fragment.DeliveryFragment
 import msa.order.domain.order.item.OrderItem
 import msa.order.domain.order.item.OrderItemOption
 import msa.order.domain.order.item.OrderItemOptionGroup
+import msa.order.domain.order.payment.PayMethod
 
 
 class OrderCommand {
@@ -121,5 +122,11 @@ class OrderCommand {
             )
         }
     }
+
+    class PaymentRequest(
+        var orderToken: String,
+        var amount: Long,
+        var payMethod: PayMethod
+    )
 
 }

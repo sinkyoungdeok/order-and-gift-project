@@ -17,4 +17,10 @@ class OrderItemOptionGroup(
         itemOptionGroupName,
         mutableListOf()
     )
+
+    fun calculateTotalAmount(): Long {
+        return orderItemOptionList.stream()
+            .mapToLong(OrderItemOption::itemOptionPrice)
+            .sum()
+    }
 }

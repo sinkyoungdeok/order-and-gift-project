@@ -1,5 +1,6 @@
 package msa.order.domain.order
 
+import msa.order.common.exception.IllegalStatusException
 import msa.order.domain.AbstractEntity
 import msa.order.domain.order.fragment.DeliveryFragment
 import msa.order.domain.order.item.OrderItem
@@ -41,5 +42,27 @@ class Order(
         DELIVERY_PREPARE("배송준비"),
         IN_DELIVERY("배송중"),
         DELIVERY_COMPLETE("배송완료")
+    }
+
+    fun orderComplete() {
+        if (this.status != Status.INIT) throw IllegalStatusException()
+        this.status = Status.ORDER_COMPLETE
+    }
+
+    fun calculateTotalAmount(): Long {
+        return orderItemList.stream()
+            .mapToLong(OrderItem::calculateTotalAmount)
+            .sum()
+    }
+
+    fun isAlreadyPaymentComplete(): Boolean {
+        when (status) {
+            Status.ORDER_COMPLETE,
+            Status.DELIVERY_PREPARE,
+            Status.IN_DELIVERY,
+            Status.DELIVERY_COMPLETE
+            -> return true
+        }
+        return false
     }
 }

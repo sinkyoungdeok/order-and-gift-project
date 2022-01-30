@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service
 @Service
 class OrderFacade(val orderService: OrderService) {
 
-    suspend fun registerOrder(registerOrder: OrderCommand.RegisterOrder): OrderInfo.Token {
-        val orderInfo = orderService.registerOrder(registerOrder)
+    suspend fun registerOrder(command: OrderCommand.RegisterOrder): OrderInfo.Token {
+        val orderInfo = orderService.registerOrder(command)
 
         return orderInfo
+    }
+
+    suspend fun paymentOrder(command: OrderCommand.PaymentRequest): OrderInfo.Token {
+        return orderService.paymentOrder(command)
     }
 }

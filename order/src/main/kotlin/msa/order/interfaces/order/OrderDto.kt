@@ -1,10 +1,12 @@
 package msa.order.interfaces.order
 
+import msa.order.domain.order.payment.PayMethod
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 class OrderDto {
 
+    // register
     class RegisterOrderRequest(
         @field:NotNull(message = "userId 는 필수값입니다")
         var userId: String? = null,
@@ -73,6 +75,28 @@ class OrderDto {
     class RegisterOrderResponse(
         var orderToken: String? = null
     ) {
-        constructor(): this(null)
+        constructor() : this(null)
+    }
+
+    // payment
+    class PaymentRequest(
+        @field:NotBlank(message = "orderToken 는 필수값입니다")
+        var orderToken: String,
+
+        @field:NotNull(message = "payMethod 는 필수값입니다")
+        var payMethod: PayMethod,
+
+        @field:NotNull(message = "amount 는 필수값입니다")
+        var amount: Long,
+
+        @field:NotBlank(message = "orderDescription 는 필수값입니다")
+        var orderDescription: String
+    ) {
+        constructor() : this(
+            "",
+            PayMethod.CARD,
+            0,
+            ""
+        )
     }
 }
