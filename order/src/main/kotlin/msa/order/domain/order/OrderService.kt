@@ -9,4 +9,8 @@ interface OrderService {
     suspend fun paymentOrder(
         command: OrderCommand.PaymentRequest
     ): OrderInfo.Token
+
+    suspend fun retrieveOrder(
+        orderToken: String
+    ): OrderInfo.Main
 }

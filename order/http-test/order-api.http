@@ -85,3 +85,6 @@ Content-Type: application/json
   "amount": "72000",
   "orderDescription": "주문테스트"
 }
+
+### 주문 조회
+GET http://localhost:8080/api/v1/orders/ord_SZq5VK8vdBe2ISsS

@@ -17,4 +17,8 @@ class OrderFacade(val orderService: OrderService) {
     suspend fun paymentOrder(command: OrderCommand.PaymentRequest): OrderInfo.Token {
         return orderService.paymentOrder(command)
     }
+
+    suspend fun retrieveOrder(orderToken: String): OrderInfo.Main {
+        return orderService.retrieveOrder(orderToken)
+    }
 }
