@@ -1,7 +1,6 @@
 package msa.order.application.item
 
 import msa.order.application.item.event.ItemEmailEvent
-import msa.order.application.partner.event.PartnerEmailEvent
 import msa.order.domain.item.ItemCommand
 import msa.order.domain.item.ItemInfo
 import msa.order.domain.item.ItemService
@@ -13,7 +12,6 @@ class ItemFacade(
     val itemService: ItemService,
     val eventPublisher: ApplicationEventPublisher
 ) {
-
     suspend fun registerItem(
         request: ItemCommand.RegisterItemRequest,
         partnerToken: String
