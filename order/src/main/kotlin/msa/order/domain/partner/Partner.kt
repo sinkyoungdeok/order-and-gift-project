@@ -1,5 +1,7 @@
 package msa.order.domain.partner
 
+import msa.order.application.partner.event.PartnerEmailEvent
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
