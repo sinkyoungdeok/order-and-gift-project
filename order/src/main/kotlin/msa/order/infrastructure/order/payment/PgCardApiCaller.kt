@@ -12,6 +12,6 @@ class PgCardApiCaller : PaymentApiCaller {
     }
 
     override fun pay(command: OrderCommand.PaymentRequest) {
-        TODO("Not yet implemented")
+        return
     }
 }

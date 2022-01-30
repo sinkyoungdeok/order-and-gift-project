@@ -75,7 +75,7 @@ class OrderDto {
     class RegisterOrderResponse(
         var orderToken: String? = null
     ) {
-        constructor(): this(null)
+        constructor() : this(null)
     }
 
     // payment
@@ -91,5 +91,12 @@ class OrderDto {
 
         @field:NotBlank(message = "orderDescription 는 필수값입니다")
         var orderDescription: String
-    )
+    ) {
+        constructor() : this(
+            "",
+            PayMethod.CARD,
+            0,
+            ""
+        )
+    }
 }

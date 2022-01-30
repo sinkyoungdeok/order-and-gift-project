@@ -8,7 +8,8 @@ import org.springframework.transaction.annotation.Transactional
 class OrderServiceImpl(
     val orderItemSeriesFactory: OrderItemSeriesFactory,
     val orderReader: OrderReader,
-    val paymentProcessor: PaymentProcessor
+    val paymentProcessor: PaymentProcessor,
+    val orderStore: OrderStore
 ) : OrderService {
 
     @Transactional
@@ -21,10 +22,11 @@ class OrderServiceImpl(
 
     @Transactional
     override suspend fun paymentOrder(command: OrderCommand.PaymentRequest): OrderInfo.Token {
-        var orderToken: String = command.orderToken
-        var order: Order = orderReader.getOrder(orderToken)
+        val orderToken: String = command.orderToken
+        val order: Order = orderReader.getOrder(orderToken)
         paymentProcessor.pay(order, command)
         order.orderComplete()
+        orderStore.store(order)
         return OrderInfo.Token(orderToken)
     }
 
