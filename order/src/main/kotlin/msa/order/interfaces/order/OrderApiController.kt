@@ -24,4 +24,9 @@ class OrderApiController(
         val response = orderDtoMapper.of(orderInfo)
         return CommonResponse(response)
     }
+
+    @PostMapping("/payment-order")
+    fun paymentOrder(@RequestBody @Valid paymentRequest: OrderDto.PaymentRequest) {
+        var paymentCommand = orderDtoMapper.of(paymentRequest)
+    }
 }

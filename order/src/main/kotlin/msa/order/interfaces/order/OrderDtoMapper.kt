@@ -31,4 +31,8 @@ interface OrderDtoMapper {
     fun of(
         orderInfo: OrderInfo.Token
     ): OrderDto.RegisterOrderResponse
+
+    fun of(
+        request: OrderDto.PaymentRequest
+    ): OrderCommand.PaymentRequest
 }
