@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import reactor.core.publisher.Mono
 import javax.validation.Valid
 
 @RestController
@@ -18,12 +17,12 @@ class PartnerApiController(
 ) {
 
     @PostMapping
-    fun registerPartner(
+    suspend fun registerPartner(
         @Valid @RequestBody request: PartnerDto.RegisterRequest
-    ): Mono<CommonResponse<PartnerDto.RegisterResponse>> {
+    ): CommonResponse<PartnerDto.RegisterResponse> {
         var command: PartnerCommand.RegisterPartner = partnerDtoMapper.of(request)
         var partnerInfo = partnerFacade.registerPartner(command)
-        var response = partnerInfo.map { partnerDtoMapper.of(it) }
-        return response.map { CommonResponse(it) }
+        var response = partnerDtoMapper.of(partnerInfo)
+        return CommonResponse(response)
     }
 }

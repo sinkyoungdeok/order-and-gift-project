@@ -1,22 +1,20 @@
 package msa.order.domain.item
 
-import reactor.core.publisher.Mono
-
 interface ItemService {
-    fun registerItem(
+    suspend fun registerItem(
         command: ItemCommand.RegisterItemRequest,
         partnerToken: String
-    ): Mono<ItemInfo.Token>
+    ): ItemInfo.Token
 
-    fun changeOnSale(
+    suspend fun changeOnSale(
         itemToken: String
-    ): Mono<ItemInfo.Token>
+    ): ItemInfo.Token
 
-    fun changeEndOfSale(
+    suspend fun changeEndOfSale(
         itemToken: String
-    ): Mono<ItemInfo.Token>
+    ): ItemInfo.Token
 
-    fun retrieveItemInfo(
+    suspend fun retrieveItemInfo(
         itemToken: String
-    ): Mono<ItemInfo.Main>
+    ): ItemInfo.Main
 }
