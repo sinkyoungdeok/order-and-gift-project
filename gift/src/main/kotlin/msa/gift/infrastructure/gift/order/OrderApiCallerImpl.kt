@@ -13,7 +13,10 @@ class OrderApiCallerImpl(
 ) : OrderApiCaller {
     override fun registerGiftOrder(command: OrderApiCommand.RegisterOrder): String {
         val call = retrofitOrderApi.registerOrder(command)
-        val response: CommonResponse<RetrofitOrderApiResponse.RegisterOrder> = retrofitUtils.responseSync(call)
-        return response.data.orderToken
+        val response: CommonResponse<RetrofitOrderApiResponse.RegisterOrder>? = retrofitUtils.responseSync(call)
+        if (response != null) {
+            return response.data.orderToken
+        }
+        return ""
     }
 }

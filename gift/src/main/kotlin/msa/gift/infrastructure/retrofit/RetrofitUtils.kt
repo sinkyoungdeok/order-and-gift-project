@@ -35,7 +35,7 @@ class RetrofitUtils {
             .build()
     }
 
-    fun <T : CommonResponse<T>> responseSync(call: Call<T>): T {
+    fun <T : CommonResponse<T>> responseSync(call: Call<T>): T? {
         return try {
             val execute = call.execute()
             if (execute.isSuccessful) {

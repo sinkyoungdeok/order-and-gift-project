@@ -84,4 +84,10 @@ class Gift(
         if (this.status != Status.INIT) throw IllegalStatusException("Gift inPayment")
         this.status = Status.IN_PAYMENT
     }
+
+    fun completePayment() {
+        if (this.status != Status.IN_PAYMENT) throw IllegalStatusException("Gift paymentComplete");
+        this.status = Status.ORDER_COMPLETE
+        this.paidAt = LocalDateTime.now()
+    }
 }

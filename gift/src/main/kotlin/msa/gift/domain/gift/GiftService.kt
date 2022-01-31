@@ -1,5 +1,7 @@
 package msa.gift.domain.gift
 
+import reactor.core.publisher.Mono
+
 interface GiftService {
     suspend fun registerOrder(
         command: GiftCommand.RegisterOrder
@@ -7,5 +9,9 @@ interface GiftService {
 
     suspend fun requestPaymentProcessing(
         giftToken: String
+    )
+
+    fun completePayment(
+        orderToken: String
     )
 }
