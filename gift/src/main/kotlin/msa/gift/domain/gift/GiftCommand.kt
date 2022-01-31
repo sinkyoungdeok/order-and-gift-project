@@ -2,7 +2,6 @@ package msa.gift.domain.gift
 
 
 class GiftCommand {
-
     class RegisterOrder(
         var buyerUserId: String,
         var payMethod: String,

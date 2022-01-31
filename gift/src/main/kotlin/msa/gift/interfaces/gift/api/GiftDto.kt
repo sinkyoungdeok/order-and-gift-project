@@ -4,7 +4,6 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 class GiftDto {
-
     class RegisterOrderRequest(
         @field:NotNull(message = "userId 는 필수값입니다")
         var buyerUserId: String,

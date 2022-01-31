@@ -1,7 +1,6 @@
 package msa.gift.domain.gift
 
 class GiftInfo {
-
     class Main(
         var orderToken: String,
         var giftToken: String,

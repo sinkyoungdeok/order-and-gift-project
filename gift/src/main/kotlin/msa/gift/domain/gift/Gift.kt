@@ -4,7 +4,6 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
 class Gift {
-
     enum class Status(
         val description: String
     ) {
