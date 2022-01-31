@@ -3,6 +3,7 @@ package msa.gift.domain.gift
 import msa.gift.domain.gift.order.OrderApiCaller
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import reactor.core.publisher.Mono
 
 @Service
 class GiftServiceImpl(
@@ -28,5 +29,14 @@ class GiftServiceImpl(
         var gift = giftReader.getGiftBy(giftToken)
         gift.inPayment()
         giftStore.store(gift)
+    }
+
+    @Transactional
+    override fun completePayment(orderToken: String) {
+        var gift: Mono<Gift> = giftReader.getGiftByOrderToken(orderToken)
+        gift.flatMap {
+            it.completePayment()
+            giftStore.storeMono(it)
+        }.block()
     }
 }

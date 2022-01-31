@@ -1,9 +1,11 @@
 package msa.gift.application.gift
 
+import msa.gift.domain.gift.Gift
 import msa.gift.domain.gift.GiftCommand
 import msa.gift.domain.gift.GiftInfo
 import msa.gift.domain.gift.GiftService
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Mono
 
 @Service
 class GiftFacade(
@@ -18,5 +20,9 @@ class GiftFacade(
 
     suspend fun requestPaymentProcessing(giftToken: String) {
         giftService.requestPaymentProcessing(giftToken)
+    }
+
+    fun completePayment(orderToken: String) {
+        return giftService.completePayment(orderToken)
     }
 }

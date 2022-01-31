@@ -5,6 +5,7 @@ import msa.gift.common.exception.InvalidParamException
 import msa.gift.domain.gift.Gift
 import msa.gift.domain.gift.GiftStore
 import org.springframework.stereotype.Component
+import reactor.core.publisher.Mono
 
 @Component
 class GiftStoreImpl(
@@ -14,4 +15,10 @@ class GiftStoreImpl(
         if (gift == null) throw InvalidParamException()
         return giftRepository.save(gift).awaitSingle()
     }
+
+    override fun storeMono(gift: Gift): Mono<Gift> {
+        if (gift == null) throw InvalidParamException()
+        return giftRepository.save(gift)
+    }
+
 }

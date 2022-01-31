@@ -3,7 +3,7 @@ POST http://localhost:8080/api/v1/gift-orders/payment-order
 Content-Type: application/json
 
 {
-  "orderToken": "ord_BzLbNX8vQ2GwMfdM",
+  "orderToken": "ord_KqwQHG03bYXCV0vG",
   "payMethod": "TOSS_PAY",
   "amount": "41000",
   "orderDescription": "선물하기 주문"

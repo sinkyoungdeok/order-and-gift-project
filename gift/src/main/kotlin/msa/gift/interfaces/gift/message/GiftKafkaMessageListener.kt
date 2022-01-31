@@ -8,9 +8,8 @@ import org.springframework.stereotype.Component
 class GiftKafkaMessageListener(
     val giftFacade: GiftFacade
 ) {
-
     @KafkaListener(topics = arrayOf("pay-complete"))
-    fun payComplete(message: String) {
-        println("receive" + message)
+    fun payComplete(orderToken: String) {
+        giftFacade.completePayment(orderToken)
     }
 }
