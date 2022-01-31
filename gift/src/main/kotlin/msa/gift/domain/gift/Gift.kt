@@ -22,10 +22,10 @@ class Gift(
     var receiverAddress1: String,
     var receiverAddress2: String,
     var etcMessage: String,
-    var paidAt: LocalDateTime,
-    var pushedAt: LocalDateTime,
-    var acceptedAt: LocalDateTime,
-    var expiredAt: LocalDateTime
+    var paidAt: LocalDateTime? = null,
+    var pushedAt: LocalDateTime? = null,
+    var acceptedAt: LocalDateTime? = null,
+    var expiredAt: LocalDateTime? = null
 ) {
     constructor(
         buyerUserId: String,
@@ -37,23 +37,23 @@ class Gift(
     ) : this(
         null,
         "",
+        buyerUserId,
+        orderToken,
+        null,
+        pushType,
+        giftReceiverName,
+        giftReceiverPhone,
+        giftMessage,
+        "",
+        "",
+        "",
+        "",
         "",
         "",
         null,
         null,
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        LocalDateTime.now(),
-        LocalDateTime.now(),
-        LocalDateTime.now(),
-        LocalDateTime.now()
+        null,
+        null
     )
 
     enum class Status(

@@ -12,7 +12,7 @@ Content-Type: application/json
   "orderItemList": [
     {
       "orderCount": 1,
-      "itemToken": "itm_5e2OwXwjlaU1diDW",
+      "itemToken": "itm_O184SEsCOE1IWoUd",
       "itemName": "티셔츠",
       "itemPrice": "30000",
       "orderItemOptionGroupList": [
@@ -42,7 +42,7 @@ Content-Type: application/json
     },
     {
       "orderCount": 1,
-      "itemToken": "itm_kAyI718RmReYl6IU",
+      "itemToken": "itm_KbobubboypTZ2B0s",
       "itemName": "양말",
       "itemPrice": "10000",
       "orderItemOptionGroupList": [
