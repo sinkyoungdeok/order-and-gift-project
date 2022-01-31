@@ -12,4 +12,23 @@ services:
     container_name: "docker-mongodb"
     env_file:
       - .env
-
+  order-local-zookeeper:
+    image: wurstmeister/zookeeper:3.4.6
+    ports:
+      - 2181:2181
+  order-local-kafka:
+    image: niks123123/kafka:2.7.0
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=localhost
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ZOOKEEPER_CONNECT=order-local-zookeeper:2181
+      - KAFKA_CREATE_TOPICS=pay-complete:1:1
+    ports:
+      - 9092:9092
+    depends_on:
+      - order-local-zookeeper
+    healthcheck:
+      test: [ "CMD", "kafka-topics.sh", "--list", "--zookeeper", "local-zookeeper:2181" ]
+      interval: 5s
+      timeout: 10s
+      retries: 4
