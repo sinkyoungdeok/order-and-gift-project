@@ -12,7 +12,7 @@
 - 아키텍처: msa, ddd
 - 언어: java
 - 프레임워크: spring boot, spring mvc, spring data jpa
-- 라이브러리: jpa, retrofit, mapstruct
+- 라이브러리: jpa, retrofit2, mapstruct
 - 빌드툴: gradle
 - 메시지 브로커: aws sqs
 - 컨테이너툴: docker
