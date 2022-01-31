@@ -25,4 +25,6 @@ interface GiftOrderDtoMapper {
     fun of(request: GiftOrderDto.RegisterOrderItemOptionRequest): OrderCommand.RegisterOrderItemOption
 
     fun of(orderInfo: OrderInfo.Token): GiftOrderDto.RegisterResponse
+
+    fun of(request: GiftOrderDto.PaymentRequest): OrderCommand.PaymentRequest
 }

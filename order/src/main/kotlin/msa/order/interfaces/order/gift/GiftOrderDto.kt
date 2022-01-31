@@ -1,5 +1,6 @@
 package msa.order.interfaces.order.gift
 
+import msa.order.domain.order.payment.PayMethod
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
@@ -64,4 +65,18 @@ class GiftOrderDto {
     ) {
         constructor() : this("")
     }
+
+    class PaymentRequest(
+        @field:NotBlank(message = "orderToken 는 필수값입니다")
+        var orderToken: String,
+
+        @field:NotNull(message = "payMethod 는 필수값입니다")
+        var payMethod: PayMethod,
+
+        @field:NotNull(message = "amount 는 필수값입니다")
+        var amount: Long,
+
+        @field:NotBlank(message = "orderDescription 는 필수값입니다")
+        var orderDescrption: String
+    )
 }
