@@ -2,10 +2,7 @@ package msa.gift.interfaces.gift.api
 
 import msa.gift.application.gift.GiftFacade
 import msa.gift.common.response.CommonResponse
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
@@ -22,5 +19,11 @@ class GiftApiController(
         var giftInfo = giftFacade.registerOrder(giftCommand)
         var response = giftDtoMapper.of(giftInfo)
         return CommonResponse(response)
+    }
+
+    @PostMapping
+    suspend fun requestPaymentProcessing(@PathVariable giftToken: String): CommonResponse<String> {
+        giftFacade.requestPaymentProcessing(giftToken)
+        return CommonResponse("OK")
     }
 }
