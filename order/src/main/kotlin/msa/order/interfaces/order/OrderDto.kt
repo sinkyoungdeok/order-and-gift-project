@@ -1,8 +1,6 @@
 package msa.order.interfaces.order
 
-import msa.order.domain.order.OrderInfo
 import msa.order.domain.order.payment.PayMethod
-import java.time.LocalDateTime
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 

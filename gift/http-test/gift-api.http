@@ -1,0 +1,74 @@
+### 선물하기 등록
+POST http://localhost:18080/api/v1/gifts/
+Content-Type: application/json
+
+{
+  "buyerUserId": "12345",
+  "payMethod": "TOSS_PAY",
+  "pushType": "KAKAO",
+  "giftReceiverName": "이기쁨",
+  "giftReceiverPhone": "01000001111",
+  "giftMessage": "기쁨아 사랑해",
+  "orderItemList": [
+    {
+      "orderCount": 1,
+      "itemToken": "itm_O184SEsCOE1IWoUd",
+      "itemName": "티셔츠",
+      "itemPrice": "30000",
+      "orderItemOptionGroupList": [
+        {
+          "ordering": 1,
+          "itemOptionGroupName": "사이즈",
+          "orderItemOptionList": [
+            {
+              "ordering": 1,
+              "itemOptionName": "MEDIUM",
+              "itemOptionPrice": 0
+            }
+          ]
+        },
+        {
+          "ordering": 2,
+          "itemOptionGroupName": "컬러",
+          "orderItemOptionList": [
+            {
+              "ordering": 1,
+              "itemOptionName": "GOLD",
+              "itemOptionPrice": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orderCount": 1,
+      "itemToken": "itm_KbobubboypTZ2B0s",
+      "itemName": "양말",
+      "itemPrice": "10000",
+      "orderItemOptionGroupList": [
+        {
+          "ordering": 1,
+          "itemOptionGroupName": "사이즈",
+          "orderItemOptionList": [
+            {
+              "ordering": 1,
+              "itemOptionName": "LARGE",
+              "itemOptionPrice": 0
+            }
+          ]
+        },
+        {
+          "ordering": 2,
+          "itemOptionGroupName": "컬러",
+          "orderItemOptionList": [
+            {
+              "ordering": 1,
+              "itemOptionName": "RED",
+              "itemOptionPrice": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
