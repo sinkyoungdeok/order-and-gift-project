@@ -8,3 +8,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://root:1234@localhost/gift?authSource=admin
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: msa
