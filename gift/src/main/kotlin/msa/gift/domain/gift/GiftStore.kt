@@ -1,5 +1,5 @@
 package msa.gift.domain.gift
 
 interface GiftStore {
-    fun store(gift: Gift): Gift
+    suspend fun store(gift: Gift): Gift
 }

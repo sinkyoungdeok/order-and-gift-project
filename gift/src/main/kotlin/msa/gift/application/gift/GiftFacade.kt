@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 class GiftFacade(
     val giftService: GiftService
 ) {
-    fun registerOrder(
+    suspend fun registerOrder(
         command: GiftCommand.RegisterOrder
     ): GiftInfo.Main {
         var giftInfo = giftService.registerOrder(command)

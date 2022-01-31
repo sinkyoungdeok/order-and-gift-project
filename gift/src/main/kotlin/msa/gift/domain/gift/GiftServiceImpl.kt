@@ -10,7 +10,7 @@ class GiftServiceImpl(
     val giftStore: GiftStore,
     val giftInfoMapper: GiftInfoMapper
 ) : GiftService {
-    override fun registerOrder(
+    override suspend fun registerOrder(
         command: GiftCommand.RegisterOrder
     ): GiftInfo.Main {
         var orderCommand = giftToOrderMapper.of(command)

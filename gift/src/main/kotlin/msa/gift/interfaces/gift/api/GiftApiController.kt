@@ -15,7 +15,7 @@ class GiftApiController(
     val giftFacade: GiftFacade
 ) {
     @PostMapping
-    fun registerOrder(
+    suspend fun registerOrder(
         @RequestBody @Valid request: GiftDto.RegisterOrderRequest
     ): CommonResponse<GiftDto.RegisterOrderResponse> {
         var giftCommand = giftDtoMapper.of(request)
