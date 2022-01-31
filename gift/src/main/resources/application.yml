@@ -1,0 +1,10 @@
+server:
+  port: 18080
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  data:
+    mongodb:
+      uri: mongodb://root:1234@localhost/gift?authSource=admin
