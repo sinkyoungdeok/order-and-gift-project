@@ -75,6 +75,46 @@
 
 ## 3-2. 선물하기 프로젝트
 
+### 요구사항
+- 선물하기 주문은 일반 주문과 달리, 주문 과정에서 배송지 주소를 확정할 수 없다
+  - 선물하기 주문을 결제한 사람이 해당 주문을 지인하게 선물로 전달하고, 이 후 수령자가 본인의 배송지 주소를 입력해야 하는 배송이 시작되는 구조이기 때문이다
+- 선물하기 결제 후 구매자와 수령자에게 카카오톡이나 LMS로 알림이 발송되어야 한다
+- 수령자는 선물을 수락하거나 거절할 수 있다
+- 선물하기 서비스 개발과 운영 시에는 기존 주문 서비스의 기능에는 영향이 없도록 하면서 최대한 빠르게 개발이 진행되어야 한다
+- 여기에서는 실제의 복잡한 선물하기 도메인 요구사항을 간소화하여, msa에서의 서버간 통신과 비즈니스 도메인별로 서버를 나누는 내용에 초점을 맞추어 진행한다
+
+### 설계
+- 선물하기 서비스에서 기존 주문 생성 API를 호출할 때, 임의의 배송지 정보를 전달하는 방식을 채택한다 (추후 배송지 정보를 update 하게끔 처리한다)
+
+
+### 다이어그램
+
+**전체 Flow 간략 버전**  
+![image](https://user-images.githubusercontent.com/28394879/151736648-21be3491-99b5-4d46-b0fa-7c1cbfa0c688.png)
+
+**선물하기 서비스와 주문 서비스간의 의존관게**  
+![image](https://user-images.githubusercontent.com/28394879/151736756-9dc02bd1-f949-49ef-b3c7-e1a71234a7f2.png)
+
+**전체 Flow**  
+![image](https://user-images.githubusercontent.com/28394879/151734979-854e0ff1-19a4-4630-8a5e-ca86ce5a6a4a.png)
+
+**실제 Flow**  
+![image](https://user-images.githubusercontent.com/28394879/151737066-2b5f53eb-e375-44f9-bf19-9a15f845a012.png)
+
+**선물 구매 시**  
+![image](https://user-images.githubusercontent.com/28394879/151735130-45a84aab-ea41-442e-aab8-a54644bcb324.png)
+
+**선물 수락 시**  
+![image](https://user-images.githubusercontent.com/28394879/151735169-a4f1ed9c-d750-46b8-a7ef-fbe494580c1d.png)
+
+**선물 거절 시**  
+![image](https://user-images.githubusercontent.com/28394879/151735207-ece3ab78-3ec4-4b14-9f7f-7f973deaf179.png)
+
+**나중에 Kafka를 통해서 얻을 수 있는 설계**  
+![image](https://user-images.githubusercontent.com/28394879/151737175-87b3e2ba-bc1b-4010-8516-b63a0621559c.png)
+
+### 변경사항
+- 확장성을 위해서 SQS대신 kafka를 사용한다.
 
 # 4. 발견한 오류 & 해결방법 
 <details><summary>1. reactiveMongoDB의 repository빈 주입 실패 </summary>
