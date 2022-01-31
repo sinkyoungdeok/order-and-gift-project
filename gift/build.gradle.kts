@@ -30,6 +30,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
+	// retrofit
+	implementation("com.squareup.retrofit2:retrofit:2.9.0")
+	implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+	implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
+
 	// MapStruct
 	implementation("org.mapstruct:mapstruct:1.4.2.Final")
 	kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
