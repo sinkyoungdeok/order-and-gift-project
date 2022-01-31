@@ -77,6 +77,6 @@ class GiftOrderDto {
         var amount: Long,
 
         @field:NotBlank(message = "orderDescription 는 필수값입니다")
-        var orderDescrption: String
+        var orderDescription: String
     )
 }
