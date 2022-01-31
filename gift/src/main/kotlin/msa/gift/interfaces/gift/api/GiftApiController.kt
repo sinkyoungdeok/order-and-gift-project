@@ -21,7 +21,7 @@ class GiftApiController(
         return CommonResponse(response)
     }
 
-    @PostMapping
+    @PostMapping("/{giftToken}/payment-processing")
     suspend fun requestPaymentProcessing(@PathVariable giftToken: String): CommonResponse<String> {
         giftFacade.requestPaymentProcessing(giftToken)
         return CommonResponse("OK")

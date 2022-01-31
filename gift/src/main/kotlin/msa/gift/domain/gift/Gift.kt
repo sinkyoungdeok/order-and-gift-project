@@ -36,12 +36,13 @@ class Gift(
         giftReceiverPhone: String,
         giftMessage: String,
         giftToken: String,
+        status: Status
     ) : this(
         null,
         giftToken,
         buyerUserId,
         orderToken,
-        null,
+        status,
         pushType,
         giftReceiverName,
         giftReceiverPhone,
