@@ -25,7 +25,7 @@ class GiftServiceImpl(
 
     @Transactional
     override suspend fun requestPaymentProcessing(giftToken: String) {
-        var gift = giftReader.getGifyBy(giftToken)
+        var gift = giftReader.getGiftBy(giftToken)
         gift.inPayment()
         giftStore.store(gift)
     }

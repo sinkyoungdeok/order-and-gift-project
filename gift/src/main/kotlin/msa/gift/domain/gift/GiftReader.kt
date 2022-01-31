@@ -1,5 +1,5 @@
 package msa.gift.domain.gift
 
 interface GiftReader {
-    fun getGifyBy(giftToken: String): Gift
+    suspend fun getGiftBy(giftToken: String): Gift
 }
