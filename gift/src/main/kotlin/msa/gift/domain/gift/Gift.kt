@@ -33,10 +33,11 @@ class Gift(
         pushType: PushType,
         giftReceiverName: String,
         giftReceiverPhone: String,
-        giftMessage: String
+        giftMessage: String,
+        giftToken: String,
     ) : this(
         null,
-        "",
+        giftToken,
         buyerUserId,
         orderToken,
         null,

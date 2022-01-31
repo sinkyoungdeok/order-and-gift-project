@@ -1,5 +1,7 @@
 package msa.gift.domain.gift
 
+import msa.gift.common.util.TokenGenerator
+
 
 class GiftCommand {
     class RegisterOrder(
@@ -11,6 +13,8 @@ class GiftCommand {
         var giftMessage: String,
         var orderItemList: List<RegisterOrderItem>
     ) {
+        private val GIFT_PREFIX = "gt_"
+
         fun toEntity(orderToken: String): Gift {
             return Gift(
                 buyerUserId = buyerUserId,
@@ -18,7 +22,8 @@ class GiftCommand {
                 pushType = Gift.PushType.valueOf(pushType),
                 giftReceiverName = giftReceiverName,
                 giftReceiverPhone = giftReceiverPhone,
-                giftMessage = giftMessage
+                giftMessage = giftMessage,
+                giftToken = TokenGenerator.randomCharacterWithPrefix(GIFT_PREFIX) ?: "",
             )
         }
     }
