@@ -15,4 +15,8 @@ class GiftFacade(
         var giftInfo = giftService.registerOrder(command)
         return giftInfo
     }
+
+    suspend fun requestPaymentProcessing(giftToken: String) {
+        giftService.requestPaymentProcessing(giftToken)
+    }
 }

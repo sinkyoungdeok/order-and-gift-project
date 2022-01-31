@@ -1,5 +1,6 @@
 package msa.gift.domain.gift
 
+import msa.gift.common.exception.IllegalStatusException
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
@@ -35,12 +36,13 @@ class Gift(
         giftReceiverPhone: String,
         giftMessage: String,
         giftToken: String,
+        status: Status
     ) : this(
         null,
         giftToken,
         buyerUserId,
         orderToken,
-        null,
+        status,
         pushType,
         giftReceiverName,
         giftReceiverPhone,
@@ -76,5 +78,10 @@ class Gift(
     ) {
         KAKAO("카카오톡"),
         LMS("문자")
+    }
+
+    fun inPayment() {
+        if (this.status != Status.INIT) throw IllegalStatusException("Gift inPayment")
+        this.status = Status.IN_PAYMENT
     }
 }

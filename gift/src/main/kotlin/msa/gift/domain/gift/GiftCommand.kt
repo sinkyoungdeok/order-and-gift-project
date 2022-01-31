@@ -24,6 +24,7 @@ class GiftCommand {
                 giftReceiverPhone = giftReceiverPhone,
                 giftMessage = giftMessage,
                 giftToken = TokenGenerator.randomCharacterWithPrefix(GIFT_PREFIX) ?: "",
+                status = Gift.Status.INIT
             )
         }
     }

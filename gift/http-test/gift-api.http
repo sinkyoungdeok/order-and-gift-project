@@ -72,3 +72,7 @@ Content-Type: application/json
     }
   ]
 }
+
+### 선물하기 결제중 상태로 변경
+POST http://localhost:18080/api/v1/gifts/gt_h6x5liJ20Bzu03iP9/payment-processing
+Content-Type: application/json
