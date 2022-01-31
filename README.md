@@ -21,7 +21,7 @@
 ## 새로운 프로젝트의 기술 스택
 - 아키텍처: msa, ddd
 - 언어: kotlin
-- 프레임워크: spring boot, spring webflux, spring data mongodb
+- 프레임워크: spring boot, spring webflux, spring data mongodb reactive
 - 라이브러리: spring kafka, retrofit, mapstruct
 - 빌드툴: gradle
 - 메시지 브로커: kafka
