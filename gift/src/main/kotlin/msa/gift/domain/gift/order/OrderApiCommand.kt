@@ -1,33 +1,17 @@
-package msa.gift.domain.gift
+package msa.gift.domain.gift.order
 
-
-class GiftCommand {
+class OrderApiCommand {
     class RegisterOrder(
         var buyerUserId: String,
         var payMethod: String,
-        var pushType: String,
-        var giftReceiverName: String,
-        var giftReceiverPhone: String,
-        var giftMessage: String,
         var orderItemList: List<RegisterOrderItem>
-    ) {
-        fun toEntity(orderToken: String): Gift {
-            return Gift(
-                buyerUserId = buyerUserId,
-                orderToken = orderToken,
-                pushType = Gift.PushType.valueOf(pushType),
-                giftReceiverName = giftReceiverName,
-                giftReceiverPhone = giftReceiverPhone,
-                giftMessage = giftMessage
-            )
-        }
-    }
+    )
 
     class RegisterOrderItem(
         var orderCount: Int,
         var itemToken: String,
         var itemName: String,
-        var itemPrice: Long,
+        var itemPrice: String,
         var orderItemOptionGroupList: List<RegisterOrderItemOptionGroup>
     )
 

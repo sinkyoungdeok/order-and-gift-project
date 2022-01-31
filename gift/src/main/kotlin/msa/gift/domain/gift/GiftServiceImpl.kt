@@ -1,12 +1,22 @@
 package msa.gift.domain.gift
 
+import msa.gift.domain.gift.order.OrderApiCaller
 import org.springframework.stereotype.Service
 
 @Service
-class GiftServiceImpl : GiftService {
+class GiftServiceImpl(
+    val giftToOrderMapper: GiftToOrderMapper,
+    val orderApiCaller: OrderApiCaller,
+    val giftStore: GiftStore,
+    val giftInfoMapper: GiftInfoMapper
+) : GiftService {
     override fun registerOrder(
         command: GiftCommand.RegisterOrder
     ): GiftInfo.Main {
-        return GiftInfo.Main("11", "12", null, "", "", "")
+        var orderCommand = giftToOrderMapper.of(command)
+        var orderToken = orderApiCaller.registerGiftOrder(orderCommand)
+        var initGift = command.toEntity(orderToken)
+        var gift = giftStore.store(initGift)
+        return giftInfoMapper.of(gift)
     }
 }
