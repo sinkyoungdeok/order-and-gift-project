@@ -19,4 +19,8 @@ class GiftServiceImpl(
         var gift = giftStore.store(initGift)
         return giftInfoMapper.of(gift)
     }
+
+    override suspend fun requestPaymentProcessing(giftToken: String) {
+        TODO("Not yet implemented")
+    }
 }

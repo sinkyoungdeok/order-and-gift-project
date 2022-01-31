@@ -17,6 +17,6 @@ class GiftFacade(
     }
 
     suspend fun requestPaymentProcessing(giftToken: String) {
-
+        giftService.requestPaymentProcessing(giftToken)
     }
 }
