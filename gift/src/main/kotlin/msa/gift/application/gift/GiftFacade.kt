@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service
 @Service
 class GiftFacade {
     fun registerOrder(command: GiftCommand.RegisterOrder): GiftInfo.Main {
-        return GiftInfo.Main()
+        return GiftInfo.Main("11", "12",null,"","","")
     }
 }

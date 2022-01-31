@@ -63,4 +63,9 @@ class GiftDto {
         @field:NotNull(message = "itemOptionPrice 는 필수값입니다")
         var itemOptionPrice: Long
     )
+
+    class RegisterOrderResponse(
+        var orderToken: String,
+        var giftToken: String
+    )
 }

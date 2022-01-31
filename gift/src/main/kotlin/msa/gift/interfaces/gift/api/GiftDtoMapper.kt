@@ -1,9 +1,8 @@
 package msa.gift.interfaces.gift.api
 
 import msa.gift.domain.gift.GiftCommand
-import org.mapstruct.InjectionStrategy
-import org.mapstruct.Mapper
-import org.mapstruct.ReportingPolicy
+import msa.gift.domain.gift.GiftInfo
+import org.mapstruct.*
 
 @Mapper(
     componentModel = "spring",
@@ -26,4 +25,8 @@ interface GiftDtoMapper {
     fun of(
         request: GiftDto.RegisterOrderItemOptionRequest
     ): GiftCommand.RegisterOrderItemOption
+
+    fun of(
+        giftInfo: GiftInfo.Main
+    ): GiftDto.RegisterOrderResponse
 }
