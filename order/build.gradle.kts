@@ -40,6 +40,10 @@ dependencies {
 		"org.projectlombok:lombok-mapstruct-binding:0.1.0"
 	)
 
+	// kafka
+	implementation("org.springframework.kafka:spring-kafka")
+	testImplementation("org.springframework.kafka:spring-kafka-test")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 }

@@ -1,7 +1,12 @@
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: msa
   data:
     mongodb:
       uri: mongodb://root:1234@localhost/order?authSource=admin
+
 
 
 
