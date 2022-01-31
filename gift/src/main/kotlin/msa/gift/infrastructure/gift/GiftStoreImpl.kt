@@ -1,4 +1,4 @@
-package msa.gift.infrastructure.gift.order.infrastructure.gift
+package msa.gift.infrastructure.gift
 
 import msa.gift.domain.gift.Gift
 import msa.gift.domain.gift.GiftStore
