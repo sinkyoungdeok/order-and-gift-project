@@ -1,11 +1,9 @@
 package msa.gift.application.gift
 
-import msa.gift.domain.gift.Gift
 import msa.gift.domain.gift.GiftCommand
 import msa.gift.domain.gift.GiftInfo
 import msa.gift.domain.gift.GiftService
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Mono
 
 @Service
 class GiftFacade(
@@ -28,5 +26,9 @@ class GiftFacade(
 
     suspend fun acceptGift(command: GiftCommand.AcceptGift) {
         giftService.acceptGift(command)
+    }
+
+    suspend fun getOrder(giftToken: String): GiftInfo.Main {
+        return GiftInfo.Main()
     }
 }
