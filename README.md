@@ -475,6 +475,30 @@ fun registerItem(
 - https://homoefficio.github.io/2020/08/06/Spring-WebFlux-RequestBody/
 
 </details>
+
+<details><summary> 7. 스프링 카프카와 코루틴 연동이 안되는 현상 발견</summary>
+
+### 코드
+```kotlin
+@Component
+class GiftKafkaMessageListener(
+    val giftFacade: GiftFacade
+) {
+    @KafkaListener(topics = arrayOf("pay-complete"))
+    suspend fun payComplete(orderToken: String) {
+        giftFacade.completePayment(orderToken)
+    }
+}
+```
+
+### 상황
+- 카프카 Listen하는 쪽에서 코루틴을 사용하면, 에러가 발생.
+- 아직 스프링 카프카에 코루틴을 지원안하는듯.
+
+### 해결 방법
+- 코루틴 대신에, Mono를 활용하는 코드로 변경 
+
+</details>
 	
 # 5. 프로젝트 기간
 - 주문 프로젝트: 2022.01.20 ~ 2022.01.31
