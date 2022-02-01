@@ -28,4 +28,12 @@ class OrderFacade(
     suspend fun retrieveOrder(orderToken: String): OrderInfo.Main {
         return orderService.retrieveOrder(orderToken)
     }
+
+    suspend fun updateReceiverInfo(
+        orderToken: String,
+        command: OrderCommand.UpdateReceiverInfoRequest
+    ) {
+
+        eventPublisher.publishEvent(OrderKakaoEvent())
+    }
 }

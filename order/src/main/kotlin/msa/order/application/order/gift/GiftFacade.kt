@@ -11,11 +11,4 @@ class GiftFacade(
     suspend fun paymentOrder(command: OrderCommand.PaymentRequest) {
         giftOrderService.paymentOrder(command)
     }
-
-    suspend fun updateReceiverInfo(
-        orderToken: String,
-        command: OrderCommand.UpdateReceiverInfoRequest
-    ) {
-
-    }
 }

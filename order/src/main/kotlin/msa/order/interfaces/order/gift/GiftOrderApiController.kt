@@ -38,7 +38,7 @@ class GiftOrderApiController(
         @RequestBody @Valid request: GiftOrderDto.UpdateReceiverInfoRequest
     ): CommonResponse<String> {
         var orderCommand = giftOrderDtoMapper.of(request)
-        giftFacade.updateReceiverInfo(orderToken, orderCommand)
+        orderFacade.updateReceiverInfo(orderToken, orderCommand)
         return CommonResponse("OK")
     }
 }
