@@ -39,4 +39,12 @@ class GiftServiceImpl(
             giftStore.storeMono(it)
         }.block()
     }
+
+    @Transactional
+    override suspend fun acceptGift(command: GiftCommand.AcceptGift) {
+        var giftToken = command.giftToken
+        var gift = giftReader.getGiftBy(giftToken)
+        gift.accept(command)
+        giftStore.store(gift)
+    }
 }

@@ -25,4 +25,8 @@ class GiftFacade(
     fun completePayment(orderToken: String) {
         return giftService.completePayment(orderToken)
     }
+
+    suspend fun acceptGift(command: GiftCommand.AcceptGift) {
+        giftService.acceptGift(command)
+    }
 }

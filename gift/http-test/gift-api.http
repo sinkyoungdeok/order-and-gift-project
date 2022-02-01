@@ -76,3 +76,16 @@ Content-Type: application/json
 ### 선물하기 결제중 상태로 변경
 POST http://localhost:18080/api/v1/gifts/gt_uZm88kNksPY37L6Dy/payment-processing
 Content-Type: application/json
+
+### 선물하기 수락 상태로 변경
+POST http://localhost:18080/api/v1/gifts/gt_9E6Xtzv2C5aQMqwPs/accept-gift
+Content-Type: application/json
+
+{
+  "receiverName": "그렉",
+  "receiverPhone": "01000001111",
+  "receiverZipcode": "123123",
+  "receiverAddress1": "서울시 강동구",
+  "receiverAddress2": "우리집",
+  "etcMessage": "감사합니다!"
+}

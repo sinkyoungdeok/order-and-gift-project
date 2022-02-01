@@ -14,4 +14,8 @@ interface GiftService {
     fun completePayment(
         orderToken: String
     )
+
+    suspend fun acceptGift(
+        command: GiftCommand.AcceptGift
+    )
 }
