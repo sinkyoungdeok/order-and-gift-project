@@ -48,5 +48,4 @@ class OrderServiceImpl(
         order.deliveryPrepare()
         orderStore.store(order)
     }
-
 }
