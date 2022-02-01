@@ -39,4 +39,8 @@ class GiftServiceImpl(
             giftStore.storeMono(it)
         }.block()
     }
+
+    override suspend fun acceptGift(command: GiftCommand.AcceptGift) {
+        TODO("Not yet implemented")
+    }
 }

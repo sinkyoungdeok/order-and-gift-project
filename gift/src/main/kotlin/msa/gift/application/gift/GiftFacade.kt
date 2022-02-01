@@ -27,6 +27,6 @@ class GiftFacade(
     }
 
     suspend fun acceptGift(command: GiftCommand.AcceptGift) {
-
+        giftService.acceptGift(command)
     }
 }
