@@ -503,3 +503,14 @@ class GiftKafkaMessageListener(
 # 5. 프로젝트 기간
 - 주문 프로젝트: 2022.01.20 ~ 2022.01.31
 - 선물 프로젝트: 2022.01.31 ~ 2022.02.01
+
+# 6. 프로젝트 세팅 
+
+1. docker 실행 
+```
+docker-compose -f docker/docker-compose.yml up -d
+```
+
+2. order 프로젝트 실행 
+
+3. gift 프로젝트 실행
