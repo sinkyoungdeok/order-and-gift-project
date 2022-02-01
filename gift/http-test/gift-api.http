@@ -89,3 +89,7 @@ Content-Type: application/json
   "receiverAddress2": "우리집",
   "etcMessage": "감사합니다!"
 }
+
+### 선물하기 조회
+GET http://localhost:18080/api/v1/gifts/gt_9E6Xtzv2C5aQMqwPs
+Content-Type: application/json

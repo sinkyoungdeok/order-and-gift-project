@@ -36,4 +36,11 @@ class GiftApiController(
         giftFacade.acceptGift(command)
         return CommonResponse("OK")
     }
+
+    @GetMapping("/{giftToken}")
+    suspend fun retrieveOrder(@PathVariable giftToken: String): CommonResponse<GiftDto.RegisterOrderResponse> {
+        var giftInfo = giftFacade.getOrder(giftToken)
+        var response = giftDtoMapper.of(giftInfo)
+        return CommonResponse(response)
+    }
 }

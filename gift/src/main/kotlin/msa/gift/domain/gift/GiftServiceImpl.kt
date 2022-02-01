@@ -49,4 +49,11 @@ class GiftServiceImpl(
 
         orderApiCaller.updateReceiverInfo(gift.orderToken, command)
     }
+
+    @Transactional(readOnly = true)
+    override suspend fun getGiftInfo(giftToken: String): GiftInfo.Main {
+        var gift = giftReader.getGiftBy(giftToken)
+        var giftInfo = giftInfoMapper.of(gift)
+        return giftInfo
+    }
 }
