@@ -40,7 +40,11 @@ class GiftServiceImpl(
         }.block()
     }
 
+    @Transactional
     override suspend fun acceptGift(command: GiftCommand.AcceptGift) {
-        TODO("Not yet implemented")
+        var giftToken = command.giftToken
+        var gift = giftReader.getGiftBy(giftToken)
+        gift.completePayment()
+        giftStore.store(gift)
     }
 }
