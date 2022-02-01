@@ -464,3 +464,7 @@ fun registerItem(
 - https://homoefficio.github.io/2020/08/06/Spring-WebFlux-RequestBody/
 
 </details>
+	
+# 5. 프로젝트 기간
+- 주문 프로젝트: 2022.01.20 ~ 2022.01.31
+- 선물 프로젝트: 2022.01.31 ~ 2022.02.01
