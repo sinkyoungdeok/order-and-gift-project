@@ -87,5 +87,14 @@ class GiftOrderDto {
         var receiverAddress1: String,
         var receiverAddress2: String,
         var etcMessage: String
-    )
+    ) {
+        constructor() : this(
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        )
+    }
 }

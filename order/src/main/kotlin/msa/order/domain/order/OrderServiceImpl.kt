@@ -43,7 +43,10 @@ class OrderServiceImpl(
         orderToken: String,
         command: OrderCommand.UpdateReceiverInfoRequest
     ) {
-        TODO("Not yet implemented")
+        var order = orderReader.getOrder(orderToken)
+        order.updateDeliveryFragment(command)
+        order.deliveryPrepare()
+        orderStore.store(order)
     }
 
 }
