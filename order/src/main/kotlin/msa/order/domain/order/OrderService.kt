@@ -13,4 +13,9 @@ interface OrderService {
     suspend fun retrieveOrder(
         orderToken: String
     ): OrderInfo.Main
+
+    suspend fun updateReceiverInfo(
+        orderToken: String,
+        command: OrderCommand.UpdateReceiverInfoRequest
+    )
 }

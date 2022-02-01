@@ -38,4 +38,12 @@ class OrderServiceImpl(
         return orderInfoMapper.of(order, orderItemList)
     }
 
+    @Transactional
+    override suspend fun updateReceiverInfo(
+        orderToken: String,
+        command: OrderCommand.UpdateReceiverInfoRequest
+    ) {
+        TODO("Not yet implemented")
+    }
+
 }

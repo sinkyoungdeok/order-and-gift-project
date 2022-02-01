@@ -33,7 +33,7 @@ class OrderFacade(
         orderToken: String,
         command: OrderCommand.UpdateReceiverInfoRequest
     ) {
-
+        orderService.updateReceiverInfo(orderToken, command)
         eventPublisher.publishEvent(OrderKakaoEvent())
     }
 }
