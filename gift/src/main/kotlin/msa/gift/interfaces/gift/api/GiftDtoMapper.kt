@@ -29,4 +29,9 @@ interface GiftDtoMapper {
     fun of(
         giftInfo: GiftInfo.Main
     ): GiftDto.RegisterOrderResponse
+
+    fun of(
+        giftToken: String,
+        request: GiftDto.AcceptGiftRequest
+    ): GiftCommand.AcceptGift
 }

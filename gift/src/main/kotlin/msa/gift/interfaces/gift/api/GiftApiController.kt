@@ -26,4 +26,14 @@ class GiftApiController(
         giftFacade.requestPaymentProcessing(giftToken)
         return CommonResponse("OK")
     }
+
+    @PostMapping("/{giftToken}/accept-gift")
+    suspend fun acceptGift(
+        @PathVariable giftToken: String,
+        @RequestBody @Valid request: GiftDto.AcceptGiftRequest
+    ): CommonResponse<String> {
+        var command = giftDtoMapper.of(giftToken, request)
+        giftFacade.acceptGift(command)
+        return CommonResponse("OK")
+    }
 }

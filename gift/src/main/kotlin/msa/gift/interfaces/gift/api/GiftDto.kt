@@ -67,4 +67,24 @@ class GiftDto {
         var orderToken: String,
         var giftToken: String
     )
+
+    class AcceptGiftRequest(
+        @field:NotBlank(message = "receiverName 는 필수값입니다")
+        var receiverName: String,
+
+        @field:NotBlank(message = "receiverPhone 는 필수값입니다")
+        var receiverPhone: String,
+
+        @field:NotBlank(message = "receiverZipcode 는 필수값입니다")
+        var receiverZipcode: String,
+
+        @field:NotBlank(message = "receiverAddress1 는 필수값입니다")
+        var receiverAddress1: String,
+
+        @field:NotBlank(message = "receiverAddress2 는 필수값입니다")
+        var receiverAddress2: String,
+
+        @field:NotBlank(message = "etcMessage 는 필수값입니다")
+        var etcMessage: String,
+    )
 }

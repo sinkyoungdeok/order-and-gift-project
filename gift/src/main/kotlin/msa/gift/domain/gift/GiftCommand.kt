@@ -48,4 +48,14 @@ class GiftCommand {
         var itemOptionName: String,
         var itemOptionPrice: Long
     )
+
+    class AcceptGift(
+        var giftToken: String,
+        var receiverName: String,
+        var receiverPhone: String,
+        var receiverZipcode: String,
+        var receiverAddress1: String,
+        var receiverAddress2: String,
+        var etcMessage: String
+    )
 }
