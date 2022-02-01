@@ -36,5 +36,3 @@ out/
 ### VS Code ###
 .vscode/
 
-### docker
-/docker/data/db/**
