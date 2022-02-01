@@ -18,7 +18,7 @@
 - 컨테이너툴: docker
 - 데이터베이스: mysql
 
-## 새로운 프로젝트의 기술 스택
+## 이번 프로젝트의 기술 스택
 - 아키텍처: msa, ddd
 - 언어: kotlin
 - 프레임워크: spring boot, spring webflux, spring data mongodb reactive
