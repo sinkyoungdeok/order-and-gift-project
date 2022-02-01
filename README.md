@@ -22,7 +22,7 @@
 - 아키텍처: msa, ddd
 - 언어: kotlin
 - 프레임워크: spring boot, spring webflux, spring data mongodb reactive
-- 라이브러리: spring kafka, retrofit, mapstruct
+- 라이브러리: spring kafka, retrofit2, mapstruct
 - 빌드툴: gradle
 - 메시지 브로커: kafka
 - 컨테이너툴: docker
