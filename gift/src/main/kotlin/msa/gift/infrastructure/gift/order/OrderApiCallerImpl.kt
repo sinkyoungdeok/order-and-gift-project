@@ -1,6 +1,7 @@
 package msa.gift.infrastructure.gift.order
 
 import msa.gift.common.response.CommonResponse
+import msa.gift.domain.gift.GiftCommand
 import msa.gift.domain.gift.order.OrderApiCaller
 import msa.gift.domain.gift.order.OrderApiCommand
 import msa.gift.infrastructure.retrofit.RetrofitUtils
@@ -13,10 +14,16 @@ class OrderApiCallerImpl(
 ) : OrderApiCaller {
     override fun registerGiftOrder(command: OrderApiCommand.RegisterOrder): String {
         val call = retrofitOrderApi.registerOrder(command)
-        val response: CommonResponse<RetrofitOrderApiResponse.RegisterOrder>? = retrofitUtils.responseSync(call)
+        val response: CommonResponse<RetrofitOrderApiResponse.RegisterOrder>? =
+            retrofitUtils.responseSync(call)
         if (response != null) {
             return response.data.orderToken
         }
         return ""
+    }
+
+    override fun updateReceiverInfo(orderToken: String, command: GiftCommand.AcceptGift) {
+        val call = retrofitOrderApi.updateReceiverInfo(orderToken, command)
+        retrofitUtils.responseVoid(call)
     }
 }

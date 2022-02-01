@@ -49,7 +49,7 @@ class RetrofitUtils {
         }
     }
 
-    fun responseVoid(call: Call<Void?>) {
+    fun responseVoid(call: Call<Void>) {
         try {
             if (!call.execute().isSuccessful) throw RuntimeException()
         } catch (e: IOException) {

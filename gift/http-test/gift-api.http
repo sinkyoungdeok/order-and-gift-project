@@ -78,7 +78,7 @@ POST http://localhost:18080/api/v1/gifts/gt_uZm88kNksPY37L6Dy/payment-processing
 Content-Type: application/json
 
 ### 선물하기 수락 상태로 변경
-POST http://localhost:18080/api/v1/gifts/gt_9E6Xtzv2C5aQMqwPs/accept-gift
+POST http://localhost:18080/api/v1/gifts/gt_IBZkOLSkDLIWNi9at/accept-gift
 Content-Type: application/json
 
 {
