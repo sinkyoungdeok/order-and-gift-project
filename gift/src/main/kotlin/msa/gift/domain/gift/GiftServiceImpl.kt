@@ -44,7 +44,7 @@ class GiftServiceImpl(
     override suspend fun acceptGift(command: GiftCommand.AcceptGift) {
         var giftToken = command.giftToken
         var gift = giftReader.getGiftBy(giftToken)
-        gift.completePayment()
+        gift.accept(command)
         giftStore.store(gift)
     }
 }

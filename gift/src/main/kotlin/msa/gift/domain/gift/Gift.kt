@@ -120,7 +120,7 @@ class Gift(
     }
 
     private fun availableAccept(): Boolean {
-        return if (expiredAt!!.isBefore(LocalDateTime.now())) false
+        return if (expiredAt != null && expiredAt!!.isBefore(LocalDateTime.now())) false
         else status == Status.ORDER_COMPLETE ||
                 status == Status.PUSH_COMPLETE
     }
