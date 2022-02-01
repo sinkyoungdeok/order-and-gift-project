@@ -52,6 +52,8 @@ class GiftServiceImpl(
 
     @Transactional(readOnly = true)
     override suspend fun getGiftInfo(giftToken: String): GiftInfo.Main {
-        TODO("Not yet implemented")
+        var gift = giftReader.getGiftBy(giftToken)
+        var giftInfo = giftInfoMapper.of(gift)
+        return giftInfo
     }
 }
