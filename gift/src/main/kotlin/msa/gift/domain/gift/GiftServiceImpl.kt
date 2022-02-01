@@ -46,5 +46,7 @@ class GiftServiceImpl(
         var gift = giftReader.getGiftBy(giftToken)
         gift.accept(command)
         giftStore.store(gift)
+
+        orderApiCaller.updateReceiverInfo(gift.orderToken, command)
     }
 }
