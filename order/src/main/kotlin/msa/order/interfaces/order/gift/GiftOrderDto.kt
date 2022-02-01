@@ -79,4 +79,22 @@ class GiftOrderDto {
         @field:NotBlank(message = "orderDescription 는 필수값입니다")
         var orderDescription: String
     )
+
+    class UpdateReceiverInfoRequest(
+        var receiverName: String,
+        var receiverPhone: String,
+        var receiverZipcode: String,
+        var receiverAddress1: String,
+        var receiverAddress2: String,
+        var etcMessage: String
+    ) {
+        constructor() : this(
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        )
+    }
 }

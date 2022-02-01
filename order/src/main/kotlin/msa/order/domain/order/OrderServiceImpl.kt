@@ -38,4 +38,14 @@ class OrderServiceImpl(
         return orderInfoMapper.of(order, orderItemList)
     }
 
+    @Transactional
+    override suspend fun updateReceiverInfo(
+        orderToken: String,
+        command: OrderCommand.UpdateReceiverInfoRequest
+    ) {
+        var order = orderReader.getOrder(orderToken)
+        order.updateDeliveryFragment(command)
+        order.deliveryPrepare()
+        orderStore.store(order)
+    }
 }

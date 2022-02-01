@@ -65,4 +65,23 @@ class Order(
         }
         return false
     }
+
+    fun updateDeliveryFragment(
+        command: OrderCommand.UpdateReceiverInfoRequest
+    ) {
+        this.deliveryFragment = DeliveryFragment(
+            receiverName = command.receiverName,
+            receiverPhone = command.receiverPhone,
+            receiverZipcode = command.receiverZipcode,
+            receiverAddress1 = command.receiverAddress1,
+            receiverAddress2 = command.receiverAddress2,
+            etcMessage = command.etcMessage
+        )
+    }
+
+    fun deliveryPrepare() {
+        if (this.status != Status.ORDER_COMPLETE) throw IllegalStatusException()
+        this.status = Status.DELIVERY_PREPARE
+        this.orderItemList.forEach(OrderItem::deliveryPrepare)
+    }
 }

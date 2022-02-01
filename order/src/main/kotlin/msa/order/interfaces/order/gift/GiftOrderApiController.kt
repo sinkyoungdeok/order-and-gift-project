@@ -3,10 +3,7 @@ package msa.order.interfaces.order.gift
 import msa.order.application.order.OrderFacade
 import msa.order.application.order.gift.GiftFacade
 import msa.order.common.response.CommonResponse
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
@@ -32,6 +29,16 @@ class GiftOrderApiController(
     ): CommonResponse<String> {
         var orderCommand = giftOrderDtoMapper.of(request)
         giftFacade.paymentOrder(orderCommand)
+        return CommonResponse("OK")
+    }
+
+    @PostMapping("/{orderToken}/update-receiver-info")
+    suspend fun updateReceiverInfo(
+        @PathVariable orderToken: String,
+        @RequestBody @Valid request: GiftOrderDto.UpdateReceiverInfoRequest
+    ): CommonResponse<String> {
+        var orderCommand = giftOrderDtoMapper.of(request)
+        orderFacade.updateReceiverInfo(orderToken, orderCommand)
         return CommonResponse("OK")
     }
 }

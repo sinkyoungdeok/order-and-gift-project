@@ -1,5 +1,6 @@
 package msa.order.domain.order.item
 
+import msa.order.common.exception.IllegalStatusException
 import msa.order.domain.AbstractEntity
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
@@ -47,5 +48,10 @@ class OrderItem(
             .mapToLong(OrderItemOptionGroup::calculateTotalAmount)
             .sum()
         return (itemPrice + itemOptionTotalAmount) * orderCount
+    }
+
+    fun deliveryPrepare() {
+        if (deliveryStatus != DeliveryStatus.BEFORE_DELIVERY) throw IllegalStatusException()
+        deliveryStatus = DeliveryStatus.DELIVERY_PREPARE
     }
 }

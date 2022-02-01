@@ -26,5 +26,11 @@ interface GiftOrderDtoMapper {
 
     fun of(orderInfo: OrderInfo.Token): GiftOrderDto.RegisterResponse
 
+    // Payment
     fun of(request: GiftOrderDto.PaymentRequest): OrderCommand.PaymentRequest
+
+    // update-receiver-info
+    fun of(
+        request: GiftOrderDto.UpdateReceiverInfoRequest
+    ): OrderCommand.UpdateReceiverInfoRequest
 }
