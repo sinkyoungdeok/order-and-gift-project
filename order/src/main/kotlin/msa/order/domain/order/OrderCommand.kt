@@ -129,4 +129,12 @@ class OrderCommand {
         var payMethod: PayMethod
     )
 
+    class UpdateReceiverInfoRequest(
+        var receiverName: String,
+        var receiverPhone: String,
+        var receiverZipcode: String,
+        var receiverAddress1: String,
+        var receiverAddress2: String,
+        var etcMessage: String
+    )
 }
