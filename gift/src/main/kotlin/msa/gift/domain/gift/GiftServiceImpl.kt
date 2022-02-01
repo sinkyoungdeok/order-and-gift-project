@@ -49,4 +49,9 @@ class GiftServiceImpl(
 
         orderApiCaller.updateReceiverInfo(gift.orderToken, command)
     }
+
+    @Transactional(readOnly = true)
+    override suspend fun getGiftInfo(giftToken: String): GiftInfo.Main {
+        TODO("Not yet implemented")
+    }
 }

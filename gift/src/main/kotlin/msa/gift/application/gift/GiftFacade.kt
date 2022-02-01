@@ -29,6 +29,6 @@ class GiftFacade(
     }
 
     suspend fun getOrder(giftToken: String): GiftInfo.Main {
-        return GiftInfo.Main()
+        return giftService.getGiftInfo(giftToken)
     }
 }
