@@ -26,6 +26,7 @@ class ItemApiController(
     }
 
     @PostMapping("/change-on-sales")
+    @PreAuthorize("hasRole('PARTNER')")
     suspend fun changeOnSaleItem(
         @RequestBody @Valid request: ItemDto.ChangeStatusItemRequest
     ): CommonResponse<ItemDto.RegisterResponse> {

@@ -27,6 +27,13 @@ class UserService {
             true,
             Arrays.asList(Role.ROLE_ADMIN)
         )
+
+        data["partner"] = User(
+            "partner",
+            "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=",
+            true,
+            Arrays.asList(Role.ROLE_PARTNER)
+        )
     }
 
     fun findByUsername(username: String): Mono<User> {
