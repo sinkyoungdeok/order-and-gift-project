@@ -9,16 +9,16 @@ import java.util.function.Function
 import java.util.stream.Collectors
 
 class User(
-    private var username: String? = null,
-    private var password: String? = null,
-    private val enabled: Boolean? = null,
-    val roles: List<Role>? = null
+    private var username: String,
+    private var password: String,
+    private val enabled: Boolean,
+    val roles: List<Role>
 ) : UserDetails {
     override fun getUsername(): String {
-        return username!!
+        return username
     }
 
-    fun setUsername(username: String?) {
+    fun setUsername(username: String) {
         this.username = username
     }
 
@@ -35,24 +35,24 @@ class User(
     }
 
     override fun isEnabled(): Boolean {
-        return enabled!!
+        return enabled
     }
 
-    override fun getAuthorities(): Collection<GrantedAuthority?> {
-        return roles!!.stream().map(Function<Role, SimpleGrantedAuthority?> { authority: Role ->
+    override fun getAuthorities(): MutableList<SimpleGrantedAuthority> {
+        return roles.stream().map{ authority: Role ->
             SimpleGrantedAuthority(
                 authority.name
             )
-        }).collect(Collectors.toList())
+        }.collect(Collectors.toList())
     }
 
     @JsonIgnore
     override fun getPassword(): String {
-        return password!!
+        return password
     }
 
     @JsonProperty
-    fun setPassword(password: String?) {
+    fun setPassword(password: String) {
         this.password = password
     }
 

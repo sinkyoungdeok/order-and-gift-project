@@ -13,15 +13,15 @@ import javax.annotation.PostConstruct
 @Component
 class JwtUtil {
     @Value("\${springbootwebfluxjjwt.jjwt.secret}")
-    private val secret: String? = null
+    private lateinit var secret: String
 
     @Value("\${springbootwebfluxjjwt.jjwt.expiration}")
-    private val expirationTime: String? = null
-    private var key: Key? = null
+    private lateinit var expirationTime: String
+    private lateinit var key: Key
 
     @PostConstruct
     fun init() {
-        key = Keys.hmacShaKeyFor(secret!!.toByteArray())
+        key = Keys.hmacShaKeyFor(secret.toByteArray())
     }
 
     fun getAllClaimsFromToken(token: String?): Claims {
@@ -48,7 +48,7 @@ class JwtUtil {
     }
 
     private fun doGenerateToken(claims: Map<String, Any?>, username: String): String {
-        val expirationTimeLong = expirationTime!!.toLong() //in second
+        val expirationTimeLong = expirationTime.toLong() //in second
         val createdDate = Date()
         val expirationDate = Date(createdDate.time + expirationTimeLong * 1000)
         return Jwts.builder()

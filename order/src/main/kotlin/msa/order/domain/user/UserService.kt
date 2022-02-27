@@ -29,7 +29,7 @@ class UserService {
         )
     }
 
-    fun findByUsername(username: String?): Mono<User?> {
+    fun findByUsername(username: String): Mono<User> {
         return Mono.justOrEmpty(data[username])
     }
 }

@@ -29,7 +29,7 @@ class SecurityContextRepository(
                 val authToken = authHeader.substring(7)
                 val auth: Authentication =
                     UsernamePasswordAuthenticationToken(authToken, authToken)
-                authenticationManager.authenticate(auth)!!.map { SecurityContextImpl() }
+                authenticationManager.authenticate(auth).map { SecurityContextImpl(it) }
             }
     }
 }

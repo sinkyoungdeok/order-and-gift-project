@@ -12,21 +12,21 @@ import javax.crypto.spec.PBEKeySpec
 @Component
 class PBKDF2Encoder : PasswordEncoder {
     @Value("\${springbootwebfluxjjwt.password.encoder.secret}")
-    private val secret: String? = null
+    private lateinit var secret: String
 
     @Value("\${springbootwebfluxjjwt.password.encoder.iteration}")
-    private val iteration: Int? = null
+    private val iteration: Int = 0
 
     @Value("\${springbootwebfluxjjwt.password.encoder.keylength}")
-    private val keylength: Int? = null
+    private val keylength: Int = 0
 
     override fun encode(cs: CharSequence): String {
         return try {
             val result = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512")
                 .generateSecret(
                     PBEKeySpec(
-                        cs.toString().toCharArray(), secret!!.toByteArray(),
-                        iteration!!, keylength!!
+                        cs.toString().toCharArray(), secret.toByteArray(),
+                        iteration, keylength
                     )
                 )
                 .encoded
