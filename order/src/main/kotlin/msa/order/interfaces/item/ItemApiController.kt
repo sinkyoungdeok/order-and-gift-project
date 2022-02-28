@@ -2,8 +2,8 @@ package msa.order.interfaces.item
 
 import msa.order.application.item.ItemFacade
 import msa.order.common.response.CommonResponse
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
-import reactor.core.publisher.Mono
 import javax.validation.Valid
 
 @RestController
@@ -14,6 +14,7 @@ class ItemApiController(
 ) {
 
     @PostMapping
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     suspend fun registerItem(
         @RequestBody @Valid request: ItemDto.RegisterItemRequest
     ): CommonResponse<ItemDto.RegisterResponse> {
@@ -25,6 +26,7 @@ class ItemApiController(
     }
 
     @PostMapping("/change-on-sales")
+    @PreAuthorize("hasRole('PARTNER')")
     suspend fun changeOnSaleItem(
         @RequestBody @Valid request: ItemDto.ChangeStatusItemRequest
     ): CommonResponse<ItemDto.RegisterResponse> {

@@ -8,6 +8,17 @@ spring:
       uri: mongodb://root:1234@localhost/order?authSource=admin
 
 
+springbootwebfluxjjwt:
+  password:
+    encoder:
+      secret: mysecret
+      iteration: 33
+      keylength: 256
+  jjwt:
+    secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+    expiration: 28800
+
+
 
 
 threadPool:
