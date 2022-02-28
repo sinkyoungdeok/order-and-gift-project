@@ -2,22 +2,35 @@ package msa.gift.domain.user
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
+import java.time.LocalDateTime
 import java.util.stream.Collectors
 
+@Document
 class User(
+    @Id var id: String? = null,
     private var username: String,
     private var password: String,
     private val enabled: Boolean,
-    val roles: List<Role>
+    val roles: List<Role>,
+    var deletedAt: LocalDateTime? = null,
+    var userToken: String
 ) : UserDetails {
+    constructor(username: String, password: String, enabled: Boolean, roles: List<Role>) : this(
+        null,
+        username,
+        password,
+        enabled,
+        roles,
+        null,
+        ""
+    )
+
     override fun getUsername(): String {
         return username
-    }
-
-    fun setUsername(username: String) {
-        this.username = username
     }
 
     override fun isAccountNonExpired(): Boolean {
