@@ -9,24 +9,24 @@
 - 기존 프로젝트는 패스트캠퍼스의 The Red강의를 들으면서 클론코딩을 진행하였다.
 
 ## 기존 프로젝트의 기술스택
-- 아키텍처: msa, ddd
-- 언어: java
-- 프레임워크: spring boot, spring mvc, spring data jpa
-- 라이브러리: jpa, retrofit2, mapstruct
-- 빌드툴: gradle
-- 메시지 브로커: aws sqs
-- 컨테이너툴: docker
-- 데이터베이스: mysql
+> 아키텍처: msa, ddd  
+> 언어: java  
+> 프레임워크: spring boot, spring mvc, spring data jpa  
+> 라이브러리: jpa, retrofit2, mapstruct  
+> 빌드툴: gradle  
+> 메시지 브로커: aws sqs  
+> 컨테이너툴: docker  
+> 데이터베이스: mysql  
 
 ## 이번 프로젝트의 기술 스택
-- 아키텍처: msa, ddd
-- 언어: kotlin
-- 프레임워크: spring boot, spring webflux, spring data mongodb reactive
-- 라이브러리: spring kafka, retrofit2, mapstruct
-- 빌드툴: gradle
-- 메시지 브로커: kafka
-- 컨테이너툴: docker
-- 데이터베이스: mongodb
+> 아키텍처: msa, ddd  
+> 언어: kotlin  
+> 프레임워크: spring boot, spring webflux, spring data mongodb reactive, spring security jwt  
+> 라이브러리: spring kafka, retrofit2, mapstruct  
+> 빌드툴: gradle  
+> 메시지 브로커: kafka  
+> 컨테이너툴: docker  
+> 데이터베이스: mongodb  
 
 # 3. 요구사항 
 
