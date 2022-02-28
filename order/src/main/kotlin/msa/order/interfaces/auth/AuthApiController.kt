@@ -2,7 +2,7 @@ package msa.order.interfaces.auth
 
 import msa.order.common.jwt.JwtUtil
 import msa.order.common.jwt.PBKDF2Encoder
-import msa.order.domain.user.UserService
+import msa.order.domain.user.UserService2
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono
 class AuthApiController(
     val jwtUtil: JwtUtil,
     val passwordEncoder: PBKDF2Encoder,
-    val userService: UserService
+    val userService: UserService2
 ) {
 
     @PostMapping("/login")
