@@ -1,7 +1,7 @@
 package msa.order.interfaces.user
 
+import msa.order.application.user.UserFacade
 import msa.order.common.response.CommonResponse
-import msa.order.domain.user.UserCommand
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -11,14 +11,17 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/api/v1/user")
 class UserApiController(
-    val userDtoMapper: UserDtoMapper
+    val userDtoMapper: UserDtoMapper,
+    val userFacade: UserFacade
 ) {
 
     @PostMapping
     suspend fun registerUser(
         @Valid @RequestBody request: UserDto.RegisterUserRequest
-    ): CommonResponse<UserCommand.RegisterUserRequest> {
-        var command = userDtoMapper.of(request)
-        return CommonResponse(command)
+    ): CommonResponse<UserDto.RegisterUserRequest> {
+        val command = userDtoMapper.of(request)
+        val userInfo = userFacade.registerUser(command)
+        val response = userDtoMapper.of(userInfo)
+        return CommonResponse(response)
     }
 }

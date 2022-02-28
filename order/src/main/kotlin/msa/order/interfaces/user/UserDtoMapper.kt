@@ -1,6 +1,7 @@
 package msa.order.interfaces.user
 
 import msa.order.domain.user.UserCommand
+import msa.order.domain.user.UserInfo
 import org.mapstruct.InjectionStrategy
 import org.mapstruct.Mapper
 import org.mapstruct.ReportingPolicy
@@ -19,4 +20,12 @@ interface UserDtoMapper {
     fun of(
         request: UserDto.RegisterRoleRequest
     ): UserCommand.RegisterRoleRequest
+
+    fun of(
+        userInfo: UserInfo.Main
+    ): UserDto.RegisterUserRequest
+
+    fun of(
+        userInfo: UserInfo.RoleInfo
+    ): UserDto.RegisterRoleRequest
 }
