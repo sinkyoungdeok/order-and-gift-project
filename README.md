@@ -5,8 +5,8 @@
 > 단순히 새로운 기술로 전환하기보다는 요구사항만을 보면서 분석하고 처음부터 개발한다  
 
 # 2. 프로젝트 기술스택
-- 기존 프로젝트: https://github.com/sinkyoungdeok/msa
-- 기존 프로젝트는 패스트캠퍼스의 The Red강의를 들으면서 클론코딩을 진행하였다.
+> 기존 프로젝트: https://github.com/sinkyoungdeok/msa  
+> 기존 프로젝트는 패스트캠퍼스의 The Red강의를 들으면서 클론코딩을 진행하였다.
 
 ## 기존 프로젝트의 기술스택
 > 아키텍처: msa, ddd  
