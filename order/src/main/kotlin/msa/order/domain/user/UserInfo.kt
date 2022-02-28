@@ -12,6 +12,12 @@ class UserInfo {
             "",
             null
         )
+
+        constructor(user: User) : this(
+            user.username,
+            user.password,
+            user.roles.map { RoleInfo(it.toString()) }
+        )
     }
 
     class RoleInfo(

@@ -29,6 +29,23 @@ class User(
         ""
     )
 
+    constructor(
+        username: String,
+        password: String,
+        enabled: Boolean,
+        roles: List<Role>,
+        userToken: String
+    ) : this(
+        null,
+        username,
+        password,
+        enabled,
+        roles,
+        null,
+        userToken
+    )
+
+
     override fun getUsername(): String {
         return username
     }
