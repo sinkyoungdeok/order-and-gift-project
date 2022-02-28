@@ -12,3 +12,14 @@ spring:
     bootstrap-servers: localhost:9092
     consumer:
       group-id: msa
+
+
+springbootwebfluxjjwt:
+  password:
+    encoder:
+      secret: mysecret
+      iteration: 33
+      keylength: 256
+  jjwt:
+    secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+    expiration: 28800

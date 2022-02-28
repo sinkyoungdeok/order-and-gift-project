@@ -1,4 +1,4 @@
-package msa.order.common.jwt
+package msa.gift.common.jwt
 
 import org.springframework.security.authentication.ReactiveAuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

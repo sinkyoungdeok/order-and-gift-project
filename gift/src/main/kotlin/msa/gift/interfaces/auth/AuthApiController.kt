@@ -1,8 +1,8 @@
-package msa.order.interfaces.auth
+package msa.gift.interfaces.auth
 
-import msa.order.common.jwt.JwtUtil
-import msa.order.common.jwt.PBKDF2Encoder
-import msa.order.domain.user.UserService
+import msa.gift.common.jwt.JwtUtil
+import msa.gift.common.jwt.PBKDF2Encoder
+import msa.gift.domain.user.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
