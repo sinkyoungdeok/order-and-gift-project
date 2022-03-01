@@ -23,4 +23,12 @@ class UserServiceImpl(
         var user = userReader.getUserBy(username)
         return UserInfo.Main(user)
     }
+
+    @Transactional
+    override suspend fun quitUser(username: String): UserInfo.Main {
+        var user = userReader.getUserBy(username)
+        user.quit()
+        user = userStore.store(user)
+        return UserInfo.Main(user)
+    }
 }

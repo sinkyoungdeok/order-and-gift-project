@@ -33,4 +33,15 @@ class UserApiController(
         val response = userDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
+
+    @PatchMapping
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('PARTNER')")
+    suspend fun quitUser(
+        principal: Principal
+    ): CommonResponse<UserDto.RegisterUserResponse> {
+        val username = principal.name
+        val userInfo = userFacade.quitUser(username)
+        val response = userDtoMapper.of(userInfo)
+        return CommonResponse(response)
+    }
 }

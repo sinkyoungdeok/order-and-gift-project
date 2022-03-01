@@ -14,7 +14,7 @@ class User(
     @Id var id: String? = null,
     private var username: String,
     private var password: String,
-    val enabled: Boolean,
+    var enabled: Boolean,
     val roles: List<Role>,
     var deletedAt: LocalDateTime? = null,
     var userToken: String
@@ -45,6 +45,9 @@ class User(
         userToken
     )
 
+    fun quit() {
+        this.enabled = false
+    }
 
     override fun getUsername(): String {
         return username
