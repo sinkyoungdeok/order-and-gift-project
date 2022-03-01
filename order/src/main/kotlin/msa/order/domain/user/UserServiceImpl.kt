@@ -26,6 +26,9 @@ class UserServiceImpl(
 
     @Transactional
     override suspend fun quitUser(username: String): UserInfo.Main {
-        TODO("Not yet implemented")
+        var user = userReader.getUserBy(username)
+        user.quit()
+        user = userStore.store(user)
+        return UserInfo.Main(user)
     }
 }

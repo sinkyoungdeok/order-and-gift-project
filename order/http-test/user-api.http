@@ -11,3 +11,10 @@ Content-Type: application/json
 GET http://localhost:8080/api/v1/user
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MTEzMjgzLCJleHAiOjE2NDYxNDIwODN9.Dmfl1i6ERloczQRzQrCHAoiutxMsqSMIVo-jWu_f4Q1YyjZ1IQbOfX_zHfxIVcZ-QDBadZUZpYUlaaveN2uUbA
+
+
+### 회원 탈퇴
+PATCH http://localhost:8080/api/v1/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MTEzMjgzLCJleHAiOjE2NDYxNDIwODN9.Dmfl1i6ERloczQRzQrCHAoiutxMsqSMIVo-jWu_f4Q1YyjZ1IQbOfX_zHfxIVcZ-QDBadZUZpYUlaaveN2uUbA
+
