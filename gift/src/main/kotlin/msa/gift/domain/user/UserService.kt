@@ -6,6 +6,6 @@ interface UserService {
     ): UserInfo.Main
 
     suspend fun retrieveUser(
-            username: String
+        username: String
     ): UserInfo.Main
 }

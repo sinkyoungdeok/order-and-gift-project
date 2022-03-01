@@ -14,7 +14,7 @@ class User(
     @Id var id: String? = null,
     private var username: String,
     private var password: String,
-    private val enabled: Boolean,
+    val enabled: Boolean,
     val roles: List<Role>,
     var deletedAt: LocalDateTime? = null,
     var userToken: String

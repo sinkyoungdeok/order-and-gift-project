@@ -26,7 +26,7 @@ class UserApiController(
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('PARTNER')")
     suspend fun retrieveUser(
-            principal: Principal
+        principal: Principal
     ): CommonResponse<UserDto.RegisterUserResponse> {
         val username = principal.name
         val userInfo = userFacade.retrieveUser(username)

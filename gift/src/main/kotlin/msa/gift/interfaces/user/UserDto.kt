@@ -13,6 +13,7 @@ class UserDto {
 
     class RegisterUserResponse(
         var username: String,
+        var enabled: Boolean,
         var roleList: List<RegisterRoleResponse>? = null
     )
 
