@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class UserServiceImpl(
     val userStore: UserStore,
+    val userReader: UserReader,
     val pbkdF2Encoder: PBKDF2Encoder
 ) : UserService {
 
@@ -19,6 +20,7 @@ class UserServiceImpl(
 
     @Transactional(readOnly = true)
     override suspend fun retrieveUser(username: String): UserInfo.Main {
-        TODO("Not yet implemented")
+        var user = userReader.getUserBy(username)
+        return UserInfo.Main(user)
     }
 }
