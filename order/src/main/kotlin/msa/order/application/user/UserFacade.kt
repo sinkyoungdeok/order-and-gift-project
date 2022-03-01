@@ -15,6 +15,7 @@ class UserFacade(
     }
 
     suspend fun retrieveUser(username: String): UserInfo.Main {
-        return UserInfo.Main()
+        val userInfo = userService.retrieveUser(username)
+        return userInfo
     }
 }

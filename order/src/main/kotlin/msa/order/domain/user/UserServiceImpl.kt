@@ -16,4 +16,9 @@ class UserServiceImpl(
         var user = userStore.store(initUser)
         return UserInfo.Main(user)
     }
+
+    @Transactional(readOnly = true)
+    override suspend fun retrieveUser(username: String): UserInfo.Main {
+        TODO("Not yet implemented")
+    }
 }
