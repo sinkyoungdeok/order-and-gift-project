@@ -31,4 +31,12 @@ class UserServiceImpl(
         user = userStore.store(user)
         return UserInfo.Main(user)
     }
+
+    @Transactional
+    override suspend fun comeBackUser(username: String): UserInfo.Main {
+        var user = userReader.getUserBy(username)
+        user.comeBack()
+        user = userStore.store(user)
+        return UserInfo.Main(user)
+    }
 }
