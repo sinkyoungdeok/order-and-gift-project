@@ -18,4 +18,9 @@ class UserFacade(
         val userInfo = userService.retrieveUser(username)
         return userInfo
     }
+
+    suspend fun quitUser(username: String): UserInfo.Main {
+        val userInfo = UserInfo.Main()
+        return userInfo
+    }
 }
