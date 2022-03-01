@@ -2,7 +2,7 @@ package msa.gift.interfaces.auth
 
 import msa.gift.common.jwt.JwtUtil
 import msa.gift.common.jwt.PBKDF2Encoder
-import msa.gift.domain.user.UserService
+import msa.gift.domain.user.UserService2
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -16,12 +16,12 @@ import reactor.core.publisher.Mono
 class AuthApiController(
     val jwtUtil: JwtUtil,
     val passwordEncoder: PBKDF2Encoder,
-    val userService: UserService
+    val userService2: UserService2
 ) {
 
     @PostMapping("/login")
     fun login(@RequestBody request: AuthDto.LoginRequest): Mono<ResponseEntity<AuthDto.LoginResponse>> {
-        return userService.findByUsername(request.username)
+        return userService2.findByUsername(request.username)
             .filter { userDetails ->
                 passwordEncoder.encode(request.password).equals(userDetails.password)
             }

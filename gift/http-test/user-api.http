@@ -1,0 +1,8 @@
+### 유저 생성
+POST http://localhost:18080/api/v1/user
+Content-Type: application/json
+
+{
+  "username": "user3",
+  "password": "user3"
+}
