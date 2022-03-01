@@ -2,10 +2,9 @@ package msa.gift.interfaces.user
 
 import msa.gift.application.user.UserFacade
 import msa.gift.common.response.CommonResponse
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.web.bind.annotation.*
+import java.security.Principal
 import javax.validation.Valid
 
 @RestController
@@ -20,6 +19,17 @@ class UserApiController(
     ): CommonResponse<UserDto.RegisterUserResponse> {
         val command = userDtoMapper.of(request)
         val userInfo = userFacade.registerUser(command)
+        val response = userDtoMapper.of(userInfo)
+        return CommonResponse(response)
+    }
+
+    @GetMapping
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('PARTNER')")
+    suspend fun retrieveUser(
+            principal: Principal
+    ): CommonResponse<UserDto.RegisterUserResponse> {
+        val username = principal.name
+        val userInfo = userFacade.retrieveUser(username)
         val response = userDtoMapper.of(userInfo)
         return CommonResponse(response)
     }

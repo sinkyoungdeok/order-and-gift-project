@@ -3,6 +3,11 @@ POST http://localhost:18080/api/v1/user
 Content-Type: application/json
 
 {
-  "username": "user3",
-  "password": "user3"
+  "username": "user",
+  "password": "user"
 }
+
+### 내 정보 조회
+GET http://localhost:18080/api/v1/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MTE1MDIyLCJleHAiOjE2NDYxNDM4MjJ9.z2obEsChGoVv6ChixLrJxCeFjA3tTsgYRfvGEkcr8BmOFLo2sLPMjtHDabXSOGmn4FXWVvrzOJtBpu0CpFN24w
