@@ -23,4 +23,9 @@ class UserFacade(
         val userInfo = userService.quitUser(username)
         return userInfo
     }
+
+    suspend fun comeBackUser(username: String): UserInfo.Main {
+        val userInfo = userService.comeBackUser(username)
+        return userInfo
+    }
 }

@@ -44,6 +44,9 @@ class User(
         null,
         userToken
     )
+    fun comeBack() {
+        this.enabled = true
+    }
 
     fun quit() {
         this.enabled = false
