@@ -143,7 +143,7 @@
 </details>
 
 # 발견한 오류 & 해결방법 
-<details><summary>1. reactiveMongoDB의 repository빈 주입 실패 </summary>
+<details><summary> reactiveMongoDB의 repository빈 주입 실패 </summary>
 
 ### 코드
 ```kotlin
@@ -179,7 +179,7 @@ implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reacti
 
 </details>
 
-<details><summary> 2. reactiveMongoDB의 연동 문제 </summary>
+<details><summary> reactiveMongoDB의 연동 문제 </summary>
 
 ### 코드
 ```yaml
@@ -219,7 +219,7 @@ spring:
 
 </details>
 
-<details><summary> 3. webflux에서 validation 처리 안되던 현상 </summary>
+<details><summary> webflux에서 validation 처리 안되던 현상 </summary>
 
 ### 코드
 ```kotlin
@@ -303,7 +303,7 @@ class CommonControllerAdvice {
 
 </details>
 
-<details><summary> 4. mapstruct 의존성 추가 </summary>
+<details><summary> mapstruct 의존성 추가 </summary>
 
 ### 코드
 ```
@@ -384,7 +384,7 @@ dependencies {
 
 </details>
 
-<details><summary> 5. spring data reactiveMongoDB의 parameter에 mono타입을 넣어서 생긴 오류 </summary>
+<details><summary> spring data reactiveMongoDB의 parameter에 mono타입을 넣어서 생긴 오류 </summary>
 
 - 오류 발견 날짜: 1월 24일 
 - 해결 날짜: 1월 25일
@@ -441,7 +441,7 @@ class PartnerReaderImpl(
 
 
 
-<details> <summary> 6. request를 mono타입으로 전달 받음으로써 생긴 에러</summary>
+<details> <summary> request를 mono타입으로 전달 받음으로써 생긴 에러</summary>
 
 ### 코드 
 
@@ -491,7 +491,7 @@ fun registerItem(
 
 </details>
 
-<details><summary> 7. 스프링 카프카와 코루틴 연동이 안되는 현상 발견</summary>
+<details><summary> 스프링 카프카와 코루틴 연동이 안되는 현상 발견</summary>
 
 ### 코드
 ```kotlin
