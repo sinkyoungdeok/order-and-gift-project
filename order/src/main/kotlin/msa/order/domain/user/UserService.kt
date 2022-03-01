@@ -8,4 +8,8 @@ interface UserService {
     suspend fun retrieveUser(
         username: String
     ): UserInfo.Main
+
+    suspend fun quitUser(
+        username: String
+    ): UserInfo.Main
 }

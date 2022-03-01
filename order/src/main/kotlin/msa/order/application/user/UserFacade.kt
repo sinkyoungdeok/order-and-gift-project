@@ -20,7 +20,7 @@ class UserFacade(
     }
 
     suspend fun quitUser(username: String): UserInfo.Main {
-        val userInfo = UserInfo.Main()
+        val userInfo = userService.quitUser(username)
         return userInfo
     }
 }
