@@ -1,8 +1,9 @@
-package msa.gift.infrastructure
+package msa.gift.infrastructure.user
 
 import kotlinx.coroutines.reactor.awaitSingle
 import msa.gift.domain.user.User
 import msa.gift.domain.user.UserStore
+import msa.gift.infrastructure.user.UserRepository
 import org.springframework.stereotype.Component
 
 @Component
