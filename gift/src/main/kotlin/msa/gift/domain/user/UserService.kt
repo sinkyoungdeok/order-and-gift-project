@@ -12,4 +12,8 @@ interface UserService {
     suspend fun quitUser(
         username: String
     ): UserInfo.Main
+
+    suspend fun comeBackUser(
+        username: String
+    ): UserInfo.Main
 }

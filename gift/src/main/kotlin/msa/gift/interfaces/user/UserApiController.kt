@@ -44,4 +44,15 @@ class UserApiController(
         val response = userDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
+
+    @PatchMapping("/come-back")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('PARTNER')")
+    suspend fun comeBackUser(
+        principal: Principal
+    ): CommonResponse<UserDto.RegisterUserResponse> {
+        val username = principal.name
+        val userInfo = userFacade.comeBack(username)
+        val response = userDtoMapper.of(userInfo)
+        return CommonResponse(response)
+    }
 }

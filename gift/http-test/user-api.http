@@ -17,3 +17,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiO
 PATCH http://localhost:18080/api/v1/user
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MTE1MDIyLCJleHAiOjE2NDYxNDM4MjJ9.z2obEsChGoVv6ChixLrJxCeFjA3tTsgYRfvGEkcr8BmOFLo2sLPMjtHDabXSOGmn4FXWVvrzOJtBpu0CpFN24w
+
+### 회원 재가입
+PATCH http://localhost:18080/api/v1/user/come-back
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MTE1MDIyLCJleHAiOjE2NDYxNDM4MjJ9.z2obEsChGoVv6ChixLrJxCeFjA3tTsgYRfvGEkcr8BmOFLo2sLPMjtHDabXSOGmn4FXWVvrzOJtBpu0CpFN24w
