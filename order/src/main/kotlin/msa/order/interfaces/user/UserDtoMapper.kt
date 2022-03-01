@@ -18,14 +18,10 @@ interface UserDtoMapper {
     ): UserCommand.RegisterUserRequest
 
     fun of(
-        request: UserDto.RegisterRoleRequest
-    ): UserCommand.RegisterRoleRequest
-
-    fun of(
         userInfo: UserInfo.Main
-    ): UserDto.RegisterUserRequest
+    ): UserDto.RegisterUserResponse
 
     fun of(
         userInfo: UserInfo.RoleInfo
-    ): UserDto.RegisterRoleRequest
+    ): UserDto.RegisterRoleResponse
 }

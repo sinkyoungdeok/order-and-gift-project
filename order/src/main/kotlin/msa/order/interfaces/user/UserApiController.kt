@@ -14,11 +14,10 @@ class UserApiController(
     val userDtoMapper: UserDtoMapper,
     val userFacade: UserFacade
 ) {
-
     @PostMapping
     suspend fun registerUser(
         @Valid @RequestBody request: UserDto.RegisterUserRequest
-    ): CommonResponse<UserDto.RegisterUserRequest> {
+    ): CommonResponse<UserDto.RegisterUserResponse> {
         val command = userDtoMapper.of(request)
         val userInfo = userFacade.registerUser(command)
         val response = userDtoMapper.of(userInfo)
