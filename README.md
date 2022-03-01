@@ -386,9 +386,6 @@ dependencies {
 
 <details><summary> spring data reactiveMongoDB의 parameter에 mono타입을 넣어서 생긴 오류 </summary>
 
-- 오류 발견 날짜: 1월 24일 
-- 해결 날짜: 1월 25일
-
 ### 코드
 ```kotlin
 @Repository
