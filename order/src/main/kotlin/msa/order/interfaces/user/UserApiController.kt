@@ -34,7 +34,7 @@ class UserApiController(
         return CommonResponse(response)
     }
 
-    @PatchMapping
+    @PatchMapping("/quit")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('PARTNER')")
     suspend fun quitUser(
         principal: Principal
