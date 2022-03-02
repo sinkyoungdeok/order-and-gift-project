@@ -23,13 +23,13 @@ class UserInfo {
         var username: String,
         var password: String,
         var enabled: Boolean,
-        var roleList: List<RoleInfo>? = null
+        var roles: List<Role>
     ) {
         constructor(user: User) : this(
             user.username,
             user.password,
             user.enabled,
-            user.roles.map { RoleInfo(it.toString()) }
+            user.roles
         )
     }
 
