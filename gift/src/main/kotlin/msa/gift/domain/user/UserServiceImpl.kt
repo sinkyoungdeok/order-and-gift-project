@@ -24,6 +24,12 @@ class UserServiceImpl(
         return UserInfo.Main(user)
     }
 
+    @Transactional(readOnly = true)
+    override suspend fun retrieveUserWithPassword(username: String): UserInfo.MainWithPassword {
+        var user = userReader.getUserBy(username)
+        return UserInfo.MainWithPassword(user)
+    }
+
     @Transactional
     override suspend fun quitUser(username: String): UserInfo.Main {
         var user = userReader.getUserBy(username)
