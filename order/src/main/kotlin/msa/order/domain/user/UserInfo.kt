@@ -20,6 +20,20 @@ class UserInfo {
         )
     }
 
+    class MainWithPassword(
+        var username: String,
+        var password: String,
+        var enabled: Boolean,
+        var roleList: List<RoleInfo>? = null
+    ) {
+        constructor(user: User) : this(
+            user.username,
+            user.password,
+            user.enabled,
+            user.roles.map { RoleInfo(it.toString()) }
+        )
+    }
+
     class RoleInfo(
         var role: String
     )

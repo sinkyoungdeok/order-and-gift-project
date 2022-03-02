@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import msa.order.domain.user.User
+import msa.order.domain.user.UserInfo
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.security.Key
@@ -41,10 +42,10 @@ class JwtUtil {
         return expiration.before(Date())
     }
 
-    fun generateToken(user: User): String {
+    fun generateToken(userInfo: UserInfo.MainWithPassword): String {
         val claims: MutableMap<String, Any?> = HashMap()
-        claims["role"] = user.roles
-        return doGenerateToken(claims, user.getUsername())
+        claims["role"] = userInfo.roleList
+        return doGenerateToken(claims, userInfo.username)
     }
 
     private fun doGenerateToken(claims: Map<String, Any?>, username: String): String {

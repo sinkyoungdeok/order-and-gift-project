@@ -9,6 +9,10 @@ interface UserService {
         username: String
     ): UserInfo.Main
 
+    suspend fun retrieveUserWithPassword(
+        username: String
+    ): UserInfo.MainWithPassword
+
     suspend fun quitUser(
         username: String
     ): UserInfo.Main
