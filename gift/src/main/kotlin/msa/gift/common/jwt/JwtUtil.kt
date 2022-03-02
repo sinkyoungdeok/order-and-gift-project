@@ -3,7 +3,6 @@ package msa.gift.common.jwt
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
-import msa.gift.domain.user.User
 import msa.gift.domain.user.UserInfo
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -44,7 +43,7 @@ class JwtUtil {
 
     fun generateToken(userInfo: UserInfo.MainWithPassword): String {
         val claims: MutableMap<String, Any?> = HashMap()
-        claims["role"] = userInfo.roleList
+        claims["role"] = userInfo.roles
         return doGenerateToken(claims, userInfo.username)
     }
 
