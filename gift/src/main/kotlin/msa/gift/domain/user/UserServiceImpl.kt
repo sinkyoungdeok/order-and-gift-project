@@ -24,6 +24,13 @@ class UserServiceImpl(
         return UserInfo.Main(user)
     }
 
+    @Transactional
+    override suspend fun registerAdmin(command: UserCommand.RegisterAdminRequest): UserInfo.Main {
+        var initUser = command.toEntity(pbkdF2Encoder)
+        var user = userStore.store(initUser)
+        return UserInfo.Main(user)
+    }
+
     @Transactional(readOnly = true)
     override suspend fun retrieveUserWithPassword(username: String): UserInfo.MainWithPassword {
         var user = userReader.getUserBy(username)
