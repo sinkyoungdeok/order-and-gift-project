@@ -5,6 +5,10 @@ interface UserService {
         command: UserCommand.RegisterUserRequest
     ): UserInfo.Main
 
+    suspend fun registerAdmin(
+        command: UserCommand.RegisterAdminRequest
+    ): UserInfo.Main
+
     suspend fun retrieveUser(
         username: String
     ): UserInfo.Main

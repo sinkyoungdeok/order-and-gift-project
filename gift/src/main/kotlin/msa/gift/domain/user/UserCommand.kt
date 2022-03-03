@@ -22,4 +22,20 @@ class UserCommand {
         }
     }
 
+    class RegisterAdminRequest(
+        var username: String,
+        var password: String
+    ) {
+        private val ADMIN_PREFIX = "admin_"
+
+        fun toEntity(pbkdF2Encoder: PBKDF2Encoder): User {
+            return User(
+                username,
+                pbkdF2Encoder.encode(password),
+                true,
+                arrayListOf(Role.ROLE_ADMIN),
+                TokenGenerator.randomCharacterWithPrefix(ADMIN_PREFIX) ?: ""
+            )
+        }
+    }
 }

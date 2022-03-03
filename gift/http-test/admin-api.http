@@ -1,0 +1,9 @@
+### 어드민 생성
+POST http://localhost:18080/api/v1/admin
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDYzMDg5NDIsImV4cCI6MTY0NjMzNzc0Mn0.dEjWcta_99ZTeZOz18PFdBIevH4WKAZJK8-FlvN2FncSSeqF3EzF9jp838dAUEHYCeC8tcFgY-xStOqvVjXnRw
+
+{
+  "username": "admin3",
+  "password": "admin3"
+}
