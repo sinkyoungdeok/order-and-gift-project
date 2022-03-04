@@ -1,10 +1,10 @@
 ### 어드민 생성
 POST http://localhost:8080/api/v1/admin
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MjMzOTI2LCJleHAiOjE2NDYyNjI3MjZ9.Mov2GlXhqViznRU-VVh-DxTrguDUBwIcVEuTdYfaZFCaP9mYQNdvnAmw6M0sC7076cvscfaleFSWKsZum6Wx8Q
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDYzNjk2MzcsImV4cCI6MTY0NjM5ODQzN30.9PB6YWB8W73tl2M5yKi5zKrNafb-Q6hpVOgdKpWfkg9KopmyddbFVI-HDikn8Lk-fUl9sjCXmBNlqB6QJm7_NQ
 
 {
-  "username": "admin2",
-  "password": "admin2"
+  "username": "admin4",
+  "password": "admin4"
 }
 
