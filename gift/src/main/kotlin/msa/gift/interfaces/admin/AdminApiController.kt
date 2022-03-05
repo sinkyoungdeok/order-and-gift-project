@@ -34,4 +34,14 @@ class AdminApiController(
         val response = adminDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
+
+    @PatchMapping("/{username}/quit")
+    @PreAuthorize("hasRole('ADMIN')")
+    suspend fun quitUser(
+        @PathVariable username: String
+    ): CommonResponse<AdminDto.RegisterAdminResponse> {
+        val userInfo = userFacade.quitUser(username)
+        val response = adminDtoMapper.of(userInfo)
+        return CommonResponse(response)
+    }
 }
