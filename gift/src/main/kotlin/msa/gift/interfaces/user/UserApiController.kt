@@ -51,7 +51,7 @@ class UserApiController(
         principal: Principal
     ): CommonResponse<UserDto.RegisterUserResponse> {
         val username = principal.name
-        val userInfo = userFacade.comeBack(username)
+        val userInfo = userFacade.comeBackUser(username)
         val response = userDtoMapper.of(userInfo)
         return CommonResponse(response)
     }

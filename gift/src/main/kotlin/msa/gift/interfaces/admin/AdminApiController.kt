@@ -44,4 +44,14 @@ class AdminApiController(
         val response = adminDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
+
+    @PatchMapping("/{username}/come-back")
+    @PreAuthorize("hasRole('ADMIN')")
+    suspend fun comeBackUser(
+        @PathVariable username: String
+    ): CommonResponse<AdminDto.RegisterAdminResponse> {
+        val userInfo = userFacade.comeBackUser(username)
+        val response = adminDtoMapper.of(userInfo)
+        return CommonResponse(response)
+    }
 }
