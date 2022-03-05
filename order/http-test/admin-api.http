@@ -8,3 +8,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViI
   "password": "admin4"
 }
 
+
+### 어드민 조회
+GET http://localhost:8080/api/v1/admin/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY0NDkwMDYsImV4cCI6MTY0NjQ3NzgwNn0.jBgWbOYA1m-l3e2RkWPOPwhu17jBj3Yzh_J-IvsjoLKrwk5XREEBudxpOG11D67Sqc0E0wUBgUKc8QOSPtqsqA
