@@ -11,8 +11,11 @@ class PartnerServiceImpl(
     PartnerService {
 
     @Transactional
-    override suspend fun registerPartner(command: PartnerCommand.RegisterPartner): PartnerInfo.Main {
-        var initPartner = command.toEntity()
+    override suspend fun registerPartner(
+        command: PartnerCommand.RegisterPartner,
+        userId: String
+    ): PartnerInfo.Main {
+        var initPartner = command.toEntity(userId)
         var partner = partnerStore.store(initPartner)
         return partnerInfoMapper.of(partner)
     }

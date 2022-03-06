@@ -10,12 +10,4 @@ import org.mapstruct.*
 interface PartnerInfoMapper {
 
     fun of(partner: Partner): PartnerInfo.Main
-
-
-    @Mappings(
-        Mapping(target = "id", ignore = true),
-        Mapping(target = "partnerToken", ignore = true),
-        Mapping(target = "status", ignore = true)
-    )
-    fun of(command: PartnerCommand.RegisterPartner): Partner
 }

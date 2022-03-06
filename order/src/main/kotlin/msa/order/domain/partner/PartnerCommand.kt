@@ -13,9 +13,10 @@ class PartnerCommand {
 
         private val PARTNER_PREFIX = "ptn_"
 
-        fun toEntity(): Partner {
+        fun toEntity(userId: String): Partner {
             return Partner(
-                partnerToken = TokenGenerator.randomCharacterWithPrefix(PARTNER_PREFIX)?:"",
+                userId = userId,
+                partnerToken = TokenGenerator.randomCharacterWithPrefix(PARTNER_PREFIX) ?: "",
                 partnerName = partnerName,
                 businessNo = businessNo,
                 email = email,

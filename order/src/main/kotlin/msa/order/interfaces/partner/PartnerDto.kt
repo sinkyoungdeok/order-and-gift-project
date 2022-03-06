@@ -15,7 +15,17 @@ class PartnerDto {
 
         @field:Email(message = "email 형식에 맞추어야 합니다")
         @field:NotEmpty(message = "email 은 필수값 입니다")
-        var email: String
+        var email: String,
+
+        var user: RegisterUserRequest
+    )
+
+    class RegisterUserRequest(
+        @field:NotEmpty(message = "username 은 필수값 입니다")
+        var username: String,
+
+        @field:NotEmpty(message = "password 은 필수값 입니다")
+        var password: String,
     )
 
     class RegisterResponse(

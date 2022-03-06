@@ -39,4 +39,21 @@ class UserCommand {
         }
     }
 
+    class RegisterPartnerRequest(
+        var username: String,
+        var password: String
+    ) {
+        private val USER_PREFIX = "ptn_"
+
+        fun toEntity(pbkdF2Encoder: PBKDF2Encoder): User {
+            return User(
+                username,
+                pbkdF2Encoder.encode(password),
+                true,
+                arrayListOf(Role.ROLE_PARTNER),
+                TokenGenerator.randomCharacterWithPrefix(USER_PREFIX) ?: ""
+            )
+        }
+    }
+
 }
