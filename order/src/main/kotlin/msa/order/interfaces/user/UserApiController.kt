@@ -28,8 +28,8 @@ class UserApiController(
     suspend fun retrieveUser(
         principal: Principal
     ): CommonResponse<UserDto.RegisterUserResponse> {
-        val username = principal.name
-        val userInfo = userFacade.retrieveUser(username)
+        val loginId = principal.name
+        val userInfo = userFacade.retrieveUser(loginId)
         val response = userDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
@@ -39,8 +39,8 @@ class UserApiController(
     suspend fun quitUser(
         principal: Principal
     ): CommonResponse<UserDto.RegisterUserResponse> {
-        val username = principal.name
-        val userInfo = userFacade.quitUser(username)
+        val loginId = principal.name
+        val userInfo = userFacade.quitUser(loginId)
         val response = userDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
@@ -50,8 +50,8 @@ class UserApiController(
     suspend fun comeBackUser(
         principal: Principal
     ): CommonResponse<UserDto.RegisterUserResponse> {
-        val username = principal.name
-        val userInfo = userFacade.comeBackUser(username)
+        val loginId = principal.name
+        val userInfo = userFacade.comeBackUser(loginId)
         val response = userDtoMapper.of(userInfo)
         return CommonResponse(response)
     }

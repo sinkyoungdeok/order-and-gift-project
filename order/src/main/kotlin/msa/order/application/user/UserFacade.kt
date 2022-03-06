@@ -14,18 +14,18 @@ class UserFacade(
         return userInfo
     }
 
-    suspend fun retrieveUser(username: String): UserInfo.Main {
-        val userInfo = userService.retrieveUser(username)
+    suspend fun retrieveUser(loginId: String): UserInfo.Main {
+        val userInfo = userService.retrieveUser(loginId)
         return userInfo
     }
 
-    suspend fun quitUser(username: String): UserInfo.Main {
-        val userInfo = userService.quitUser(username)
+    suspend fun quitUser(loginId: String): UserInfo.Main {
+        val userInfo = userService.quitUser(loginId)
         return userInfo
     }
 
-    suspend fun comeBackUser(username: String): UserInfo.Main {
-        val userInfo = userService.comeBackUser(username)
+    suspend fun comeBackUser(loginId: String): UserInfo.Main {
+        val userInfo = userService.comeBackUser(loginId)
         return userInfo
     }
 }

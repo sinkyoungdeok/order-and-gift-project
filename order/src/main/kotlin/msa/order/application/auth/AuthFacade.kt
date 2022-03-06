@@ -10,8 +10,8 @@ class AuthFacade(
     val authService: AuthService
 ) {
 
-    suspend fun login(username: String, password: String): String {
-        val userInfo = userService.retrieveUserWithPassword(username)
+    suspend fun login(loginId: String, password: String): String {
+        val userInfo = userService.retrieveUserWithPassword(loginId)
         val token = authService.login(userInfo, password)
         return token
     }

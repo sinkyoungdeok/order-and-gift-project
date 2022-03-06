@@ -1,12 +1,12 @@
 ### 파트너 등록
 POST http://localhost:8080/api/v1/partners
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1NDU3MTcsImV4cCI6MTY0NjU3NDUxN30.ANbQFrnHZsI1TVBF1q6iGOUtLict838V3BSF4squwaCvfFKTVSD08pjcO7KvbFLJuvpmImyCxP4ke1jzPkxZRg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
 
 {
   "user": {
-    "username": "partner4",
-    "password": "partner4"
+    "loginId": "partner5",
+    "password": "partner5"
   },
   "partnerName": "test5",
   "businessNo": "12341",

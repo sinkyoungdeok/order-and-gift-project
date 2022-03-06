@@ -14,18 +14,18 @@ interface UserService {
     ): UserInfo.MainWithId
 
     suspend fun retrieveUser(
-        username: String
+        loginId: String
     ): UserInfo.Main
 
     suspend fun retrieveUserWithPassword(
-        username: String
+        loginId: String
     ): UserInfo.MainWithPassword
 
     suspend fun quitUser(
-        username: String
+        loginId: String
     ): UserInfo.Main
 
     suspend fun comeBackUser(
-        username: String
+        loginId: String
     ): UserInfo.Main
 }

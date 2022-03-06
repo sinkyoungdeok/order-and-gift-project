@@ -12,16 +12,24 @@ import java.util.stream.Collectors
 @Document
 class User(
     @Id var id: String? = null,
-    private var username: String,
+    var name: String,
+    var loginId: String,
     private var password: String,
     var enabled: Boolean,
     val roles: List<Role>,
     var deletedAt: LocalDateTime? = null,
     var userToken: String
 ) : UserDetails {
-    constructor(username: String, password: String, enabled: Boolean, roles: List<Role>) : this(
+    constructor(
+        name: String,
+        loginId: String,
+        password: String,
+        enabled: Boolean,
+        roles: List<Role>
+    ) : this(
         null,
-        username,
+        name,
+        loginId,
         password,
         enabled,
         roles,
@@ -30,14 +38,16 @@ class User(
     )
 
     constructor(
-        username: String,
+        name: String,
+        loginId: String,
         password: String,
         enabled: Boolean,
         roles: List<Role>,
         userToken: String
     ) : this(
         null,
-        username,
+        name,
+        loginId,
         password,
         enabled,
         roles,
@@ -54,7 +64,7 @@ class User(
     }
 
     override fun getUsername(): String {
-        return username
+        return loginId
     }
 
     override fun isAccountNonExpired(): Boolean {
