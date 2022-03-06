@@ -9,6 +9,10 @@ interface UserService {
         command: UserCommand.RegisterAdminRequest
     ): UserInfo.Main
 
+    suspend fun registerPartner(
+        command: UserCommand.RegisterPartnerRequest
+    ): UserInfo.MainWithId
+
     suspend fun retrieveUser(
         username: String
     ): UserInfo.Main

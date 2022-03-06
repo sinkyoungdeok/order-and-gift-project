@@ -1,8 +1,13 @@
 ### 파트너 등록
 POST http://localhost:8080/api/v1/partners
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1NDU3MTcsImV4cCI6MTY0NjU3NDUxN30.ANbQFrnHZsI1TVBF1q6iGOUtLict838V3BSF4squwaCvfFKTVSD08pjcO7KvbFLJuvpmImyCxP4ke1jzPkxZRg
 
 {
+  "user": {
+    "username": "partner4",
+    "password": "partner4"
+  },
   "partnerName": "test5",
   "businessNo": "12341",
   "email": "greg.shiny8@gmail.com"

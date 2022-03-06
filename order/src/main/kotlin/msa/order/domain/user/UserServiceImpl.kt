@@ -37,6 +37,18 @@ class UserServiceImpl(
         return UserInfo.Main(user)
     }
 
+    @Transactional
+    override suspend fun registerPartner(command: UserCommand.RegisterPartnerRequest): UserInfo.MainWithId {
+        var retrieveUser = userReader.getUserBy(command.username)
+        if (retrieveUser != null) {
+            throw DuplicateUserException()
+        }
+
+        var initUser = command.toEntity(pbkdF2Encoder)
+        var user = userStore.store(initUser)
+        return UserInfo.MainWithId(user)
+    }
+
     @Transactional(readOnly = true)
     override suspend fun retrieveUser(username: String): UserInfo.Main {
         var user = userReader.getUserBy(username) ?: throw NotFoundUserException()
