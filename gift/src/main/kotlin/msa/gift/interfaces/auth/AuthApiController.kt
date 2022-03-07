@@ -15,7 +15,7 @@ class AuthApiController(
 
     @PostMapping("/login")
     suspend fun login(@RequestBody request: AuthDto.LoginRequest): CommonResponse<AuthDto.LoginResponse> {
-        val token = authFacade.login(request.username, request.password)
+        val token = authFacade.login(request.loginId, request.password)
         return CommonResponse(AuthDto.LoginResponse(token))
     }
 }

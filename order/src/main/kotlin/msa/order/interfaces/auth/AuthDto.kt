@@ -3,7 +3,7 @@ package msa.order.interfaces.auth
 class AuthDto {
 
     class LoginRequest(
-        var username: String,
+        var loginId: String,
         var password: String
     )
 

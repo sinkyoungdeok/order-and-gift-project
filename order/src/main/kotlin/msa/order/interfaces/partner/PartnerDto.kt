@@ -21,8 +21,8 @@ class PartnerDto {
     )
 
     class RegisterUserRequest(
-        @field:NotEmpty(message = "username 은 필수값 입니다")
-        var username: String,
+        @field:NotEmpty(message = "loginId 은 필수값 입니다")
+        var loginId: String,
 
         @field:NotEmpty(message = "password 은 필수값 입니다")
         var password: String,

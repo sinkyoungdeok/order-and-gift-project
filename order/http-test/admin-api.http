@@ -1,24 +1,24 @@
 ### 어드민 생성
 POST http://localhost:8080/api/v1/admin
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDYzNjk2MzcsImV4cCI6MTY0NjM5ODQzN30.9PB6YWB8W73tl2M5yKi5zKrNafb-Q6hpVOgdKpWfkg9KopmyddbFVI-HDikn8Lk-fUl9sjCXmBNlqB6QJm7_NQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
 
 {
-  "username": "admin4",
-  "password": "admin4"
+  "loginId": "admin5",
+  "password": "admin5"
 }
 
 ### 다른 유저 정보 조회
 GET http://localhost:8080/api/v1/admin/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY0NDkwMDYsImV4cCI6MTY0NjQ3NzgwNn0.jBgWbOYA1m-l3e2RkWPOPwhu17jBj3Yzh_J-IvsjoLKrwk5XREEBudxpOG11D67Sqc0E0wUBgUKc8QOSPtqsqA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
 
 ### 다른 유저 탈퇴
 PATCH http://localhost:8080/api/v1/admin/user/quit
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY0NDkwMDYsImV4cCI6MTY0NjQ3NzgwNn0.jBgWbOYA1m-l3e2RkWPOPwhu17jBj3Yzh_J-IvsjoLKrwk5XREEBudxpOG11D67Sqc0E0wUBgUKc8QOSPtqsqA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
 
 ### 다른 유저 재가입
 PATCH http://localhost:8080/api/v1/admin/user/come-back
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY0NDkwMDYsImV4cCI6MTY0NjQ3NzgwNn0.jBgWbOYA1m-l3e2RkWPOPwhu17jBj3Yzh_J-IvsjoLKrwk5XREEBudxpOG11D67Sqc0E0wUBgUKc8QOSPtqsqA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg

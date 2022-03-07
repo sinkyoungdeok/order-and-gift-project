@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component
 class UserReaderImpl(
     val userRepository: UserRepository
 ) : UserReader {
-    override suspend fun getUserBy(username: String): User? {
-        return userRepository.findByUsername(username)
+    override suspend fun getUserBy(loginId: String): User? {
+        return userRepository.findByLoginId(loginId)
             .awaitSingleOrNull()
     }
 }

@@ -25,32 +25,32 @@ class AdminApiController(
         return CommonResponse(response)
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/{loginId}")
     @PreAuthorize("hasRole('ADMIN')")
     suspend fun retrieveUser(
-        @PathVariable username: String
+        @PathVariable loginId: String
     ): CommonResponse<AdminDto.RegisterAdminResponse> {
-        val userInfo = userFacade.retrieveUser(username)
+        val userInfo = userFacade.retrieveUser(loginId)
         val response = adminDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
 
-    @PatchMapping("/{username}/quit")
+    @PatchMapping("/{loginId}/quit")
     @PreAuthorize("hasRole('ADMIN')")
     suspend fun quitUser(
-        @PathVariable username: String
+        @PathVariable loginId: String
     ): CommonResponse<AdminDto.RegisterAdminResponse> {
-        val userInfo = userFacade.quitUser(username)
+        val userInfo = userFacade.quitUser(loginId)
         val response = adminDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
 
-    @PatchMapping("/{username}/come-back")
+    @PatchMapping("/{loginId}/come-back")
     @PreAuthorize("hasRole('ADMIN')")
     suspend fun comeBackUser(
-        @PathVariable username: String
+        @PathVariable loginId: String
     ): CommonResponse<AdminDto.RegisterAdminResponse> {
-        val userInfo = userFacade.comeBackUser(username)
+        val userInfo = userFacade.comeBackUser(loginId)
         val response = adminDtoMapper.of(userInfo)
         return CommonResponse(response)
     }
