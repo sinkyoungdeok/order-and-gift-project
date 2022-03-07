@@ -20,6 +20,7 @@ class UserStoreImpl(
     @PostConstruct
     fun init() {
         val user = User(
+            "유저1",
             "user",
             "cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=",
             true,
@@ -27,6 +28,7 @@ class UserStoreImpl(
         )
 
         val admin = User(
+            "어드민1",
             "admin",
             "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=",
             true,
@@ -34,19 +36,20 @@ class UserStoreImpl(
         )
 
         val partner = User(
+            "파트너1",
             "partner",
             "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=",
             true,
             Arrays.asList(Role.ROLE_PARTNER)
         )
 
-        userRepository.findByUsername("user")
+        userRepository.findByLoginId("user")
             .switchIfEmpty { userRepository.save(user) }
             .block()
-        userRepository.findByUsername("admin")
+        userRepository.findByLoginId("admin")
             .switchIfEmpty { userRepository.save(admin) }
             .block()
-        userRepository.findByUsername("partner")
+        userRepository.findByLoginId("partner")
             .switchIfEmpty { userRepository.save(partner) }
             .block()
     }

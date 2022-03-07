@@ -2,7 +2,7 @@ package msa.gift.domain.user
 
 class UserInfo {
     class Main(
-        var username: String,
+        var loginId: String,
         var enabled: Boolean,
         var roleList: List<RoleInfo>? = null
     ) {
@@ -13,20 +13,20 @@ class UserInfo {
         )
 
         constructor(user: User) : this(
-            user.username,
+            user.loginId,
             user.enabled,
             user.roles.map { RoleInfo(it.toString()) }
         )
     }
 
     class MainWithPassword(
-        var username: String,
+        var loginId: String,
         var password: String,
         var enabled: Boolean,
         var roles: List<Role>
     ) {
         constructor(user: User) : this(
-            user.username,
+            user.loginId,
             user.password,
             user.enabled,
             user.roles

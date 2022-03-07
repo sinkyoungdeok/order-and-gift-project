@@ -44,7 +44,7 @@ class JwtUtil {
     fun generateToken(userInfo: UserInfo.MainWithPassword): String {
         val claims: MutableMap<String, Any?> = HashMap()
         claims["role"] = userInfo.roles
-        return doGenerateToken(claims, userInfo.username)
+        return doGenerateToken(claims, userInfo.loginId)
     }
 
     private fun doGenerateToken(claims: Map<String, Any?>, username: String): String {

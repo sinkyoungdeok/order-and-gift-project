@@ -6,14 +6,15 @@ import msa.gift.common.util.TokenGenerator
 
 class UserCommand {
     class RegisterUserRequest(
-        var username: String,
+        var loginId: String,
         var password: String
     ) {
         private val USER_PREFIX = "user_"
 
         fun toEntity(pbkdF2Encoder: PBKDF2Encoder): User {
             return User(
-                username,
+                "",
+                loginId,
                 pbkdF2Encoder.encode(password),
                 true,
                 arrayListOf(Role.ROLE_USER),
@@ -23,14 +24,15 @@ class UserCommand {
     }
 
     class RegisterAdminRequest(
-        var username: String,
+        var loginId: String,
         var password: String
     ) {
         private val ADMIN_PREFIX = "admin_"
 
         fun toEntity(pbkdF2Encoder: PBKDF2Encoder): User {
             return User(
-                username,
+                "",
+                loginId,
                 pbkdF2Encoder.encode(password),
                 true,
                 arrayListOf(Role.ROLE_ADMIN),
