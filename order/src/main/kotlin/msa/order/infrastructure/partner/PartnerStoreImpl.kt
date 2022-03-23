@@ -13,7 +13,6 @@ class PartnerStoreImpl(
 ) : PartnerStore {
     override suspend fun store(initPartner: Partner): Partner {
         if (StringUtils.isEmpty(initPartner.partnerToken)) throw InvalidParamException("param.partnerToken")
-        if (StringUtils.isEmpty(initPartner.partnerName)) throw InvalidParamException("partner.partnerName")
         if (StringUtils.isEmpty(initPartner.businessNo)) throw InvalidParamException("partner.businessNo")
         if (StringUtils.isEmpty(initPartner.email)) throw InvalidParamException("partner.email")
 

@@ -8,7 +8,6 @@ class Partner(
     @Id
     var id: String? = null,
     var partnerToken: String,
-    var partnerName: String,
     var businessNo: String,
     var email: String,
     var status: Status? = null,

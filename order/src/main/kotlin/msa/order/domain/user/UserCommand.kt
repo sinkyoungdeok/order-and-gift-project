@@ -43,13 +43,14 @@ class UserCommand {
 
     class RegisterPartnerRequest(
         var loginId: String,
-        var password: String
+        var password: String,
+        var name: String
     ) {
         private val USER_PREFIX = "ptn_"
 
         fun toEntity(pbkdF2Encoder: PBKDF2Encoder): User {
             return User(
-                "",
+                name,
                 loginId,
                 pbkdF2Encoder.encode(password),
                 true,

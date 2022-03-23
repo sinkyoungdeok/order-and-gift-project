@@ -7,9 +7,6 @@ import javax.validation.constraints.NotEmpty
 class PartnerDto {
 
     class RegisterRequest(
-        @field:NotEmpty(message = "partnerName 은 필수값 입니다")
-        var partnerName: String,
-
         @field:NotEmpty(message = "businessNo 는 필수값 입니다")
         var businessNo: String,
 
@@ -26,15 +23,17 @@ class PartnerDto {
 
         @field:NotEmpty(message = "password 은 필수값 입니다")
         var password: String,
+
+        @field:NotEmpty(message = "name 은 필수값 입니다")
+        var name: String,
     )
 
     class RegisterResponse(
         var partnerToken: String,
-        var partnerName: String,
         var businessNo: String,
         var email: String,
         var status: Partner.Status? = null
     ) {
-        constructor() : this("", "", "", "", Partner.Status.ENABLE)
+        constructor() : this( "", "", "", Partner.Status.ENABLE)
     }
 }
