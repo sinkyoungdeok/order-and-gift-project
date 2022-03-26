@@ -15,7 +15,7 @@ import org.mapstruct.ReportingPolicy
 interface GiftOrderDtoMapper {
 
     // init
-    @Mapping(source = "buyerUserId", target = "userId")
+//    @Mapping(source = "buyerUserId", target = "userId")
     fun of(request: GiftOrderDto.RegisterOrderRequest): OrderCommand.RegisterOrder
 
     fun of(request: GiftOrderDto.RegisterOrderItemRequest): OrderCommand.RegisterOrderItem

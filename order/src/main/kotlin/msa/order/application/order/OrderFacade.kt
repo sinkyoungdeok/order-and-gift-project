@@ -13,8 +13,10 @@ class OrderFacade(
     val eventPublisher: ApplicationEventPublisher
 ) {
 
-    suspend fun registerOrder(command: OrderCommand.RegisterOrder): OrderInfo.Token {
-        val orderInfo = orderService.registerOrder(command)
+    suspend fun registerOrder(
+        command: OrderCommand.RegisterOrder, userName: String
+    ): OrderInfo.Token {
+        val orderInfo = orderService.registerOrder(command, userName)
         eventPublisher.publishEvent(OrderKakaoEvent())
         return orderInfo
     }

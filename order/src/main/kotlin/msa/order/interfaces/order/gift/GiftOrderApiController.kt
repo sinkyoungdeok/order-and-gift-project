@@ -18,7 +18,7 @@ class GiftOrderApiController(
         @RequestBody @Valid request: GiftOrderDto.RegisterOrderRequest
     ): CommonResponse<GiftOrderDto.RegisterResponse> {
         val orderCommand = giftOrderDtoMapper.of(request)
-        val orderInfo = orderFacade.registerOrder(orderCommand)
+        val orderInfo = orderFacade.registerOrder(orderCommand, "")
         val response = giftOrderDtoMapper.of(orderInfo)
         return CommonResponse(response)
     }
