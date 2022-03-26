@@ -1,14 +1,10 @@
 package msa.order.domain.item
 
-import msa.order.domain.partner.PartnerReader
-import msa.order.interfaces.item.ItemDtoMapper
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import reactor.core.publisher.Mono
 
 @Service
 class ItemServiceImpl(
-    val partnerReader: PartnerReader,
     val itemStore: ItemStore,
     val itemReader: ItemReader,
     val itemInfoDtoMapper: ItemInfoMapper
@@ -17,10 +13,9 @@ class ItemServiceImpl(
     @Transactional
     override suspend fun registerItem(
         command: ItemCommand.RegisterItemRequest,
-        partnerToken: String
+        partnerName: String
     ): ItemInfo.Token {
-        var partner = partnerReader.getPartner(partnerToken)
-        var initItem = partner.id?.let { command.toEntity(it) } ?: Item()
+        var initItem = command.toEntity(partnerName)
         var item = itemStore.store(initItem)
         return ItemInfo.Token(item.itemToken)
     }

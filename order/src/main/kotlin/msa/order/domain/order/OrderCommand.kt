@@ -75,7 +75,7 @@ class OrderCommand {
         fun toEntity(item: Item): OrderItem {
             return OrderItem(
                 orderCount = orderCount,
-                partnerId = item.partnerId,
+                partnerId = item.partnerName,
                 itemId = item.id ?: "",
                 itemToken = itemToken,
                 itemName = itemName,

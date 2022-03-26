@@ -4,6 +4,7 @@ import msa.order.application.item.ItemFacade
 import msa.order.common.response.CommonResponse
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
+import java.security.Principal
 import javax.validation.Valid
 
 @RestController
@@ -16,11 +17,11 @@ class ItemApiController(
     @PostMapping
     @PreAuthorize("hasRole('PARTNER')")
     suspend fun registerItem(
-        @RequestBody @Valid request: ItemDto.RegisterItemRequest
+        @RequestBody @Valid request: ItemDto.RegisterItemRequest,
+        principal: Principal
     ): CommonResponse<ItemDto.RegisterResponse> {
-        var partnerToken = request.partnerToken
         var itemCommand = itemDtoMapper.of(request)
-        var itemInfo = itemFacade.registerItem(itemCommand, partnerToken)
+        var itemInfo = itemFacade.registerItem(itemCommand, principal.name)
         var response = itemDtoMapper.of(itemInfo)
         return CommonResponse(response)
     }
