@@ -14,8 +14,10 @@ class OrderServiceImpl(
 ) : OrderService {
 
     @Transactional
-    override suspend fun registerOrder(orderCommand: OrderCommand.RegisterOrder): OrderInfo.Token {
-        val initOrder = orderCommand.toEntity()
+    override suspend fun registerOrder(
+        orderCommand: OrderCommand.RegisterOrder, userName: String
+    ): OrderInfo.Token {
+        val initOrder = orderCommand.toEntity(userName)
         val order: Order = orderItemSeriesFactory.store(initOrder, orderCommand)
 
         return OrderInfo.Token(order.orderToken)

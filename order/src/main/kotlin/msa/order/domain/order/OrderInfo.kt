@@ -13,7 +13,7 @@ class OrderInfo {
     class Main(
         var orderId: String,
         var orderToken: String,
-        var userId: String,
+        var userName: String,
         var payMethod: String,
         var totalAmount: Long,
         var deliveryInfo: DeliveryInfo,

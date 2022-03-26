@@ -8,9 +8,6 @@ class OrderDto {
 
     // register
     class RegisterOrderRequest(
-        @field:NotNull(message = "userId 는 필수값입니다")
-        var userId: String? = null,
-
         @field:NotBlank(message = "payMethod 는 필수값입니다")
         var payMethod: String? = null,
 
@@ -103,7 +100,7 @@ class OrderDto {
     // retrieve
     class Main(
         var orderToken: String,
-        var userId: String,
+        var userName: String,
         var payMethod: String,
         var totalAmount: Long,
         var deliveryInfo: DeliveryInfo,

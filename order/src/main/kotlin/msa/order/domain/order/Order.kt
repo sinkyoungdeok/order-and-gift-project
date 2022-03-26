@@ -12,7 +12,7 @@ import java.time.LocalDateTime
 class Order(
     @Id var id: String? = null,
     var orderToken: String,
-    var userId: String,
+    var userName: String,
     var payMethod: String,
     var orderItemList: List<OrderItem> = arrayListOf(),
     var deliveryFragment: DeliveryFragment,
@@ -21,14 +21,14 @@ class Order(
 ) : AbstractEntity() {
     constructor(
         orderToken: String,
-        userId: String,
+        userName: String,
         payMethod: String,
         deliveryFragment: DeliveryFragment
     ) :
             this(
                 null,
                 orderToken,
-                userId,
+                userName,
                 payMethod,
                 arrayListOf(),
                 deliveryFragment,

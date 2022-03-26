@@ -1,9 +1,9 @@
 ### 주문 요청 초기 저장
 POST http://localhost:8080/api/v1/orders/init
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ4MzA2NjI5LCJleHAiOjE2NDgzMzU0Mjl9.H1lvq1D7-AYJRZtp4QCYGzNC2CE_zHX-qcEABtT5heiAeUcDn1sUpyVFGpCypUgAlW33auqqIeyJHnp64DBqiQ
 
 {
-  "userId": "12345",
   "payMethod": "NAVER_PAY",
   "receiverName": "ㅅㄱㄷ",
   "receiverPhone": "01000001234",
@@ -14,7 +14,7 @@ Content-Type: application/json
   "orderItemList": [
     {
       "orderCount": 2,
-      "itemToken": "itm_O184SEsCOE1IWoUd",
+      "itemToken": "itm_SjKMbLP7hbzaePij",
       "itemName": "티셔츠",
       "itemPrice": "30000",
       "orderItemOptionGroupList": [
@@ -44,7 +44,7 @@ Content-Type: application/json
     },
     {
       "orderCount": 1,
-      "itemToken": "itm_KbobubboypTZ2B0s",
+      "itemToken": "itm_SjKMbLP7hbzaePij",
       "itemName": "양말",
       "itemPrice": "10000",
       "orderItemOptionGroupList": [
@@ -78,13 +78,16 @@ Content-Type: application/json
 ### 주문 결제 처리
 POST http://localhost:8080/api/v1/orders/payment-order
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ4MzA2NjI5LCJleHAiOjE2NDgzMzU0Mjl9.H1lvq1D7-AYJRZtp4QCYGzNC2CE_zHX-qcEABtT5heiAeUcDn1sUpyVFGpCypUgAlW33auqqIeyJHnp64DBqiQ
 
 {
-  "orderToken": "ord_Hwgx5JeWuEaAHucP",
+  "orderToken": "ord_CeMFtFOKfDXeXRrv",
   "payMethod": "NAVER_PAY",
   "amount": "72000",
   "orderDescription": "주문테스트"
 }
 
 ### 주문 조회
-GET http://localhost:8080/api/v1/orders/ord_SZq5VK8vdBe2ISsS
+GET http://localhost:8080/api/v1/orders/ord_CeMFtFOKfDXeXRrv
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ4MzA2NjI5LCJleHAiOjE2NDgzMzU0Mjl9.H1lvq1D7-AYJRZtp4QCYGzNC2CE_zHX-qcEABtT5heiAeUcDn1sUpyVFGpCypUgAlW33auqqIeyJHnp64DBqiQ
+

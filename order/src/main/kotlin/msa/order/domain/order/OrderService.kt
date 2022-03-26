@@ -3,7 +3,7 @@ package msa.order.domain.order
 
 interface OrderService {
     suspend fun registerOrder(
-        command: OrderCommand.RegisterOrder
+        command: OrderCommand.RegisterOrder, userName: String
     ): OrderInfo.Token
 
     suspend fun paymentOrder(

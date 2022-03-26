@@ -12,7 +12,6 @@ import msa.order.domain.order.payment.PayMethod
 class OrderCommand {
 
     class RegisterOrder(
-        var userId: String,
         var payMethod: String,
         var receiverName: String,
         var receiverPhone: String,
@@ -32,11 +31,10 @@ class OrderCommand {
             "",
             "",
             "",
-            "",
             arrayListOf()
         )
 
-        fun toEntity(): Order {
+        fun toEntity(userName: String): Order {
             var deliveryFragment = DeliveryFragment(
                 receiverName = receiverName,
                 receiverPhone = receiverPhone,
@@ -48,7 +46,7 @@ class OrderCommand {
 
             return Order(
                 orderToken = TokenGenerator.randomCharacterWithPrefix(ORDER_PREFIX) ?: "",
-                userId = userId,
+                userName = userName,
                 payMethod = payMethod,
                 deliveryFragment = deliveryFragment
             )
