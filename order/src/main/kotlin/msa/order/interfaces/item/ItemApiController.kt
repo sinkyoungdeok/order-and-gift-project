@@ -14,7 +14,7 @@ class ItemApiController(
 ) {
 
     @PostMapping
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('PARTNER')")
     suspend fun registerItem(
         @RequestBody @Valid request: ItemDto.RegisterItemRequest
     ): CommonResponse<ItemDto.RegisterResponse> {
@@ -37,6 +37,7 @@ class ItemApiController(
     }
 
     @PostMapping("/change-end-of-sales")
+    @PreAuthorize("hasRole('PARTNER')")
     suspend fun changeEndOfSaleItem(
         @RequestBody @Valid request: ItemDto.ChangeStatusItemRequest
     ): CommonResponse<ItemDto.RegisterResponse> {
@@ -47,6 +48,7 @@ class ItemApiController(
     }
 
     @GetMapping("/{itemToken}")
+    @PreAuthorize("hasRole('PARTNER')")
     suspend fun retrieve(
         @PathVariable("itemToken") itemToken: String
     ): CommonResponse<ItemDto.Main> {
