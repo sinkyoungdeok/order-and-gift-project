@@ -3,6 +3,6 @@ POST http://localhost:8080/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "loginId": "admin",
-  "password": "admin"
+  "loginId": "partner7",
+  "password": "partner7"
 }

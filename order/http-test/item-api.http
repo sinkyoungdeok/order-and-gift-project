@@ -1,9 +1,10 @@
 ### 아이템 등록
 POST http://localhost:8080/api/v1/items
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
 
 {
-  "partnerToken": "ptn_Xc5gdpUdQsQJ1DvM",
+  "partnerToken": "ptn_qjGGbaBzvPtuwFhc",
   "itemName": "티셔츠",
   "itemPrice": 30000,
   "itemOptionGroupList": [
@@ -51,23 +52,26 @@ Content-Type: application/json
 ### 아이템 1 활성화
 POST http://localhost:8080/api/v1/items/change-on-sales
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
 
 {
-  "itemToken": "itm_ka9lLZdKBgi0fGYs"
+  "itemToken": "itm_vNFip0kKuekYC77p"
 }
 
 ### 아이템 1 판매종료
 POST http://localhost:8080/api/v1/items/change-end-of-sales
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
 
 {
-  "itemToken": "itm_ka9lLZdKBgi0fGYs"
+  "itemToken": "itm_vNFip0kKuekYC77p"
 }
 
 
 ### 아이템 등록 2
 POST http://localhost:8080/api/v1/items
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
 
 {
   "partnerToken": "ptn_oWkmVAFErP2zgALi",
@@ -118,6 +122,7 @@ Content-Type: application/json
 ### 아이템 2 활성화
 POST http://localhost:8080/api/v1/items/change-on-sales
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
 
 {
   "itemToken": "itm_ka9lLZdKBgi0fGYs"
@@ -126,6 +131,7 @@ Content-Type: application/json
 ### 아이템 등록 3
 POST http://localhost:8080/api/v1/items
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
 
 {
   "partnerToken": "ptn_oWkmVAFErP2zgALi",
@@ -134,5 +140,6 @@ Content-Type: application/json
 }
 
 ### 아이템 조회
-GET http://localhost:8080/api/v1/items/itm_ka9lLZdKBgi0fGYs
+GET http://localhost:8080/api/v1/items/itm_vNFip0kKuekYC77p
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
