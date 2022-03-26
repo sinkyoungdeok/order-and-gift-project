@@ -10,7 +10,7 @@ class ItemInfo {
 
     class Main(
         var itemToken: String,
-        var partnerId: String,
+        var partnerName: String,
         var itemName: String,
         var itemPrice: Long,
         var status: Item.Status,

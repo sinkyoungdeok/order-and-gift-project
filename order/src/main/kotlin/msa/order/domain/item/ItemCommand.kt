@@ -13,9 +13,9 @@ class ItemCommand {
     ) {
         private val ITEM_PREFIX = "itm_"
 
-        fun toEntity(partnerId: String): Item {
+        fun toEntity(partnerName: String): Item {
             return Item(
-                partnerId = partnerId,
+                partnerName = partnerName,
                 itemName = itemName,
                 itemPrice = itemPrice,
                 itemToken = TokenGenerator.randomCharacterWithPrefix(ITEM_PREFIX)?: "",

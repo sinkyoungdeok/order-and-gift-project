@@ -6,7 +6,6 @@ class ItemDto {
 
     // register
     class RegisterItemRequest(
-        var partnerToken: String,
         var itemName: String,
         var itemPrice: Long,
         var itemOptionGroupList: List<RegisterItemOptionGroupRequest>
@@ -36,7 +35,7 @@ class ItemDto {
     // retrieve
     class Main(
         var itemToken: String,
-        var partnerId: String,
+        var partnerName: String,
         var itemName: String,
         var itemPrice: Long,
         var status: Item.Status,

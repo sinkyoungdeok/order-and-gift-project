@@ -14,9 +14,9 @@ class ItemFacade(
 ) {
     suspend fun registerItem(
         request: ItemCommand.RegisterItemRequest,
-        partnerToken: String
+        partnerName: String
     ): ItemInfo.Token {
-        var itemInfo = itemService.registerItem(request, partnerToken)
+        var itemInfo = itemService.registerItem(request, partnerName)
         eventPublisher.publishEvent(ItemEmailEvent())
         return itemInfo
     }
