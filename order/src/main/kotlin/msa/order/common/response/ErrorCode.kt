@@ -10,6 +10,8 @@ enum class ErrorCode(
     NOT_FOUND_USER("존재하지 않는 이름입니다."),
     DUPLICATE_USER("이미 존재하는 아이디입니다."),
     INVALID_TOKEN_EXCEPTION("유효 하지 않는 토큰입니다."),
+    INVALID_PASSWORD_EXCEPTION("비밀번호가 틀렸습니다"),
+    ACCESS_DENIED("접근 권한이 없습니다"),
 
     // GIFT
     GIFT_NOT_RECEIVABLE_CONDITION("선물 수락이 가능한 상태가 아닙니다."), GIFT_NOT_MODIFY_DELIVERY_CONDITION("배송지 변경이 가능한 상태가 아닙니다.");
