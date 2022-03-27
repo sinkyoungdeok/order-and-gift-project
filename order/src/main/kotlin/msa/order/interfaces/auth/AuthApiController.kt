@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/v1/auth")
 class AuthApiController(
-    val authFacade: AuthFacade
+    val authFacade: AuthFacade,
+    val authDtoMapper: AuthDtoMapper
 ) {
 
     @PostMapping("/login")
     suspend fun login(@RequestBody request: AuthDto.LoginRequest): CommonResponse<AuthDto.LoginResponse> {
         val token = authFacade.login(request.loginId, request.password)
-        return CommonResponse(AuthDto.LoginResponse(token))
+        val response = authDtoMapper.of(token)
+        return CommonResponse(response)
     }
 }

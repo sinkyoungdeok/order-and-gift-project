@@ -1,5 +1,7 @@
 package msa.order.domain.user
 
+import java.util.*
+
 
 class UserInfo {
     class Main(
@@ -57,5 +59,13 @@ class UserInfo {
 
     class RoleInfo(
         var role: String
+    )
+
+    class Token(
+        var accessToken: String,
+        var refreshToken: String,
+        var tokenType: String,
+        var expiresIn: Long,
+        var issuedAt: Date
     )
 }
