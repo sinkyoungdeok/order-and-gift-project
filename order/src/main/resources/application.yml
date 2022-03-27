@@ -6,7 +6,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://root:1234@localhost/order?authSource=admin
-
+  redis:
+    host: localhost
+    port: 6379
 
 springbootwebfluxjjwt:
   password:

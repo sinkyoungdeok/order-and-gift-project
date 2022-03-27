@@ -41,6 +41,9 @@ dependencies {
 		"org.projectlombok:lombok-mapstruct-binding:0.1.0"
 	)
 
+	//redis
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
 	// kafka
 	implementation("org.springframework.kafka:spring-kafka")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
