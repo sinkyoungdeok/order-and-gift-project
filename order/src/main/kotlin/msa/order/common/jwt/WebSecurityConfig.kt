@@ -36,6 +36,7 @@ class WebSecurityConfig(
             .pathMatchers(HttpMethod.OPTIONS).permitAll()
             .pathMatchers(
                 "/api/v1/auth/login",
+                "/api/v1/auth/reissue",
                 "/api/v1/user"
             ).permitAll()
             .anyExchange().authenticated()
