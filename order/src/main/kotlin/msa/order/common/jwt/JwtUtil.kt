@@ -3,6 +3,7 @@ package msa.order.common.jwt
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
+import msa.order.domain.user.UserCommand
 import msa.order.domain.user.UserInfo
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -48,6 +49,20 @@ class JwtUtil {
         val claims: MutableMap<String, Any?> = HashMap()
         claims["role"] = userInfo.roles
         return doGenerateToken(claims, userInfo.loginId)
+    }
+
+    fun reissueToken(command: UserCommand.ReissueTokenRequest): UserInfo.Token {
+        val claims = getAllClaimsFromToken(command.accessToken)
+        val loginId = getUsernameFromToken(command.accessToken)
+        val token = doGenerateToken(claims, loginId)
+
+        return UserInfo.Token(
+            token.accessToken,
+            command.refreshToken,
+            token.tokenType,
+            token.expiresIn,
+            Date()
+        )
     }
 
     private fun doGenerateToken(claims: Map<String, Any?>, username: String): UserInfo.Token {
