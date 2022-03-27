@@ -12,7 +12,7 @@ class AuthServiceImpl(
     val passwordEncoder: PBKDF2Encoder
 ) : AuthService {
 
-    override fun login(userInfo: UserInfo.MainWithPassword, password: String): String {
+    override fun login(userInfo: UserInfo.MainWithPassword, password: String): UserInfo.Token {
         if (!passwordEncoder.encode(password)
                 .equals(userInfo.password)
         ) throw InvalidPasswordException("비밀번호가 틀렸습니다")

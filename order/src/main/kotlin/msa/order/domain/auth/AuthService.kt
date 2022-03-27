@@ -6,5 +6,5 @@ interface AuthService {
     fun login(
         userInfo: UserInfo.MainWithPassword,
         password: String
-    ): String
+    ): UserInfo.Token
 }

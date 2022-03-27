@@ -15,8 +15,11 @@ class JwtUtil {
     @Value("\${springbootwebfluxjjwt.jjwt.secret}")
     private lateinit var secret: String
 
-    @Value("\${springbootwebfluxjjwt.jjwt.expiration}")
-    private lateinit var expirationTime: String
+    @Value("\${springbootwebfluxjjwt.jjwt.access-token-validity-in-seconds}")
+    private lateinit var accessTokenExpirationTime: String
+
+    @Value("\${springbootwebfluxjjwt.jjwt.refresh-token-validity-in-seconds}")
+    private lateinit var refreshTokenExpirationTime: String
     private lateinit var key: Key
 
     @PostConstruct
@@ -41,23 +44,43 @@ class JwtUtil {
         return expiration.before(Date())
     }
 
-    fun generateToken(userInfo: UserInfo.MainWithPassword): String {
+    fun generateToken(userInfo: UserInfo.MainWithPassword): UserInfo.Token {
         val claims: MutableMap<String, Any?> = HashMap()
         claims["role"] = userInfo.roles
         return doGenerateToken(claims, userInfo.loginId)
     }
 
-    private fun doGenerateToken(claims: Map<String, Any?>, username: String): String {
-        val expirationTimeLong = expirationTime.toLong() //in second
+    private fun doGenerateToken(claims: Map<String, Any?>, username: String): UserInfo.Token {
+        val accessTokenExpirationTimeLong = accessTokenExpirationTime.toLong()
+        val refreshTokenExpirationTimeLong = refreshTokenExpirationTime.toLong()
         val createdDate = Date()
-        val expirationDate = Date(createdDate.time + expirationTimeLong * 1000)
-        return Jwts.builder()
+        val accessTokenExpirationDate =
+            Date(createdDate.time + accessTokenExpirationTimeLong * 1000)
+        val refreshTokenExpirationDate =
+            Date(createdDate.time + refreshTokenExpirationTimeLong * 1000)
+
+        val accessToken = Jwts.builder()
             .setClaims(claims)
             .setSubject(username)
             .setIssuedAt(createdDate)
-            .setExpiration(expirationDate)
+            .setExpiration(accessTokenExpirationDate)
             .signWith(key)
             .compact()
+        val refreshToken = Jwts.builder()
+            .setClaims(claims)
+            .setSubject(username)
+            .setIssuedAt(createdDate)
+            .setExpiration(refreshTokenExpirationDate)
+            .signWith(key)
+            .compact()
+
+        return UserInfo.Token(
+            accessToken,
+            refreshToken,
+            "Bearer",
+            accessTokenExpirationTimeLong,
+            createdDate
+        )
     }
 
     fun validateToken(token: String): Boolean {

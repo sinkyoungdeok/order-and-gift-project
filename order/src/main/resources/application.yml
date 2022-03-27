@@ -16,7 +16,8 @@ springbootwebfluxjjwt:
       keylength: 256
   jjwt:
     secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
-    expiration: 28800
+    access-token-validity-in-seconds: 7200
+    refresh-token-validity-in-seconds: 1209600
 
 
 

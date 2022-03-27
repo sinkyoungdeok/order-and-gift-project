@@ -1,5 +1,7 @@
 package msa.order.interfaces.auth
 
+import java.util.*
+
 class AuthDto {
 
     class LoginRequest(
@@ -8,6 +10,10 @@ class AuthDto {
     )
 
     class LoginResponse(
-        var token: String
+        var accessToken: String,
+        var refreshToken: String,
+        var tokenType: String,
+        var expiresIn: Long,
+        var issuedAt: Date
     )
 }
