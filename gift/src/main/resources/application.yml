@@ -8,6 +8,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://root:1234@localhost/gift?authSource=admin
+  redis:
+    host: localhost
+    port: 6380
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
