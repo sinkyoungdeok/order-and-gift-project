@@ -1,6 +1,7 @@
 package msa.gift.common.response
 
 import msa.gift.common.exception.InvalidPasswordException
+import msa.gift.common.exception.InvalidTokenException
 import org.springframework.http.HttpStatus
 import org.springframework.security.access.AccessDeniedException
 import org.springframework.validation.FieldError
@@ -45,6 +46,19 @@ class CommonControllerAdvice {
             "",
             e.message.toString(),
             HttpStatus.UNAUTHORIZED.value().toString()
+        )
+
+        return Mono.just(errorResponse)
+    }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(value = [InvalidTokenException::class])
+    fun invalidTokenException(e: InvalidTokenException): Mono<CommonResponse<String>> {
+        val errorResponse = CommonResponse(
+            CommonResponse.Result.FAIL,
+            "",
+            ErrorCode.INVALID_TOKEN_EXCEPTION.errorMsg,
+            ErrorCode.INVALID_TOKEN_EXCEPTION.name
         )
 
         return Mono.just(errorResponse)
