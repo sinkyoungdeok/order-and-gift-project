@@ -40,4 +40,9 @@ class UserCommand {
             )
         }
     }
+
+    class ReissueTokenRequest(
+        var accessToken: String,
+        var refreshToken: String
+    )
 }

@@ -6,3 +6,13 @@ Content-Type: application/json
   "loginId": "admin",
   "password": "admin"
 }
+
+
+### 토큰 재발행
+POST http://localhost:18080/api/v1/auth/reissue
+Content-Type: application/json
+
+{
+  "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDgzNzI0NzIsImV4cCI6MTY0ODM3OTY3Mn0.onOE43YH8aCpqII_JAUX8hCWKpHEkPIhr2bV2BfJQp52uIQQFrYdvgoYPLvcuTgYOr2zYZc6nagfGMEHGYDM_Q",
+  "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDgzNzI0NzIsImV4cCI6MTY0OTU4MjA3Mn0.mBnkV01f0jcHMJCg8-uueUoQieTWqw6Z-tfEHPrVcWzwJ_zyJSQREtTpzYn2q8NcSlFZ58bZ08RNnmTahKiPAA"
+}

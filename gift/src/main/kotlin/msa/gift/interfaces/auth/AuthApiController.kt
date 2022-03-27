@@ -20,4 +20,12 @@ class AuthApiController(
         val response = authDtoMapper.of(token)
         return CommonResponse(response)
     }
+
+    @PostMapping("/reissue")
+    suspend fun reissue(@RequestBody request: AuthDto.ReissueRequest): CommonResponse<AuthDto.LoginResponse> {
+        val command = authDtoMapper.of(request)
+        val token = authFacade.reissue(command)
+        val response = authDtoMapper.of(token)
+        return CommonResponse(response)
+    }
 }

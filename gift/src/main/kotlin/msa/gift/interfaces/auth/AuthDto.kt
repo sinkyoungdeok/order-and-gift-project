@@ -16,4 +16,9 @@ class AuthDto {
         var expiresIn: Long,
         var issuedAt: Date
     )
+
+    class ReissueRequest(
+        var accessToken: String,
+        var refreshToken: String
+    )
 }
