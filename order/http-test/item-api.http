@@ -1,7 +1,7 @@
 ### 아이템 등록
 POST http://localhost:8080/api/v1/items
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODMwMzEwMSwiZXhwIjoxNjQ4MzMxOTAxfQ.brpLSdp3guQLQIEYh4V5JnJLnA6qiyP6rtTeoRioUDyoCg1_mwqiUVt-wYmM1LcCW-wFIWTOFTNTHTMy-yuN1Q
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODM3NDQwNSwiZXhwIjoxNjQ4MzgxNjA1fQ.cuxYBc8QRr3z6BHZol_JNxpGLh33rc9LFUgYkhqXbnMQQHF0qFdeHb56AnOkqlwBm1WX3G0dHluYbx8i7TXAdg
 
 {
   "itemName": "티셔츠",

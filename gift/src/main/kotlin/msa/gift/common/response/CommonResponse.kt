@@ -8,6 +8,10 @@ data class CommonResponse<T>(
 ) {
     constructor(data: T, message: String) : this(Result.SUCCESS, data, message, null)
     constructor(data: T) : this(Result.SUCCESS, data, "", null)
+    constructor(data: T, errorCode: ErrorCode) : this(Result.FAIL,
+        data,
+        errorCode.errorMsg,
+        errorCode.name)
 
     enum class Result {
         SUCCESS, FAIL
