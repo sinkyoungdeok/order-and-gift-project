@@ -2,6 +2,7 @@ package msa.gift.common.response
 
 import msa.gift.common.exception.InvalidPasswordException
 import org.springframework.http.HttpStatus
+import org.springframework.security.access.AccessDeniedException
 import org.springframework.validation.FieldError
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -44,6 +45,19 @@ class CommonControllerAdvice {
             "",
             e.message.toString(),
             HttpStatus.UNAUTHORIZED.value().toString()
+        )
+
+        return Mono.just(errorResponse)
+    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(value = [AccessDeniedException::class])
+    fun accessDeniedException(e: AccessDeniedException): Mono<CommonResponse<String>> {
+        val errorResponse = CommonResponse(
+            CommonResponse.Result.FAIL,
+            "",
+            "접근 권한이 없습니다.",
+            HttpStatus.FORBIDDEN.value().toString()
         )
 
         return Mono.just(errorResponse)
