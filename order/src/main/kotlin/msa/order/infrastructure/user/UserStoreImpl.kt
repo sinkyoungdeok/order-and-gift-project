@@ -43,6 +43,14 @@ class UserStoreImpl(
             Arrays.asList(Role.ROLE_PARTNER)
         )
 
+        val giftAdmin = User(
+            "기프트_어드민",
+            "giftAdmin",
+            "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=",
+            true,
+            Arrays.asList(Role.ROLE_ADMIN)
+        )
+
         userRepository.findByLoginId("user")
             .switchIfEmpty { userRepository.save(user) }
             .block()
@@ -51,6 +59,9 @@ class UserStoreImpl(
             .block()
         userRepository.findByLoginId("partner")
             .switchIfEmpty { userRepository.save(partner) }
+            .block()
+        userRepository.findByLoginId("giftAdmin")
+            .switchIfEmpty { userRepository.save(giftAdmin) }
             .block()
     }
 }
