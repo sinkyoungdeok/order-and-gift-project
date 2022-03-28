@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.security.Principal
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -27,5 +28,11 @@ class AuthApiController(
         val token = authFacade.reissue(command)
         val response = authDtoMapper.of(token)
         return CommonResponse(response)
+    }
+
+    @PostMapping("/logout")
+    fun logout(principal: Principal): CommonResponse<String> {
+        authFacade.logout(principal.name)
+        return CommonResponse("ok")
     }
 }

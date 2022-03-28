@@ -21,4 +21,8 @@ class AuthFacade(
     suspend fun reissue(command: UserCommand.ReissueTokenRequest): UserInfo.Token {
         return authService.reissue(command)
     }
+
+    fun logout(loginId: String) {
+        return authService.logout(loginId)
+    }
 }

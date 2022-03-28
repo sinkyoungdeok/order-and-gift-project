@@ -21,6 +21,7 @@ class AuthServiceImpl(
 
     @Value("\${springbootwebfluxjjwt.jjwt.refresh-token-validity-in-seconds}")
     private lateinit var refreshTokenExpirationTime: String
+    private val ID_PREFIX = "RT:"
 
     @Transactional(readOnly = true)
     override fun login(userInfo: UserInfo.MainWithPassword, password: String): UserInfo.Token {
@@ -30,7 +31,7 @@ class AuthServiceImpl(
         val token = jwtUtil.generateToken(userInfo)
 
         redisRepository.setValue(
-            "RT:"+ userInfo.loginId,
+            ID_PREFIX + userInfo.loginId,
             token.refreshToken,
             refreshTokenExpirationTime.toLong(),
             TimeUnit.MILLISECONDS
@@ -43,8 +44,8 @@ class AuthServiceImpl(
         if (!jwtUtil.validateToken(command.refreshToken))
             throw InvalidTokenException()
 
-        val userId = jwtUtil.getUsernameFromToken(command.refreshToken)
-        val refreshToken = redisRepository.getValue("RT:$userId")
+        val loginId = jwtUtil.getUsernameFromToken(command.refreshToken)
+        val refreshToken = redisRepository.getValue("$ID_PREFIX$loginId")
             ?: throw InvalidTokenException()
         if (!refreshToken.equals(command.refreshToken))
             throw InvalidTokenException()
@@ -52,11 +53,15 @@ class AuthServiceImpl(
         val token = jwtUtil.reissueToken(command)
 
         redisRepository.setValue(
-            "RT:$userId",
+            "$ID_PREFIX$loginId",
             token.refreshToken,
             refreshTokenExpirationTime.toLong(),
             TimeUnit.MILLISECONDS
         )
         return token
+    }
+
+    override fun logout(loginId: String) {
+        redisRepository.delValue("$ID_PREFIX$loginId")
     }
 }
