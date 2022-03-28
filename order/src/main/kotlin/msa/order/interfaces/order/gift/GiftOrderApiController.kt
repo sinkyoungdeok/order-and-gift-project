@@ -3,6 +3,7 @@ package msa.order.interfaces.order.gift
 import msa.order.application.order.OrderFacade
 import msa.order.application.order.gift.GiftFacade
 import msa.order.common.response.CommonResponse
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
@@ -14,6 +15,7 @@ class GiftOrderApiController(
     val giftFacade: GiftFacade
 ) {
     @PostMapping("/init")
+    @PreAuthorize("hasRole('ADMIN')")
     suspend fun registerOrder(
         @RequestBody @Valid request: GiftOrderDto.RegisterOrderRequest
     ): CommonResponse<GiftOrderDto.RegisterResponse> {
@@ -24,6 +26,7 @@ class GiftOrderApiController(
     }
 
     @PostMapping("/payment-order")
+    @PreAuthorize("hasRole('ADMIN')")
     suspend fun paymentOrder(
         @RequestBody @Valid request: GiftOrderDto.PaymentRequest
     ): CommonResponse<String> {
@@ -33,6 +36,7 @@ class GiftOrderApiController(
     }
 
     @PostMapping("/{orderToken}/update-receiver-info")
+    @PreAuthorize("hasRole('ADMIN')")
     suspend fun updateReceiverInfo(
         @PathVariable orderToken: String,
         @RequestBody @Valid request: GiftOrderDto.UpdateReceiverInfoRequest
