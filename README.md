@@ -21,12 +21,12 @@
 ## 이번 프로젝트의 기술 스택
 아키텍처: msa, ddd  
 언어: kotlin  
-프레임워크: spring boot, spring webflux, spring data mongodb reactive, spring security jwt  
+프레임워크: spring boot, spring webflux, spring data mongodb reactive, spring data redis,spring security jwt  
 라이브러리: spring kafka, retrofit2, mapstruct  
 빌드툴: gradle  
 메시지 브로커: kafka  
 컨테이너툴: docker  
-데이터베이스: mongodb  
+데이터베이스: mongodb, redis  
 
 # 프로젝트 기간
 주문 프로젝트: 2022.01.20 ~ 2022.01.31.   
