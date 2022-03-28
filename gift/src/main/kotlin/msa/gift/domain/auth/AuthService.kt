@@ -12,4 +12,8 @@ interface AuthService {
     fun reissue(
         userCommand: UserCommand.ReissueTokenRequest
     ): UserInfo.Token
+
+    fun logout(
+        loginId: String
+    )
 }
