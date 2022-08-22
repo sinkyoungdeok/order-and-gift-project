@@ -13,10 +13,15 @@ class AuthenticationManager(
     val jwtUtil: JwtUtil
 ) : ReactiveAuthenticationManager {
 
-
     override fun authenticate(authentication: Authentication): Mono<Authentication> {
         val authToken = authentication.credentials.toString()
-        val username = jwtUtil.getUsernameFromToken(authToken)
+        var username: String?
+        try {
+            username = jwtUtil.getUsernameFromToken(authToken)
+        } catch (e: Exception) {
+            return Mono.empty()
+        }
+
         return Mono.just(jwtUtil.validateToken(authToken))
             .filter { valid -> valid }
             .switchIfEmpty(Mono.empty())
