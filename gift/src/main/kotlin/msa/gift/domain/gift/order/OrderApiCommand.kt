@@ -26,4 +26,9 @@ class OrderApiCommand {
         var itemOptionName: String,
         var itemOptionPrice: Long
     )
+
+    class LoginRequest(
+        var loginId: String,
+        var password: String
+    )
 }

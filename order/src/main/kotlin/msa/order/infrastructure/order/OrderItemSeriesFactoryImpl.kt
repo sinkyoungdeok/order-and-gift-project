@@ -2,7 +2,6 @@ package msa.order.infrastructure.order
 
 import kotlinx.coroutines.reactor.awaitSingle
 import msa.order.domain.item.Item
-import msa.order.domain.item.ItemReader
 import msa.order.domain.order.Order
 import msa.order.domain.order.OrderCommand
 import msa.order.domain.order.OrderItemSeriesFactory

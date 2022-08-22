@@ -1,6 +1,7 @@
 ### 선물하기 등록
 POST http://localhost:18080/api/v1/gifts/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjExNzcyMzAsImV4cCI6MTY2MTE4NDQzMH0.1y3c-fAjbNyE99KB5w1WyX0vSv5Rt_dc1qSYGvmZ5ipSHkuKTi2xWnpR0Pi19Rr72Uz0rJDKaKHLezlbY8Nozw
 
 {
   "buyerUserId": "12345",
@@ -12,7 +13,7 @@ Content-Type: application/json
   "orderItemList": [
     {
       "orderCount": 1,
-      "itemToken": "itm_O184SEsCOE1IWoUd",
+      "itemToken": "itm_SjKMbLP7hbzaePij",
       "itemName": "티셔츠",
       "itemPrice": "30000",
       "orderItemOptionGroupList": [
@@ -42,7 +43,7 @@ Content-Type: application/json
     },
     {
       "orderCount": 1,
-      "itemToken": "itm_KbobubboypTZ2B0s",
+      "itemToken": "itm_SjKMbLP7hbzaePij",
       "itemName": "양말",
       "itemPrice": "10000",
       "orderItemOptionGroupList": [
@@ -74,12 +75,14 @@ Content-Type: application/json
 }
 
 ### 선물하기 결제중 상태로 변경
-POST http://localhost:18080/api/v1/gifts/gt_uZm88kNksPY37L6Dy/payment-processing
+POST http://localhost:18080/api/v1/gifts/gt_9Th4GADcSYln3mAAO/payment-processing
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjExNzU4NjMsImV4cCI6MTY2MTE4MzA2M30.hQjuCiF03rKS4t7gJjlen_ggCKz5rumUBhWoIVeTTCoBSqD7OYYCeGGUxVZo4wpsFEW1l56o0UkQSRiuyzQmEg
 
 ### 선물하기 수락 상태로 변경
-POST http://localhost:18080/api/v1/gifts/gt_IBZkOLSkDLIWNi9at/accept-gift
+POST http://localhost:18080/api/v1/gifts/gt_9Th4GADcSYln3mAAO/accept-gift
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjExNzU4NjMsImV4cCI6MTY2MTE4MzA2M30.hQjuCiF03rKS4t7gJjlen_ggCKz5rumUBhWoIVeTTCoBSqD7OYYCeGGUxVZo4wpsFEW1l56o0UkQSRiuyzQmEg
 
 {
   "receiverName": "그렉",

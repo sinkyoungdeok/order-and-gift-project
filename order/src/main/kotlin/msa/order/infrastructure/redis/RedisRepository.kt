@@ -11,7 +11,6 @@ class RedisRepository(
 
     fun setValue(key: String, value: String, timeout: Long, unit: TimeUnit) {
         val values = redisTemplate.opsForValue()
-        println(key + " " + value + "test1")
         values.set(key, value, timeout, unit)
     }
 

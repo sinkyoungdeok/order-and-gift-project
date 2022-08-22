@@ -13,7 +13,9 @@ class OrderApiCallerImpl(
     val retrofitOrderApi: RetrofitOrderApi
 ) : OrderApiCaller {
     override fun registerGiftOrder(command: OrderApiCommand.RegisterOrder): String {
-        val call = retrofitOrderApi.registerOrder(command)
+        val accessToken = login(OrderApiCommand.LoginRequest("giftAdmin", "admin"))
+
+        val call = retrofitOrderApi.registerOrder("Bearer $accessToken", command)
         val response: CommonResponse<RetrofitOrderApiResponse.RegisterOrder>? =
             retrofitUtils.responseSync(call)
         if (response != null) {
@@ -23,7 +25,18 @@ class OrderApiCallerImpl(
     }
 
     override fun updateReceiverInfo(orderToken: String, command: GiftCommand.AcceptGift) {
-        val call = retrofitOrderApi.updateReceiverInfo(orderToken, command)
+        val accessToken = login(OrderApiCommand.LoginRequest("giftAdmin", "admin"))
+
+        val call = retrofitOrderApi.updateReceiverInfo("Bearer $accessToken", orderToken, command)
         retrofitUtils.responseVoid(call)
+    }
+
+    override fun login(command: OrderApiCommand.LoginRequest): String {
+        val call = retrofitOrderApi.login(command)
+        val response = retrofitUtils.responseSync(call)
+        if (response != null) {
+            return response.data.accessToken
+        }
+        return ""
     }
 }
