@@ -29,7 +29,7 @@ class JwtUtil {
     }
 
     fun getAllClaimsFromToken(token: String?): Claims {
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).body
+        return Jwts.parser().setSigningKey(key).parseClaimsJws(token).body
     }
 
     fun getUsernameFromToken(token: String?): String {
