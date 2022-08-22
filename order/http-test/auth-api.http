@@ -6,6 +6,10 @@ Content-Type: application/json
   "loginId": "partner7",
   "password": "partner7"
 }
+> {%
+ client.global.set("orderAccessToken", response.body.data.accessToken);
+ client.global.set("orderRefreshToken", response.body.data.refreshToken);
+ %}
 
 ### 유저 인증
 POST http://localhost:8080/api/v1/auth/login
@@ -15,17 +19,25 @@ Content-Type: application/json
   "loginId": "user",
   "password": "user"
 }
+> {%
+ client.global.set("orderAccessToken", response.body.data.accessToken);
+ client.global.set("orderRefreshToken", response.body.data.refreshToken);
+ %}
 
 ### 토큰 재발행
 POST http://localhost:8080/api/v1/auth/reissue
 Content-Type: application/json
 
 {
-  "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODM5ODM3NCwiZXhwIjoxNjQ4NDA1NTc0fQ.Dcv8EpY2GLxzfgqTtH9Qslb1jXecpxqEbhzarqZCbaHUPghXvAv6vLxU0oZa8Iup9Rc_ySR_pQ551sMyCLxfKA",
-  "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfUEFSVE5FUiJdLCJzdWIiOiJwYXJ0bmVyNyIsImlhdCI6MTY0ODM5ODM3NCwiZXhwIjoxNjQ5NjA3OTc0fQ.FzkD0hDuscaCY2196jhQdrbPubUTJPYWnWnvgCGBv4xX1L8vHHrKagH4mUo_7c_5nNSvUFH2hRMkqKx6y8wxAg"
+  "accessToken": "{{orderAccessToken}}",
+  "refreshToken": "{{orderRefreshToken}}"
 }
+> {%
+ client.global.set("orderAccessToken", response.body.data.accessToken);
+ client.global.set("orderRefreshToken", response.body.data.refreshToken);
+ %}
 
 ### 로그아웃
 POST http://localhost:8080/api/v1/auth/logout
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ4NDQzNDE1LCJleHAiOjE2NDg0NTA2MTV9.qleESPCtFG8gGusfLNYD0APFYZ5GkmOIYpXSn5lvSZCguV3aOBtxMR5OY8rjGuI0qm2IRJNwnAxkCLS3zLudoQ
+Authorization: Bearer {{orderAccessToken}}

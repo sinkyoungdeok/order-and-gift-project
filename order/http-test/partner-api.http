@@ -1,7 +1,7 @@
 ### 파트너 등록
 POST http://localhost:8080/api/v1/partners
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDgwNDE5NDMsImV4cCI6MTY0ODA3MDc0M30.Plsg9MoFApHRssmQN_-yJPKWN-dB50XV6bFCEmTCPg5AhRhN764aoZy74dVa7zWrwuThkHWGG2WejCJF3vylhQ
+Authorization: Bearer {{orderAccessToken}}
 
 {
   "user": {

@@ -1,7 +1,7 @@
 ### 주문 요청 초기 저장
 POST http://localhost:8080/api/v1/orders/init
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ4MzA2NjI5LCJleHAiOjE2NDgzMzU0Mjl9.H1lvq1D7-AYJRZtp4QCYGzNC2CE_zHX-qcEABtT5heiAeUcDn1sUpyVFGpCypUgAlW33auqqIeyJHnp64DBqiQ
+Authorization: Bearer {{orderAccessToken}}
 
 {
   "payMethod": "NAVER_PAY",
@@ -78,7 +78,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiO
 ### 주문 결제 처리
 POST http://localhost:8080/api/v1/orders/payment-order
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ4MzA2NjI5LCJleHAiOjE2NDgzMzU0Mjl9.H1lvq1D7-AYJRZtp4QCYGzNC2CE_zHX-qcEABtT5heiAeUcDn1sUpyVFGpCypUgAlW33auqqIeyJHnp64DBqiQ
+Authorization: Bearer {{orderAccessToken}}
 
 {
   "orderToken": "ord_CeMFtFOKfDXeXRrv",
@@ -89,5 +89,5 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiO
 
 ### 주문 조회
 GET http://localhost:8080/api/v1/orders/ord_CeMFtFOKfDXeXRrv
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ4MzA2NjI5LCJleHAiOjE2NDgzMzU0Mjl9.H1lvq1D7-AYJRZtp4QCYGzNC2CE_zHX-qcEABtT5heiAeUcDn1sUpyVFGpCypUgAlW33auqqIeyJHnp64DBqiQ
+Authorization: Bearer {{orderAccessToken}}
 
