@@ -52,9 +52,9 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 
 	// jwt
-	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
-	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
-	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
+	implementation("io.jsonwebtoken:jjwt-api:0.10.7")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.10.7")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.10.7")
 }
 
 tasks.withType<KotlinCompile> {
