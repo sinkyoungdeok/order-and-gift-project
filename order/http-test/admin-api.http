@@ -1,7 +1,7 @@
 ### 어드민 생성
 POST http://localhost:8080/api/v1/admin
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
+Authorization: Bearer {{orderAccessToken}}
 
 {
   "loginId": "admin5",
@@ -11,14 +11,14 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViI
 ### 다른 유저 정보 조회
 GET http://localhost:8080/api/v1/admin/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
+Authorization: Bearer {{orderAccessToken}}
 
 ### 다른 유저 탈퇴
 PATCH http://localhost:8080/api/v1/admin/user/quit
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
+Authorization: Bearer {{orderAccessToken}}
 
 ### 다른 유저 재가입
 PATCH http://localhost:8080/api/v1/admin/user/come-back
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NDY1ODAyODAsImV4cCI6MTY0NjYwOTA4MH0.cbP0LH0BnCdvl_Upr_ypr0iM8HRgmvSezSY6r45w40PzvpM9mjMfDV9WM2-AEgqKhhLhiXdl_tmRPdGfyPK9eg
+Authorization: Bearer {{orderAccessToken}}
