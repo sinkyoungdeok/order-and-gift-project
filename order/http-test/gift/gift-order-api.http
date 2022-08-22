@@ -1,9 +1,10 @@
 ### 선물하기 주문 결제 처리
 POST http://localhost:8080/api/v1/gift-orders/payment-order
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfQURNSU4iXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjExNzc2MTksImV4cCI6MTY2MTE4NDgxOX0.p9ZHeQPMPTz7zjOpskYCqfqzdBSVlBEYZuOQW7IdlIOdR-d9Zd6cr45YklO7frovDNrJ0gCSX-DGBoJpSfwMDQ
 
 {
-  "orderToken": "ord_KqwQHG03bYXCV0vG",
+  "orderToken": "ord_YCOfSRl3B3LF7ADU",
   "payMethod": "TOSS_PAY",
   "amount": "41000",
   "orderDescription": "선물하기 주문"
