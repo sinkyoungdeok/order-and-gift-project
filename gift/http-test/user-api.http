@@ -10,14 +10,14 @@ Content-Type: application/json
 ### 내 정보 조회
 GET http://localhost:18080/api/v1/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MjMzNjcyLCJleHAiOjE2NDYyNjI0NzJ9.LkmoHtTf8MGWtGi-lnQGx7e5Nfcs3SgYREgSuGsnm3FG9k3dsQ6fT3I5HBMTWFypTMrS4Wy7DUViq7R7v1FwrA
+Authorization: Bearer {{giftAccessToken}}
 
 ### 회원 탈퇴
 PATCH http://localhost:18080/api/v1/user/quit
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MjMzNjcyLCJleHAiOjE2NDYyNjI0NzJ9.LkmoHtTf8MGWtGi-lnQGx7e5Nfcs3SgYREgSuGsnm3FG9k3dsQ6fT3I5HBMTWFypTMrS4Wy7DUViq7R7v1FwrA
+Authorization: Bearer {{giftAccessToken}}
 
 ### 회원 재가입
 PATCH http://localhost:18080/api/v1/user/come-back
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJ1c2VyIiwiaWF0IjoxNjQ2MjMzNjcyLCJleHAiOjE2NDYyNjI0NzJ9.LkmoHtTf8MGWtGi-lnQGx7e5Nfcs3SgYREgSuGsnm3FG9k3dsQ6fT3I5HBMTWFypTMrS4Wy7DUViq7R7v1FwrA
+Authorization: Bearer {{giftAccessToken}}

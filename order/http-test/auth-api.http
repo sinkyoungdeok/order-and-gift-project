@@ -32,6 +32,10 @@ Content-Type: application/json
   "accessToken": "{{orderAccessToken}}",
   "refreshToken": "{{orderRefreshToken}}"
 }
+> {%
+ client.global.set("orderAccessToken", response.body.data.accessToken);
+ client.global.set("orderRefreshToken", response.body.data.refreshToken);
+ %}
 
 ### 로그아웃
 POST http://localhost:8080/api/v1/auth/logout
