@@ -22,24 +22,28 @@ class WebSecurityConfig(
     fun securitygWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
         return http
             .exceptionHandling()
-            .authenticationEntryPoint { swe: ServerWebExchange, e: AuthenticationException? ->
+            .authenticationEntryPoint { swe: ServerWebExchange, _: AuthenticationException? ->
                 Mono.fromRunnable { swe.response.statusCode = HttpStatus.UNAUTHORIZED }
-            }.accessDeniedHandler { swe: ServerWebExchange, e: AccessDeniedException? ->
+            }.accessDeniedHandler { swe: ServerWebExchange, _: AccessDeniedException? ->
                 Mono.fromRunnable { swe.response.statusCode = HttpStatus.FORBIDDEN }
-            }.and()
+            }
+
+            .and()
+
             .csrf().disable()
             .formLogin().disable()
             .httpBasic().disable()
+
             .authenticationManager(authenticationManager)
             .securityContextRepository(securityContextRepository)
+
             .authorizeExchange()
             .pathMatchers(HttpMethod.OPTIONS).permitAll()
-            .pathMatchers(
-                "/api/v1/auth/login",
-                "/api/v1/auth/reissue",
-                "/api/v1/user"
-            ).permitAll()
+            .pathMatchers("/api/v1/auth/login").permitAll()
             .anyExchange().authenticated()
-            .and().build()
+
+            .and()
+
+            .build()
     }
 }

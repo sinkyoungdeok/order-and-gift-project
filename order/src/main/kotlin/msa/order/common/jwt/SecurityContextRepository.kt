@@ -19,17 +19,32 @@ class SecurityContextRepository(
     }
 
     override fun load(swe: ServerWebExchange): Mono<SecurityContext> {
-        return Mono.justOrEmpty(swe.request.headers.getFirst(HttpHeaders.AUTHORIZATION))
-            .filter { authHeader: String ->
-                authHeader.startsWith(
-                    "Bearer "
-                )
-            }
-            .flatMap { authHeader: String ->
-                val authToken = authHeader.substring(7)
-                val auth: Authentication =
-                    UsernamePasswordAuthenticationToken(authToken, authToken)
-                authenticationManager.authenticate(auth).map { SecurityContextImpl(it) }
-            }
+//        return Mono.justOrEmpty(swe.request.headers.getFirst(HttpHeaders.AUTHORIZATION))
+//            .filter { authHeader: String ->
+//                authHeader.startsWith(
+//                    "Bearer "
+//                )
+//            }
+//            .flatMap { authHeader: String ->
+//                val authToken = authHeader.substring(7)
+//                val auth: Authentication =
+//                    UsernamePasswordAuthenticationToken(authToken, authToken)
+//                authenticationManager.authenticate(auth).map { SecurityContextImpl(it) }
+//            }
+
+        val request = swe.request
+        val authHeader = request.headers.getFirst(HttpHeaders.AUTHORIZATION)
+        var authToken: String? = null
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            authToken = authHeader.substring(7)
+        }
+
+        if (authToken != null) {
+            val auth: Authentication = UsernamePasswordAuthenticationToken(authToken, authToken)
+            val authentication = authenticationManager.authenticate(auth)
+            return authentication.map { SecurityContextImpl(it) }
+        }
+        return Mono.empty()
     }
 }
