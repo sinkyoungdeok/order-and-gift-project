@@ -6,9 +6,6 @@ import javax.validation.constraints.NotNull
 
 class GiftOrderDto {
     class RegisterOrderRequest(
-//        @field:NotNull(message = "buyerUserId 는 필수값 입니다")
-//        var buyerUserId: String,
-
         @field:NotBlank(message = "payMethod 는 필수값 입니다")
         var payMethod: String,
 
@@ -24,7 +21,7 @@ class GiftOrderDto {
     )
 
     class RegisterOrderItemRequest(
-        @field:NotNull(message = "buyerUserId 는 필수값 입니다")
+        @field:NotNull(message = "orderCount 는 필수값 입니다")
         var orderCount: Int,
 
         @field:NotBlank(message = "itemToken 는 필수값입니다")
