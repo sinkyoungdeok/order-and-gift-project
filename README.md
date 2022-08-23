@@ -509,4 +509,16 @@ class GiftKafkaMessageListener(
 - 코루틴 대신에, Mono를 활용하는 코드로 변경 
 
 </details>
-	
+
+<details>
+<summary> webflux global exception 처리 </summary>
+
+### 상황 
+- 유효기간 만료된 토큰을 전달 받았을 때의 예외처리를 하려고 했었다.
+- Reactor에서 전달하는 Exception 은 ControllerAdvice에서 감지가 안되는 것을 확인 했고
+- 로그인 처리 뿐만 아니라 전체적으로 Webflux의 Global Exception을 처리하는 방법은 ControllerAdvice 방법이아니라 다른 방법으로 해야 됐다.
+
+### 해결 방법 
+https://devmingsa.tistory.com/80
+
+</details>
