@@ -1,5 +1,6 @@
 package msa.gift.common.jwt
 
+import msa.gift.common.exception.UnauthorizedException
 import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
@@ -23,7 +24,9 @@ class WebSecurityConfig(
         return http
             .exceptionHandling()
             .authenticationEntryPoint { swe: ServerWebExchange, _: AuthenticationException? ->
-                Mono.fromRunnable { swe.response.statusCode = HttpStatus.UNAUTHORIZED }
+                Mono.fromRunnable {
+                    throw UnauthorizedException(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다.")
+                }
             }.accessDeniedHandler { swe: ServerWebExchange, _: AccessDeniedException? ->
                 Mono.fromRunnable { swe.response.statusCode = HttpStatus.FORBIDDEN }
             }
