@@ -522,3 +522,9 @@ class GiftKafkaMessageListener(
 https://devmingsa.tistory.com/80
 
 </details>
+
+# kotlin webflux grpc armeria 개발 
+
+1. [idl](https://github.com/sinkyoungdeok/order-and-gift-idl) 레포에서 proto 변경 및 추가 
+2. `cd order && cd order-and-gift-idl && git pull origin main && ./gradlew generateProto`
+3. `cd gift && cd order-and-gift-idl && git pull origin main && ./gradlew generateProto`
