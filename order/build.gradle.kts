@@ -57,8 +57,9 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.10.7")
 
 	// Armeria
-	implementation("com.linecorp.armeria:armeria-spring-boot-webflux-starter")
-	implementation("com.linecorp.armeria:armeria-grpc")
+	implementation("com.linecorp.armeria:armeria-kotlin")
+	implementation("com.linecorp.armeria:armeria:1.9.2")
+	implementation("com.linecorp.armeria:armeria-grpc:1.9.2")
 }
 
 dependencyManagement {
@@ -84,7 +85,7 @@ sourceSets {
 			srcDirs(
 				"order-and-gift-idl/build/generated/source/proto/main/grpc",
 				"order-and-gift-idl/build/generated/source/proto/main/java",
-				"order-and-gift-idl/build/generated/source/proto/main/reactorGrpc"
+				"order-and-gift-idl/build/generated/source/proto/main/grpckt"
 			)
 		}
 	}
