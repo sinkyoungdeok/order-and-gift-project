@@ -55,6 +55,17 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-api:0.10.7")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.10.7")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.10.7")
+
+	// Armeria
+	implementation("com.linecorp.armeria:armeria-kotlin")
+	implementation("com.linecorp.armeria:armeria:1.9.2")
+	implementation("com.linecorp.armeria:armeria-grpc:1.9.2")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom("com.linecorp.armeria:armeria-bom:0.99.5")
+	}
 }
 
 tasks.withType<KotlinCompile> {
@@ -66,4 +77,16 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs(
+				"order-and-gift-idl/build/generated/source/proto/main/grpc",
+				"order-and-gift-idl/build/generated/source/proto/main/java",
+				"order-and-gift-idl/build/generated/source/proto/main/grpckt"
+			)
+		}
+	}
 }

@@ -1,0 +1,6 @@
+[submodule "docker/order-and-gift-idl"]
+	path = docker/order-and-gift-idl
+	url = https://github.com/sinkyoungdeok/order-and-gift-idl
+[submodule "order/order-and-gift-idl"]
+	path = order/order-and-gift-idl
+	url = https://github.com/sinkyoungdeok/order-and-gift-idl
